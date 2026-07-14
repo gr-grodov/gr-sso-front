@@ -3,20 +3,34 @@
 import { Separator as SeparatorPrimitive } from "@base-ui/react/separator"
 
 import { cn } from "@/lib/utils"
+import {cva, type VariantProps} from "class-variance-authority";
+
+const separatorVariants = cva(
+  "shrink-0 bg-border",
+  {
+    variants: {
+      orientation: {
+        horizontal: "h-px w-full",
+        vertical: "w-px h-full"
+      }
+    },
+    defaultVariants: {
+      orientation: "horizontal",
+    },
+  },
+
+)
 
 function Separator({
   className,
   orientation = "horizontal",
   ...props
-}: SeparatorPrimitive.Props) {
+}: SeparatorPrimitive.Props & VariantProps<typeof separatorVariants>) {
   return (
     <SeparatorPrimitive
       data-slot="separator"
       orientation={orientation}
-      className={cn(
-        "shrink-0 bg-border data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch",
-        className
-      )}
+      className={cn(separatorVariants({orientation, className}))}
       {...props}
     />
   )

@@ -1,0 +1,16 @@
+.card {
+    width: 100%;
+    padding: 16px;
+    max-width: 760px;
+    min-height: 60vh;
+
+    display: grid;
+    grid-template-columns: 1fr 0.1fr 1.50fr;
+}
+
+.card div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: var(--container-xs);
+}
