@@ -11,7 +11,7 @@
 
 .card {
     width: 100%;
-    max-width: 520px;
+    max-width: 30vw;
     min-height: 100vh;
     padding: calc(var(--spacing) * 4);
     background: var(--background);

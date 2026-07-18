@@ -10,11 +10,11 @@ export const createRegisterSchema = (t: TFunction) =>
 
     password: z
       .string()
-      .nonempty(t("errors.password.empty")),
-
-    repeatPassword: z
-      .string()
       .nonempty(t("errors.password.empty"))
+      .regex(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/,
+        t("errors.password.invalid"),
+      ),
   });
 
 export type RegisterForm = z.infer<ReturnType<typeof createRegisterSchema>>;

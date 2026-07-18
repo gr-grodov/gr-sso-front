@@ -60,10 +60,7 @@ export function LoginPage() {
             <Button variant="link">{t("login.actions.recover")}</Button>
           </div>
           <Button size="lg" className="w-full" form="login-form" type="submit">{t("login.actions.submit")}</Button>
-          <div className="flex flex-row">
-            <span className="pt-2">{t("login.actions.register_hint")}</span>
-            <Button className="pt-1 px-0.5" variant="link">{t("login.actions.register")}</Button>
-          </div>
+          <Button variant="link">{t("login.actions.register")}</Button>
         </CardFooter>
       </AppContentBlock>
     </>
