@@ -18,7 +18,7 @@ export function AppContentBlock({
   return (
     <div className={styles.content}>
       <div className="p-2 flex flex-col justify-center w-full">
-        <Logo className="h-1/5" />
+        <Logo className="h-1/6" />
       </div>
       <Card className={styles.card} {...props}>
         <CardHeader className="pt-12">
