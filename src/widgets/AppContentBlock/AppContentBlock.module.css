@@ -1,7 +1,20 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-image: url("@/assets/images/background.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .card {
     width: 100%;
-    max-width: 480px;
+    max-width: 520px;
     min-height: 100vh;
+    padding: calc(var(--spacing) * 4);
+    background: var(--background);
 
     display: flex;
     flex-direction: column;

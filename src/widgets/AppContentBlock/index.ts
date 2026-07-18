@@ -1,1 +1,1 @@
-export {CardWithIcon} from "./CardWithIcon.tsx";
+export {AppContentBlock} from "./AppContentBlock.tsx";

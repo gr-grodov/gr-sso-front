@@ -5,7 +5,8 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/separator";
+import { CircleAlert } from 'lucide-react';
 
 function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
   return (
@@ -43,7 +44,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-group"
       className={cn(
-        "group/field-group @container/field-group flex w-full flex-col gap-4 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4",
+        "group/field-group @container/field-group flex w-full flex-col gap-2 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4",
         className
       )}
       {...props}
@@ -52,7 +53,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const fieldVariants = cva(
-  "group/field flex w-full gap-2 data-[invalid=true]:text-destructive",
+  "group/field flex w-full data-[invalid=true]:text-destructive",
   {
     variants: {
       orientation: {
@@ -106,7 +107,7 @@ function FieldLabel({
     <Label
       data-slot="field-label"
       className={cn(
-        "group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-data-checked:bg-primary/5 has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-2 dark:has-data-checked:bg-primary/10",
+        "pb-1.5 group/field-label peer/field-label flex w-fit gap-1 leading-snug group-data-[disabled=true]/field:opacity-50 has-data-checked:bg-primary/5 has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-2 dark:has-data-checked:bg-primary/10",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
         className
       )}
@@ -120,7 +121,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-label"
       className={cn(
-        "flex w-fit items-center gap-2 text-xs/relaxed font-medium group-data-[disabled=true]/field:opacity-50",
+        "flex w-fit items-center gap-1f text-xs/relaxed font-medium group-data-[disabled=true]/field:opacity-50",
         className
       )}
       {...props}
@@ -177,9 +178,11 @@ function FieldError({
   className,
   children,
   errors,
+  showWithoutErrors,
   ...props
 }: React.ComponentProps<"div"> & {
-  errors?: Array<{ message?: string } | undefined>
+  errors?: Array<{ message?: string } | undefined>,
+  showWithoutErrors?: boolean
 }) {
   const content = useMemo(() => {
     if (children) {
@@ -208,7 +211,7 @@ function FieldError({
     )
   }, [children, errors])
 
-  if (!content) {
+  if (!content && !showWithoutErrors) {
     return null
   }
 
@@ -216,10 +219,17 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn("text-xs/relaxed font-normal text-destructive", className)}
+      className={cn("ps-1 text-xs/relaxed font-normal text-destructive", className)}
       {...props}
     >
-      {content}
+      {
+        content
+        ? (<div className="flex items-center gap-1 text-destructive">
+            <CircleAlert className="size-3 shrink-0" />
+            <span>{content}</span>
+          </div>)
+        : (<span>&ensp;</span>)
+      }
     </div>
   )
 }
