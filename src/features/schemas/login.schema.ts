@@ -1,17 +1,16 @@
 import { z } from "zod";
-import type { TFunction } from "i18next";
+import { tError } from "@/shared/i18n";
 
-export const createLoginSchema = (t: TFunction) =>
-  z.object({
-    email: z
-      .string()
-      .nonempty(t("errors.email.empty"))
-      .email(t("errors.email.invalid")),
+export const loginSchema = z.object({
+  email: z
+    .string()
+    .nonempty({error: tError("email.empty")})
+    .email({error: tError("email.invalid")}),
 
-    password: z
-      .string()
-      .nonempty(t("errors.password.empty"))
-      .min(8, t("errors.password.min", { min: 8 })),
-  });
+  password: z
+    .string()
+    .nonempty({error: tError("password.empty")})
+    .min(8, {error: tError("password.min")}),
+});
 
-export type LoginForm = z.infer<ReturnType<typeof createLoginSchema>>;
+export type LoginForm = z.infer<typeof loginSchema>;

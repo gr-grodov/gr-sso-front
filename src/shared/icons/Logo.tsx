@@ -14,7 +14,7 @@ export function Logo(props: IconProps) {
         <text
           x="0"
           y="58"
-          fill="currentColor"
+          fill="white"
           fontFamily="Inter, system-ui, sans-serif"
           fontSize="42"
           fontWeight="700"

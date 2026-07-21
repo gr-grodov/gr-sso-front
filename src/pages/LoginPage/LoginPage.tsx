@@ -1,30 +1,31 @@
-import {AppContentBlock} from "@/widgets/AppContentBlock";
+import {AppContentBlock} from "@/shared/widgets/AppContentBlock";
 import {useTranslation} from "react-i18next";
-import {createLoginSchema, type LoginForm} from "@/features/schemas/login.schema.ts";
+import {loginSchema, type LoginForm} from "@/features/schemas/login.schema.ts";
 import { useForm } from "react-hook-form"
 import {zodResolver} from "@hookform/resolvers/zod";
 import {FieldGroup} from "@/components/ui/field";
 import * as z from "zod"
 import {CardContent, CardFooter} from "@/components/ui/card.tsx";
-import {OAuthButtonsBlock} from "@/widgets/OAuthButtonsBlock/indexe.ts";
+import {OAuthButtonsBlock} from "@/shared/widgets/OAuthButtonsBlock/indexe";
 import {Separator} from "@/components/ui/separator.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {FormInput} from "@/shared/components/FormInput/FormInput.tsx";
+import { Link } from "react-router";
 
 
 
 export function LoginPage() {
   const { t } = useTranslation("auth");
   const form = useForm<LoginForm>({
-    resolver: zodResolver(createLoginSchema(t)),
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: ""
     },
   });
 
-  function onSubmit(data: z.infer<typeof createLoginSchema>) {
-    data
+  function onSubmit(data: z.infer<typeof loginSchema>) {
+    console.log(data)
   }
 
   return (
@@ -60,7 +61,9 @@ export function LoginPage() {
             <Button variant="link">{t("login.actions.recover")}</Button>
           </div>
           <Button size="lg" className="w-full" form="login-form" type="submit">{t("login.actions.submit")}</Button>
-          <Button variant="link">{t("login.actions.register")}</Button>
+          <Button variant="link">
+            <Link to="/register">{t("login.actions.register")}</Link>
+          </Button>
         </CardFooter>
       </AppContentBlock>
     </>

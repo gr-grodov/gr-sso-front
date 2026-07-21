@@ -1,9 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { AppContentBlock } from '@/widgets/AppContentBlock'
-import { OAuthButtonsBlock } from '@/widgets/OAuthButtonsBlock/OAuthButtonsBlock';
-import React from 'react'
+import { AppContentBlock } from '@/shared/widgets/AppContentBlock'
+import { OAuthButtonsBlock } from '@/shared/widgets/OAuthButtonsBlock/OAuthButtonsBlock';
 import { useTranslation } from 'react-i18next';
 
 export function ProviderErrorPage() {

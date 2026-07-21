@@ -1,19 +1,23 @@
 import './App.css'
-import {BrowserRouter, Route, Routes} from "react-router";
+import { Route, Routes } from "react-router-dom";
 import {LoginPage} from "@/pages/LoginPage/LoginPage.tsx";
 import {RegisterPage} from "@/pages/RegisterPage";
 import { ProviderErrorPage } from '@/pages/ProviderErrorPage';
+import { useEffect } from 'react';
+import { ConfigApi } from '@/shared/api/config.api';
 
 function App() {
+  useEffect(() => {
+    ConfigApi.csrf()
+  }, []);
+
   return (
     <>
-      <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LoginPage/>}/>
-            <Route path="/error" element={<ProviderErrorPage/>}/>
-            <Route path="/register" element={<RegisterPage/>}/>
-          </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/error" element={<ProviderErrorPage/>}/>
+        <Route path="/register" element={<RegisterPage/>}/>
+      </Routes>
     </>
   )
 }

@@ -1,20 +1,19 @@
+import { tError } from "@/shared/i18n";
 import { z } from "zod";
-import type { TFunction } from "i18next";
 
-export const createRegisterSchema = (t: TFunction) =>
-  z.object({
+export const registerSchema = z.object({
     email: z
       .string()
-      .nonempty(t("errors.email.empty"))
-      .email(t("errors.email.invalid")),
+      .nonempty({error: tError("email.empty")})
+      .email({error: tError("email.invalid")}),
 
     password: z
       .string()
-      .nonempty(t("errors.password.empty"))
+      .nonempty({error: tError("password.empty")})
       .regex(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/,
-        t("errors.password.invalid"),
+        {error: tError("password.invalid")}
       ),
   });
 
-export type RegisterForm = z.infer<ReturnType<typeof createRegisterSchema>>;
+export type RegisterForm = z.infer<typeof registerSchema>;
