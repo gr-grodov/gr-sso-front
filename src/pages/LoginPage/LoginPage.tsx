@@ -9,15 +9,18 @@ import {OAuthButtonsBlock} from "@/shared/widgets/OAuthButtonsBlock/indexe";
 import {Separator} from "@/components/ui/separator.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {FormInput} from "@/shared/components/FormInput/FormInput.tsx";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import { FieldGroupForm } from "@/shared/components/FieldGroupForm";
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
 import { applyApiErrors } from "@/shared/api/utils/apply-errors-form";
+import { useAuth } from "@/features/auth";
 
 
 
 export function LoginPage() {
+  const navigate = useNavigate();
+  const {login} = useAuth();
   const { t } = useTranslation("auth");
   const [errorMessage, setErrorMessage] = useState("");
   const form = useForm<LoginForm>({
@@ -30,10 +33,9 @@ export function LoginPage() {
 
   async function onSubmit(data: LoginForm) {
     try {
-          //await authService.login(data);
-          const res = await authService.userInfo();
-          console.log(res);
-          
+          await authService.login(data);
+          login();
+          navigate("/error", {replace: true,});
         } catch(err) {
           const error = await ErrorUtils.getErrorResponse(err);
           applyApiErrors(error, form.setError, setErrorMessage)

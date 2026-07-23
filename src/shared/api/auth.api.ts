@@ -32,6 +32,6 @@ export class AuthApi {
   }
 
   static async userInfo() {
-    return api.get("/api/auth/user-info");
+    return api.get<UserInfo>("/api/auth/user-info");
   }
 }
