@@ -35,7 +35,7 @@ export function LoginPage() {
     try {
           await authService.login(data);
           login();
-          navigate("/error", {replace: true,});
+          navigate("/", {replace: true});
         } catch(err) {
           const error = await ErrorUtils.getErrorResponse(err);
           applyApiErrors(error, form.setError, setErrorMessage)
