@@ -13,7 +13,7 @@ import {
 import { PasswordField } from "@/shared/components/PasswordRulesInput";
 import { passwordRules } from "@/features/rules/register-password.rules";
 import { Link } from "react-router";
-import { AuthApi as authApi } from "@/shared/api/auth.api";
+import { AuthService as authService } from "@/shared/service/auth.service";
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
 import { useState } from "react";
 import { applyApiErrors } from "@/shared/api/utils/apply-errors-form";
@@ -35,8 +35,9 @@ export function RegisterPage() {
   const {formState: { isSubmitting } } = form;
 
   async function onSubmit(data: RegisterForm) {
+    setErrorMessage("");
     try {
-      await authApi.register(data);
+      await authService.register(data);
       navigate("/login", {replace: true,});
     } catch(err) {
       const error = await ErrorUtils.getErrorResponse(err);

@@ -1,15 +1,14 @@
 import { AxiosError } from "axios";
 import { api } from "./config/api";
 
-import type { LoginRequest } from "./dto/requests/login-request";
-import type { RegisterRequest } from "./dto/requests/register-request";
-import type { SuccessResponse } from "./dto/response/success-response";
+import type { RegisterRequest, LoginRequest } from "./dto/requests";
+import type { SuccessResponse } from "./dto/response";
 import type { UserInfo } from "./dto/user-info";
 
 export class AuthApi {
 
   static async login(body: LoginRequest) {
-    return api.post<UserInfo>(
+    return api.post<SuccessResponse<any>>(
       "/api/auth/login",
       body
     );
@@ -32,7 +31,7 @@ export class AuthApi {
     return api.post("/api/v1/auth/logout");
   }
 
-  static async me() {
-    return api.get("/api/v1/users/me");
+  static async userInfo() {
+    return api.get("/api/auth/user-info");
   }
 }

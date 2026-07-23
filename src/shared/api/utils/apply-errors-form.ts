@@ -1,7 +1,6 @@
 import { tError } from "@/shared/i18n";
 import type { ErrorResponse } from "../dto/response/error-response";
 import type { FieldValues, Path, UseFormSetError } from "react-hook-form";
-import type { TFunction } from "i18next";
 import type { Dispatch, SetStateAction } from "react";
 
 export function applyApiErrors<T extends FieldValues>(

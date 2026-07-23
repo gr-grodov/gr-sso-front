@@ -3,19 +3,23 @@ import {useTranslation} from "react-i18next";
 import {loginSchema, type LoginForm} from "@/features/schemas/login.schema.ts";
 import { useForm } from "react-hook-form"
 import {zodResolver} from "@hookform/resolvers/zod";
-import {FieldGroup} from "@/components/ui/field";
-import * as z from "zod"
+import { AuthService as authService } from "@/shared/service/auth.service";
 import {CardContent, CardFooter} from "@/components/ui/card.tsx";
 import {OAuthButtonsBlock} from "@/shared/widgets/OAuthButtonsBlock/indexe";
 import {Separator} from "@/components/ui/separator.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {FormInput} from "@/shared/components/FormInput/FormInput.tsx";
 import { Link } from "react-router";
+import { useState } from "react";
+import { FieldGroupForm } from "@/shared/components/FieldGroupForm";
+import { ErrorUtils } from "@/shared/api/utils/error-utils";
+import { applyApiErrors } from "@/shared/api/utils/apply-errors-form";
 
 
 
 export function LoginPage() {
   const { t } = useTranslation("auth");
+  const [errorMessage, setErrorMessage] = useState("");
   const form = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -24,8 +28,16 @@ export function LoginPage() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof loginSchema>) {
-    console.log(data)
+  async function onSubmit(data: LoginForm) {
+    try {
+          //await authService.login(data);
+          const res = await authService.userInfo();
+          console.log(res);
+          
+        } catch(err) {
+          const error = await ErrorUtils.getErrorResponse(err);
+          applyApiErrors(error, form.setError, setErrorMessage)
+        }
   }
 
   return (
@@ -36,7 +48,7 @@ export function LoginPage() {
           <Separator className="mb-4"/>
 
           <form id="login-form" onSubmit={form.handleSubmit(onSubmit)}>
-            <FieldGroup>
+            <FieldGroupForm errorMessage={errorMessage}>
               <FormInput
                 control={form.control}
                 name="email"
@@ -52,7 +64,7 @@ export function LoginPage() {
                 placeholder={t("login.fields.password.hint")}
                 showWithoutErrors={true}
               />
-            </FieldGroup>
+            </FieldGroupForm>
           </form>
         </CardContent>
 
