@@ -1,0 +1,18 @@
+{
+  "oauth_clients": {
+    "headers": {
+      "app_name": "Приложение",
+      "client_id": "Client ID",
+      "redirect_uri": "Redirect URIs",
+      "scopes": "Scopes",
+      "status": "Статус",
+      "created": "Создан"
+    }
+  },
+
+  "navigation": {
+    "oauth_clients": "OAuth-клиенты",
+    "oauth_users": "OAuth-пользователи",
+    "settings": "Настройки"
+  }
+}

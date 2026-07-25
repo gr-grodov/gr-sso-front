@@ -8,6 +8,7 @@ import enFormErrors from "./locales/en/form-errors.json"
 
 import ruCommon from "./locales/ru/common.json";
 import ruAuth from "./locales/ru/auth.json";
+import ruAdmin from "./locales/ru/admin.json";
 import ruFormErrors from "./locales/ru/form-errors.json"
 
 i18n
@@ -25,6 +26,7 @@ i18n
       ru: {
         common: ruCommon,
         auth: ruAuth,
+        admin: ruAdmin,
         errors: ruFormErrors
       }
     },
