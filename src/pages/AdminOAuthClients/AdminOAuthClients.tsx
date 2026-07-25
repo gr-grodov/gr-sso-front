@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { OAuthClient } from "@/shared/api/dto/response/oauth-clients-response";
 import { AdminContentBlock } from "@/shared/widgets/AdminContentBlock";
+import { OAuthClientDialog } from "@/shared/widgets/OAuthClientDialog";
 import { OAuthClientsTable } from "@/shared/widgets/OAuthClientsTable";
 import { Input } from "@base-ui/react";
 import { Plus } from "lucide-react";
@@ -33,7 +34,7 @@ export function AdminOAuthClients() {
         </Card>
 
         <div className="flex flex-row-reverse">
-          
+          <OAuthClientDialog/>
         </div>
       </div>
     </AdminContentBlock>

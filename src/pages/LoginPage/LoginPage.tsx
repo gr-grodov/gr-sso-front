@@ -33,13 +33,13 @@ export function LoginPage() {
 
   async function onSubmit(data: LoginForm) {
     try {
-          await authService.login(data);
-          login();
-          navigate("/", {replace: true});
-        } catch(err) {
-          const error = await ErrorUtils.getErrorResponse(err);
-          applyApiErrors(error, form.setError, setErrorMessage)
-        }
+      await authService.login(data);
+      login();
+      navigate("/", {replace: true});
+    } catch(err) {
+      const error = await ErrorUtils.getErrorResponse(err);
+      applyApiErrors(error, form.setError, setErrorMessage)
+    }
   }
 
   return (
