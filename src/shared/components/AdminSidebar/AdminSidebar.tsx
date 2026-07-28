@@ -23,11 +23,11 @@ const navigationData: NavItem[] = [
 
 export function AdminSidebar() {
   return (
-    <Sidebar variant="inset">
-      <SidebarHeader className='flex-row'>
+    <Sidebar variant="sidebar">
+      <SidebarHeader className='flex-row mb-5 '>
         <Logo height={48}/>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className='px-1'>
         <NavSidebar items={navigationData}/>
       </SidebarContent>
       <SidebarFooter>

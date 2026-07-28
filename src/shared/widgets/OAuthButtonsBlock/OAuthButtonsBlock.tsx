@@ -11,7 +11,7 @@ export function OAuthButtonsBlock({className, ...props}: OAuthButtonsBlockProps)
 
   return (
     <div className={cn("space-y-3 flex flex-col", className)} {...props}>
-      <Button variant="outline" size="lg">
+      <Button variant="outline">
         <GoogleIcon/>
         <Link to="http://localhost:9090/oauth2/authorization/google">{t("oauth.sign_google")}</Link>
       </Button>

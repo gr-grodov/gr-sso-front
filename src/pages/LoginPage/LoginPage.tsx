@@ -74,7 +74,7 @@ export function LoginPage() {
           <div className="flex flex-row-reverse w-full">
             <Button variant="link">{t("login.actions.recover")}</Button>
           </div>
-          <Button size="lg" className="w-full" form="login-form" type="submit">{t("login.actions.submit")}</Button>
+          <Button className="w-full" form="login-form" type="submit">{t("login.actions.submit")}</Button>
           <Button variant="link">
             <Link to="/register">{t("login.actions.register")}</Link>
           </Button>

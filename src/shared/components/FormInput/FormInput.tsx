@@ -4,7 +4,7 @@ import {
   type FieldPath,
   type FieldValues,
 } from "react-hook-form";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Field, FieldError, FieldLabel, FieldLegend } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import * as React from "react";
 
@@ -37,9 +37,9 @@ export function FormInput<T extends FieldValues>({
       name={name}
       control={control}
       render={({ field, fieldState }) => (
-        <Field data-invalid={fieldState.invalid}>
-          <FieldLabel htmlFor={name}>{label}</FieldLabel>
-
+        <>
+          <FieldLegend>{label}</FieldLegend>
+          <Field data-invalid={fieldState.invalid}>
           <Input
             {...field}
             id={name}
@@ -56,6 +56,7 @@ export function FormInput<T extends FieldValues>({
 
           {afterInput?.(field.value ?? "")}
         </Field>
+        </>
       )}
     />
   );

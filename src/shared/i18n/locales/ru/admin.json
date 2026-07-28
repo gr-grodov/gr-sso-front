@@ -7,6 +7,26 @@
       "scopes": "Scopes",
       "status": "Статус",
       "created": "Создан"
+    },
+
+    "dialog": {
+      "title": "Создать OAuth клиента",
+      "subtitle": "Заполните параметры приложения",
+
+      "fields": {
+        "name": {
+          "label": "Название приложения",
+          "hint": "My Application"
+        },
+        "cliend_id": {
+          "label": "Client ID",
+          "hint": "my-app-id"
+        },
+        "redirect_uris": {
+          "label": "Redirect URIs",
+          "hint": "https://example.com/auth/oauth/code"
+        }
+      }
     }
   },
 

@@ -73,11 +73,11 @@ export function RegisterPage() {
       </CardContent>
 
       <CardFooter className="flex flex-col">
-        <Button size="lg" className="w-full" form="register-form" type="submit" disabled={isSubmitting}>
+        <Button className="w-full" form="register-form" type="submit" disabled={isSubmitting}>
           {t("register.actions.submit")}
           {isSubmitting && <Spinner data-icon="inline-start" />}
         </Button>
-        <Button size="lg" className="w-full" variant="link">
+        <Button className="w-full" variant="link">
           <Link to="/login">{t("register.actions.login")}</Link>
         </Button>
       </CardFooter>

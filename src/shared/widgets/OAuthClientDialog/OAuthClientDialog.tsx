@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { string } from 'zod'
 import RedirectUrisField from './components/RedirectUrisField'
+import { Separator } from '@/components/ui/separator'
 
 export function OAuthClientDialog() {
   const {t} = useTranslation("admin");
@@ -40,28 +41,27 @@ export function OAuthClientDialog() {
       <form id="oauth-client-form" onSubmit={form.handleSubmit(onSubmit)}>
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
-            </DialogDescription>
+            <DialogTitle>{t('oauth_clients.dialog.title')}</DialogTitle>
+            <DialogDescription>{t('oauth_clients.dialog.subtitle')}</DialogDescription>
           </DialogHeader>
           <FieldGroupForm errorMessage={errorMessage}>
             <FormInput
               control={form.control}
               name="name"
-              label={t("login.fields.email.label")}
-              placeholder={t("login.fields.email.hint")}
-              showWithoutErrors={true}
+              label={t("oauth_clients.dialog.fields.name.label")}
+              placeholder={t("oauth_clients.dialog.fields.name.hint")}
             />
             <FormInput
               control={form.control}
               name="clientID"
-              label={t("login.fields.password.label")}
-              placeholder={t("login.fields.password.hint")}
-              showWithoutErrors={true}
+              label={t("oauth_clients.dialog.fields.cliend_id.label")}
+              placeholder={t("oauth_clients.dialog.fields.cliend_id.hint")}
             />
-            <RedirectUrisField control={form.control}/>
+            <RedirectUrisField
+              label={t("oauth_clients.dialog.fields.cliend_id.label")}
+              placeholder={t("oauth_clients.dialog.fields.cliend_id.label")}
+              control={form.control}
+            />
             <Button type='submit' form='oauth-client-form'>Save changes</Button>
           </FieldGroupForm>
         </DialogContent>
