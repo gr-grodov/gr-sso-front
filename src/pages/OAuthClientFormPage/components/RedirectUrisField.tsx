@@ -1,10 +1,9 @@
 import { Button } from '@/components/ui/button';
-import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLegend, FieldSet } from '@/components/ui/field';
-import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/components/ui/input-group';
+import { FieldDescription, FieldGroup, FieldLegend, FieldSet } from '@/components/ui/field';
 import type { OauthClientSchema } from '@/features/schemas/oauth2-client.schema';
 import { InputField } from '@/shared/components/InputField';
 import { XIcon } from 'lucide-react';
-import { Controller, useFieldArray, type Control } from 'react-hook-form';
+import { useFieldArray, type Control } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 type RedirectUrisFieldProps = {

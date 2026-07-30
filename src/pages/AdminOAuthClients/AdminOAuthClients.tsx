@@ -1,9 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { LinkButton } from "@/components/ui/link-button";
+import { AdminApi } from "@/shared/api/admin.api";
+import type { OAuthClientShort } from "@/shared/api/dto/response";
 import type { OAuthClient } from "@/shared/api/dto/response/oauth-clients-response";
 import { AdminContentBlock } from "@/shared/widgets/AdminContentBlock";
 import { OAuthClientsTable } from "@/shared/widgets/OAuthClientsTable";
 import { Plus } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
 const clients: OAuthClient[] = [
   {
@@ -17,6 +20,21 @@ const clients: OAuthClient[] = [
 ]
 
 export function AdminOAuthClients() {
+  const [clients, setClients] = useState<OAuthClientShort[] | []>([]);
+
+  const refresh = useCallback(async () => {
+    try {
+      const response = await AdminApi.listOAuthClient()
+      setClients(response.data)
+    } catch {
+    } finally {
+    }
+    }, []);
+
+  useEffect(() => {
+    refresh();
+  }, []);
+
   return (
     <AdminContentBlock title="AdminOAuthClients">
       <div className="flex flex-col justify-between h-full">

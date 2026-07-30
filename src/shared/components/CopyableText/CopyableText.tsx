@@ -3,7 +3,6 @@ import { Check, Copy } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const copyableTextVariants = cva(

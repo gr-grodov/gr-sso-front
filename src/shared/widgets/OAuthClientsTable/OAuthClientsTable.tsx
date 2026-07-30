@@ -1,12 +1,13 @@
 import { Badge } from '@/components/ui/badge'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import type { OAuthClientShort, OAuthClientStatus } from '@/shared/api/dto/response';
 import type { OAuthClient } from '@/shared/api/dto/response/oauth-clients-response';
 import { CopyableText } from '@/shared/components/CopyableText';
 import type { ComponentPropsWithoutRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface OAuthClientsTableProps extends ComponentPropsWithoutRef<typeof Table> {
-  clients: OAuthClient[];
+  clients: OAuthClientShort[];
 }
 
 export function OAuthClientsTable({
@@ -29,13 +30,13 @@ export function OAuthClientsTable({
       </TableHeader>
       <TableBody>
         {clients.map((client) => (
-          <TableRow key={client.clientID}>
-            <TableCell>{client.name}</TableCell>
+          <TableRow key={client.clientId}>
+            <TableCell>{client.clientName}</TableCell>
             <TableCell>
-              <CopyableText value={client.clientID}></CopyableText>
+              <CopyableText value={client.clientId}></CopyableText>
             </TableCell>
             <TableCell>
-              {client.redirectURIs.map((uri) => (
+              {client.redirectUris.map((uri) => (
                 <span>{uri}</span>
               ))}
             </TableCell>
@@ -45,12 +46,12 @@ export function OAuthClientsTable({
               ))}
             </TableCell>
             <TableCell>
-              {client.status === "active" 
+              {/* {client.status == OAuthClientStatus.ACTIVE
                 ? <Badge>Активен</Badge> 
                 : <Badge variant='outline'>Отключён</Badge>
-              }
+              } */}
             </TableCell>
-            <TableCell>{client.created.toLocaleDateString()}</TableCell>
+            <TableCell>{Date.parse(client.createdAt)}</TableCell>
           </TableRow>
         ))}
       </TableBody>

@@ -11,4 +11,9 @@ export class AdminService {
 
     return AdminApi.createOAuthClient(body);
   }
+
+
+  static async list() {
+    return AdminApi.listOAuthClient();
+  }
 }

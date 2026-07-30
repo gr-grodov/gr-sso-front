@@ -1,6 +1,6 @@
 import { api } from "./config/api";
 import {type OAuthClientRequest} from "./dto/requests"
-import type { OAuthClientSecretInfoResponse } from "./dto/response";
+import type { OAuthClientSecretInfoResponse, OAuthClientShort } from "./dto/response";
 
 export class AdminApi {
   static async createOAuthClient(body: OAuthClientRequest) {
@@ -8,5 +8,9 @@ export class AdminApi {
       "/api/admin/oauth-client",
       body
     )
+  }
+
+  static async listOAuthClient() {
+    return await api.get<OAuthClientShort[]>("/api/admin/oauth-client/list")
   }
 }

@@ -1,7 +1,7 @@
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import type { LucideIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Link, replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export interface NavItem {
   titleKey: string,
