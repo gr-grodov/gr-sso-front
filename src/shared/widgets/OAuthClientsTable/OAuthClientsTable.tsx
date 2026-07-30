@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import type { OAuthClient } from '@/shared/api/dto/response/oauth-clients-response';
+import { CopyableText } from '@/shared/components/CopyableText';
 import type { ComponentPropsWithoutRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -30,7 +31,9 @@ export function OAuthClientsTable({
         {clients.map((client) => (
           <TableRow key={client.clientID}>
             <TableCell>{client.name}</TableCell>
-            <TableCell>{client.clientID}</TableCell>
+            <TableCell>
+              <CopyableText value={client.clientID}></CopyableText>
+            </TableCell>
             <TableCell>
               {client.redirectURIs.map((uri) => (
                 <span>{uri}</span>

@@ -6,8 +6,6 @@ export class ErrorUtils {
   static async getErrorResponse(error: any): Promise<ErrorResponse> {
 
     if (axios.isAxiosError(error)) {
-      console.log(error.response);
-      
       if (error.response) {
         const response = error.response.data;
         

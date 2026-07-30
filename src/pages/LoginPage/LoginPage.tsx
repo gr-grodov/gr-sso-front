@@ -8,13 +8,14 @@ import {CardContent, CardFooter} from "@/components/ui/card.tsx";
 import {OAuthButtonsBlock} from "@/shared/widgets/OAuthButtonsBlock/indexe";
 import {Separator} from "@/components/ui/separator.tsx";
 import {Button} from "@/components/ui/button.tsx";
-import {FormInput} from "@/shared/components/FormInput/FormInput.tsx";
+import {InputField} from "@/shared/components/InputField/InputField";
 import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import { FieldGroupForm } from "@/shared/components/FieldGroupForm";
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
-import { applyApiErrors } from "@/shared/api/utils/apply-errors-form";
+import { applyApiErrorsToForm } from "@/shared/api/utils/apply-errors-form";
 import { useAuth } from "@/features/auth";
+import { Spinner } from "@/components/ui/spinner";
 
 
 
@@ -30,56 +31,63 @@ export function LoginPage() {
       password: ""
     },
   });
+  const {formState: { isSubmitting } } = form;
 
   async function onSubmit(data: LoginForm) {
     try {
+      setErrorMessage("");
+
       await authService.login(data);
       login();
+
       navigate("/", {replace: true});
     } catch(err) {
       const error = await ErrorUtils.getErrorResponse(err);
-      applyApiErrors(error, form.setError, setErrorMessage)
+      applyApiErrorsToForm(error, form.setError, setErrorMessage)
     }
   }
 
   return (
-    <>
-      <AppContentBlock title={t("login.title")} subtitle={t("login.subtitle")}>
-        <CardContent>
-          <OAuthButtonsBlock className="pb-4"/>
-          <Separator className="mb-4"/>
+    <AppContentBlock title={t("login.title")} subtitle={t("login.subtitle")}>
+      <CardContent>
+        <OAuthButtonsBlock className="pb-4"/>
+        <Separator className="mb-4"/>
 
-          <form id="login-form" onSubmit={form.handleSubmit(onSubmit)}>
-            <FieldGroupForm errorMessage={errorMessage}>
-              <FormInput
-                control={form.control}
-                name="email"
-                label={t("login.fields.email.label")}
-                placeholder={t("login.fields.email.hint")}
-                showWithoutErrors={true}
-              />
-              <FormInput
-                control={form.control}
-                name="password"
-                type="password"
-                label={t("login.fields.password.label")}
-                placeholder={t("login.fields.password.hint")}
-                showWithoutErrors={true}
-              />
-            </FieldGroupForm>
-          </form>
-        </CardContent>
+        <form id="login-form" onSubmit={form.handleSubmit(onSubmit)}>
+          <FieldGroupForm errorMessage={errorMessage}>
+            <InputField
+              control={form.control}
+              name="email"
+              label={t("login.fields.email.label")}
+              placeholder={t("login.fields.email.hint")}
+              showWithoutErrors={true}
+            />
+            <InputField
+              control={form.control}
+              name="password"
+              type="password"
+              label={t("login.fields.password.label")}
+              placeholder={t("login.fields.password.hint")}
+              showWithoutErrors={true}
+            />
+          </FieldGroupForm>
+        </form>
+      </CardContent>
 
-        <CardFooter className="flex flex-col">
-          <div className="flex flex-row-reverse w-full">
-            <Button variant="link">{t("login.actions.recover")}</Button>
-          </div>
-          <Button className="w-full" form="login-form" type="submit">{t("login.actions.submit")}</Button>
-          <Button variant="link">
-            <Link to="/register">{t("login.actions.register")}</Link>
-          </Button>
-        </CardFooter>
-      </AppContentBlock>
-    </>
+      <CardFooter className="flex flex-col">
+        <div className="flex flex-row-reverse w-full">
+          <Button variant="link">{t("login.actions.recover")}</Button>
+        </div>
+
+        <Button className="w-full" form="login-form" type="submit" disabled={isSubmitting}>
+          {t("login.actions.submit")}
+          {isSubmitting && <Spinner data-icon="inline-start" />}
+        </Button>
+
+        <Button variant="link">
+          <Link to="/register">{t("login.actions.register")}</Link>
+        </Button>
+      </CardFooter>
+    </AppContentBlock>
   );
 }

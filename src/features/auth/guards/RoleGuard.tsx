@@ -10,8 +10,12 @@ export function RoleGuard({
 }: RoleGuardProps) {
 
     const { user } = useAuth();
+    console.log(user);
+    console.log(roles);
+    
+    
 
-    if (roles.includes((user?.role ?? ''))) {
+    if (!roles.includes((user?.role ?? ''))) {
       return <Navigate to="/403" replace />;
     }
 

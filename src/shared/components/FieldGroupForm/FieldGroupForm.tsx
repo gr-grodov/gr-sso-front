@@ -21,7 +21,7 @@ function getAlert(errorMessage?: string) {
   if (errorMessage) {
     return (
       <Alert variant="destructive" className="w-full">
-        <AlertCircleIcon className='my-0.5'/>
+        <AlertCircleIcon/>
         <AlertTitle>{errorMessage}</AlertTitle>
       </Alert>
     );

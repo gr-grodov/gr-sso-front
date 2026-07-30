@@ -9,23 +9,43 @@
       "created": "Создан"
     },
 
-    "dialog": {
+    "form": {
       "title": "Создать OAuth клиента",
       "subtitle": "Заполните параметры приложения",
 
       "fields": {
-        "name": {
+        "clientName": {
           "label": "Название приложения",
           "hint": "My Application"
         },
-        "cliend_id": {
-          "label": "Client ID",
-          "hint": "my-app-id"
+        "authorizationGrantTypes": {
+          "label": "Authorization Grant Types"
         },
-        "redirect_uris": {
+        "redirectUris": {
           "label": "Redirect URIs",
-          "hint": "https://example.com/auth/oauth/code"
+          "description": "Разрешённые адреса возврата после авторизации",
+          "hint": "https://example.com/auth/oauth/code",
+          "action_add": "Добавить адрес"
+        },
+        "scopes": {
+          "label": "Разрешения (Scopes)"
         }
+      },
+
+      "success_dialog": {
+        "title": "OAuth Client создан",
+        "subtitle": "Client Secret будет показан только один раз",
+
+        "client_name": "Название OAuth клиента",
+        "client_secret": "Secret OAuth клиента",
+
+        "actions": {
+          "accept": "Принять"
+        }
+      },
+
+      "actions": {
+        "submit": "Сохранить"
       }
     }
   },

@@ -4,15 +4,15 @@ import {
   type FieldPath,
   type FieldValues,
 } from "react-hook-form";
-import { Field, FieldError, FieldLabel, FieldLegend } from "@/components/ui/field";
+import { Field, FieldError, FieldLegend } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import * as React from "react";
 
-type FormInputProps<T extends FieldValues> = {
+type InputFieldProps<T extends FieldValues> = {
   control: Control<T>;
   name: FieldPath<T>;
 
-  label: string;
+  label?: string;
   placeholder?: string;
   showWithoutErrors?: boolean;
 
@@ -22,7 +22,7 @@ type FormInputProps<T extends FieldValues> = {
   autoComplete?: string;
 };
 
-export function FormInput<T extends FieldValues>({
+export function InputField<T extends FieldValues>({
   control,
   name,
   label,
@@ -30,15 +30,15 @@ export function FormInput<T extends FieldValues>({
   showWithoutErrors,
   afterInput,
   type = "text",
-  autoComplete,
-}: FormInputProps<T>) {
+  autoComplete
+}: InputFieldProps<T>) {
   return (
     <Controller
       name={name}
       control={control}
       render={({ field, fieldState }) => (
         <>
-          <FieldLegend>{label}</FieldLegend>
+          {label && <FieldLegend>{label}</FieldLegend>}
           <Field data-invalid={fieldState.invalid}>
           <Input
             {...field}

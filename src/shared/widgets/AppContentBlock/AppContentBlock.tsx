@@ -23,7 +23,7 @@ export function AppContentBlock({
       <Card className={styles.card} {...props}>
         <CardHeader className="pt-12">
           <div>
-            <h2>{title}</h2>
+            <h3>{title}</h3>
             <p className="text-gray-500">{subtitle}</p>
           </div>
         </CardHeader>

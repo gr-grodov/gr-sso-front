@@ -1,13 +1,13 @@
 import type { PasswordFieldProps } from "./types.ts";
 import { PasswordRules } from "./PasswordRules";
-import { FormInput } from "@/shared/components/FormInput";
+import { InputField } from "@/shared/components/InputField/index.ts";
 import type { FieldValues } from "react-hook-form";
 
 export function PasswordField<T extends FieldValues>(
   props: PasswordFieldProps<T>,
 ) {
   return (
-    <FormInput
+    <InputField
       {...props}
       type="password"
       autoComplete="new-password"

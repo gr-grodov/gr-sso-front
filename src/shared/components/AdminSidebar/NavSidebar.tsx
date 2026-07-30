@@ -1,7 +1,7 @@
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import type { LucideIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, replace, useNavigate } from "react-router-dom";
 
 export interface NavItem {
   titleKey: string,
@@ -11,14 +11,14 @@ export interface NavItem {
 
 export function NavSidebar({items}: {items: NavItem[]}) {
   const { t } = useTranslation("admin");
+  const navigate = useNavigate();
 
   return (
     <SidebarMenu>
       {items.map((item) => (
         <SidebarMenuItem key={item.titleKey}>
-          <SidebarMenuButton>
-            <item.icon />
-            <Link to={item.url}>{t(item.titleKey)}</Link>
+          <SidebarMenuButton onClick={() => navigate(item.url, {replace: true})}>
+            <item.icon/>{t(item.titleKey)}
           </SidebarMenuButton>
         </SidebarMenuItem>
       ))}

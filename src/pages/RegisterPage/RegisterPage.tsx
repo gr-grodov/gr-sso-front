@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CardContent, CardFooter } from "@/components/ui/card.tsx";
 import { Button } from "@/components/ui/button.tsx";
-import { FormInput } from "@/shared/components/FormInput/FormInput.tsx";
+import { InputField } from "@/shared/components/InputField/InputField";
 import {
   registerSchema,
   type RegisterForm,
@@ -16,7 +16,7 @@ import { Link } from "react-router";
 import { AuthService as authService } from "@/shared/service/auth.service";
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
 import { useState } from "react";
-import { applyApiErrors } from "@/shared/api/utils/apply-errors-form";
+import { applyApiErrorsToForm } from "@/shared/api/utils/apply-errors-form";
 import { FieldGroupForm } from "@/shared/components/FieldGroupForm";
 import { Spinner } from "@/components/ui/spinner";
 
@@ -41,7 +41,7 @@ export function RegisterPage() {
       navigate("/login", {replace: true,});
     } catch(err) {
       const error = await ErrorUtils.getErrorResponse(err);
-      applyApiErrors(error, form.setError, setErrorMessage)
+      applyApiErrorsToForm(error, form.setError, setErrorMessage)
     }
   }
 
@@ -53,7 +53,7 @@ export function RegisterPage() {
       <CardContent>
         <form id="register-form" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroupForm errorMessage={errorMessage}>
-            <FormInput
+            <InputField
               control={form.control}
               name="email"
               label={t("register.fields.email.label")}
