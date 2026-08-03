@@ -18,85 +18,81 @@ import { applyApiErrorsToForm } from '@/shared/api/utils/apply-errors-form'
 import type { OAuthClientSecretInfoResponse } from '@/shared/api/dto/response'
 import { LinkButton } from '@/components/ui/link-button'
 import { AdminService as adminService } from '@/shared/service'
+import { applyApiErrorToToast } from '@/shared/api/utils/apply-errors-toast'
+import { createEmptyOAuthClient, toOAuthClientForm } from './OAuthClientForm.mapper'
+import { OAuthClientFormCardLoading } from './OAuthClientFormCardLoading'
+import { useOAuthClientForm } from '../hooks/useOAuthClientForm'
+
+export type OAuthClientFormSuccess = | {
+  type: "created";
+  credentials: OAuthClientSecretInfoResponse;
+} | {
+  type: "updated";
+};
 
 type OAuthClientFormProps = {
-  onSuccess: (credentials: OAuthClientSecretInfoResponse) => void;
+  id: string | undefined; 
+  onSuccess: (formSuccess: OAuthClientFormSuccess) => void;
 };
 
 export function OAuthClientForm({
+  id,
   onSuccess
 }: OAuthClientFormProps) {
   const {t} = useTranslation("admin", { keyPrefix: 'oauth_clients.form' });
-  const [errorMessage, setErrorMessage] = useState("");
-  const form = useForm<OauthClientSchema>({
-    resolver: zodResolver(oauthClientSchema),
 
-    defaultValues: {
-      clientName: "",
-      authorizationGrantTypes: [],
-      redirectUris: [{uri: ""}],
-      scopes: ["openid"],
-    }
-  });
-  const {formState: { isSubmitting } } = form;
-
-  async function onSubmit(data: OauthClientSchema) {
-    setErrorMessage("");
-    try {
-      const response = await adminService.createOAuthClient(data);
-      onSuccess(response.data);
-    } catch(err) {
-      const error = await ErrorUtils.getErrorResponse(err);
-      applyApiErrorsToForm(error, form.setError, setErrorMessage);
-    }
-  }
+  const {form, errorMessage, submit} = useOAuthClientForm(id, onSuccess);
+  const {formState: { isSubmitting, isLoading } } = form;
 
   return (
     <Card className='inline-flex'>
+      {isLoading ? <OAuthClientFormCardLoading/> : 
+        <>
+          <CardHeader>
+            <CardTitle>
+              <LinkButton size='icon' variant="ghost" to='/admin/oauth-clients'>
+                <ArrowLeft/>
+              </LinkButton>
+              {t('title')}
+            </CardTitle>
+            <CardDescription>{t('subtitle')}</CardDescription>
+          </CardHeader>
 
-      <CardHeader>
-        <CardTitle>
-          <LinkButton size='icon' variant="ghost" to='/admin/oauth-clients'>
-            <ArrowLeft/>
-          </LinkButton>
-          {t('title')}
-          </CardTitle>
-        <CardDescription>{t('subtitle')}</CardDescription>
-      </CardHeader>
+          <CardContent>
+            <form id="oauth-client-form" onSubmit={form.handleSubmit(submit)}>
+              <FieldGroupForm errorMessage={errorMessage} className='w-xl'>
 
-      <CardContent>
-        <form id="oauth-client-form" onSubmit={form.handleSubmit(onSubmit)}>
-          <FieldGroupForm errorMessage={errorMessage} className='w-xl'>
+                <InputField
+                  control={form.control}
+                  name="clientName"
+                  label={t("fields.clientName.label")}
+                  placeholder={t("fields.clientName.hint")}
+                />
+                <CheckboxGroupField
+                  control={form.control}
+                  name='authorizationGrantTypes'
+                  options={authorizationGrantTypes}
+                  label={t("fields.authorizationGrantTypes.label")}
+                />
+                <RedirectUrisField control={form.control}/>
+                <ToggleGroupField
+                  control={form.control}
+                  name="scopes"
+                  label={t("fields.scopes.label")}
+                  options={scopeTypes}
+                  showWithoutErrors
+                />
 
-            <InputField
-              control={form.control}
-              name="clientName"
-              label={t("fields.clientName.label")}
-              placeholder={t("fields.clientName.hint")}
-            />
-            <CheckboxGroupField
-              control={form.control}
-              name='authorizationGrantTypes'
-              options={authorizationGrantTypes}
-              label={t("fields.authorizationGrantTypes.label")}
-            />
-            <RedirectUrisField control={form.control}/>
-            <ToggleGroupField
-              control={form.control}
-              name="scopes"
-              label={t("fields.scopes.label")}
-              options={scopeTypes}
-              showWithoutErrors
-            />
+                <Button type='submit' disabled={isSubmitting}>
+                  {t("actions.submit")}
+                  {isSubmitting && <Spinner data-icon="inline-start" />}
+                </Button>
 
-            <Button type='submit' form='oauth-client-form' disabled={isSubmitting}>
-              {t("actions.submit")}
-              {isSubmitting && <Spinner data-icon="inline-start" />}
-            </Button>
-
-          </FieldGroupForm>
-        </form>
-      </CardContent>
+              </FieldGroupForm>
+            </form>
+          </CardContent>
+        </>
+      }
     </Card>
   )
 }

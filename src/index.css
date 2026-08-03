@@ -185,6 +185,14 @@
     letter-spacing: var(--tracking-normal);
   }
 
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    overflow-y: hidden;
+  }
+
   button {
     @apply cursor-pointer;
   }
@@ -235,4 +243,3 @@
     line-height: 1.5;
   }
 }
-

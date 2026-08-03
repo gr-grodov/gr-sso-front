@@ -42,6 +42,7 @@ export function InputField<T extends FieldValues>({
           <Field data-invalid={fieldState.invalid}>
           <Input
             {...field}
+            value={field.value ?? ""}
             id={name}
             type={type}
             placeholder={placeholder}

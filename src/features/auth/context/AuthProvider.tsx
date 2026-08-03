@@ -51,8 +51,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
     refresh,
     login,
     logout,
-    }), [loading, user, refresh, login, logout]
-  );
+  }), [loading, user, refresh, login, logout]);
 
   return (
     <AuthContext.Provider value={value}>

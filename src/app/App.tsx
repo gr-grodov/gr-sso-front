@@ -8,7 +8,7 @@ import { ConfigApi } from '@/shared/api/config.api';
 import { AuthGuard, GuestGuard, RoleGuard } from '@/features/auth';
 import { HomePage } from '@/pages/HomePage';
 import { AdminOAuthUsers } from '@/pages/AdminOAuthUsers';
-import { AdminOAuthClients } from '@/pages/AdminOAuthClients';
+import { AdminOAuthClientsPage } from '@/pages/AdminOAuthClientsPage';
 import { AdminPanel } from '@/pages/AdminPanel';
 import { OAuthClientFormPage } from '@/pages/OAuthClientFormPage';
 
@@ -31,9 +31,10 @@ function App() {
 
           <Route element={<RoleGuard roles={['ADMIN']}/>}>
             <Route path='/admin' element={<AdminPanel/>}>
-              <Route path='oauth-clients' element={<AdminOAuthClients/>}/>
+              <Route path='oauth-clients' element={<AdminOAuthClientsPage/>}/>
               <Route path='oauth-clients/new' element={<OAuthClientFormPage/>}/>
               <Route path='oauth-clients/:id' element={<OAuthClientFormPage/>}/>
+
               <Route path='oauth-users' element={<AdminOAuthUsers/>}/>
             </Route>
           </Route>

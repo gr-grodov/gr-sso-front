@@ -1,3 +1,4 @@
+import type { OauthClientSchema } from "@/features/schemas/oauth2-client.schema";
 import type { CheckboxOption } from "@/shared/components/CheckboxGroupField/CheckboxGroupField";
 import type { ToggleOption } from "@/shared/components/ToggleGroupField/ToggleGroupField";
 
