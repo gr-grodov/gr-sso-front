@@ -21,6 +21,7 @@ export function ProviderErrorPage() {
       <AppContentBlock
         title={t("provider_error.title")}
         subtitle={t("provider_error.subtitle")}
+        className="w-lg"
       >
         <CardContent>
           <Card className="bg-red-100 text-destructive p-4">

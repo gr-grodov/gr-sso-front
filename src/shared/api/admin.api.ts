@@ -1,6 +1,6 @@
 import { api } from "./config/api";
 import {type OAuthClientChangeStatusRequest, type OAuthClientRequest} from "./dto/requests"
-import { type SuccessResponse, type OAuthClientSecretInfoResponse, type OAuthClientShort, type OAuthClientStatus, type OAuthClient } from "./dto/response";
+import { type SuccessResponse, type OAuthClientSecretInfoResponse, type OAuthClientShort, type OAuthClient } from "./dto/response";
 
 export class AdminApi {
   static async createOAuthClient(body: OAuthClientRequest) {

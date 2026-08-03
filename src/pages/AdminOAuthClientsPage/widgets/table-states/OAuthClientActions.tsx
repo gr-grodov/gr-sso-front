@@ -1,6 +1,5 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { EllipsisVertical, RefreshCcwDot, SquarePen, Trash } from 'lucide-react';
-import React from 'react'
 import { useOAuthClientActions } from '../OAuthClientsContext';
 import { type OAuthClientShort, OAuthClientStatusVariant as ClientStatus } from '@/shared/api/dto/response';
 

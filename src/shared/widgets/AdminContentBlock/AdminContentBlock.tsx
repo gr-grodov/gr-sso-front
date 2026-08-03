@@ -23,8 +23,8 @@ export function AdminContentBlock({
             className="mr-2 data-[orientation=vertical]:h-4"
           />
           <div>
-            <h4>OAuth-клиенты</h4>
-            <p className="text-gray-500 text-sm">2 активных · 3 всего</p>
+            <p className='font-semibold text-base'>{title}</p>
+            <p className="text-gray-500 text-xs">{subtitle}</p>
           </div>
         </div>
       </header>

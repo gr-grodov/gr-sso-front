@@ -1,5 +1,4 @@
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
-import { TableCell, TableRow } from '@/components/ui/table'
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from '@/components/ui/empty'
 import { useOAuthClientActions } from '../OAuthClientsContext'
 import { Button } from '@/components/ui/button';
 import { RefreshCcwIcon } from 'lucide-react';

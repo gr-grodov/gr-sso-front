@@ -1,5 +1,7 @@
 {
   "oauth_clients": {
+    "title": "OAuth-клиенты",
+    "subtitle": "{{activeCount}} активных · {{allCount}} всего",
     "headers": {
       "app_name": "Приложение",
       "client_id": "Client ID",
@@ -9,8 +11,11 @@
       "created": "Создан"
     },
 
+
+
     "form": {
-      "title": "Создать OAuth клиента",
+      "title_create_client": "Создать OAuth-клиента",
+      "title_edit_client": "Редактировать OAuth-клиента",
       "subtitle": "Заполните параметры приложения",
 
       "fields": {
@@ -45,7 +50,8 @@
       },
 
       "actions": {
-        "submit": "Сохранить"
+        "submit": "Сохранить",
+        "cancel": "Назад"
       }
     }
   },

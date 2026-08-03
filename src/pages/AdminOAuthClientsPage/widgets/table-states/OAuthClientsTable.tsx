@@ -5,6 +5,7 @@ import { CopyableText } from '@/shared/components/CopyableText'
 import { OAuthClientActionMenu } from './OAuthClientActions'
 import { DateUtils } from '@/shared/utils'
 import { useTranslation } from 'react-i18next'
+import { OAuthClientItem } from './OAuthClientItem'
 
 interface OAuthClientsTableProps {
   clients: OAuthClientShort[]
@@ -33,32 +34,7 @@ export default function OAuthClientsData({
       </TableHeader>
       <TableBody className="overflow-y-auto">
         {clients.map((client) => (
-          <TableRow key={client.clientId}>
-            <TableCell>{client.clientName}</TableCell>
-            <TableCell>
-              <CopyableText value={client.clientId}></CopyableText>
-            </TableCell>
-            <TableCell>
-              {client.redirectUris.map((uri) => (
-                <div key={uri}>{uri}</div>
-              ))}
-            </TableCell>
-            <TableCell>
-              {client.scopes.map((scope) => (
-                <Badge key={scope} className='mr-1'>{scope}</Badge>
-              ))}
-            </TableCell>
-            <TableCell>
-              {client.status === OAuthClientStatusVariant.ACTIVE
-                ? <Badge variant='secondary'>Активен</Badge> 
-                : <Badge variant='outline'>Отключён</Badge>
-              }
-            </TableCell>
-            <TableCell>{DateUtils.formatDate(client.createdAt)}</TableCell>
-            <TableCell>
-              <OAuthClientActionMenu client={client}/>
-            </TableCell>
-          </TableRow>
+          <OAuthClientItem client={client}/> 
         ))} 
       </TableBody>
     </Table>

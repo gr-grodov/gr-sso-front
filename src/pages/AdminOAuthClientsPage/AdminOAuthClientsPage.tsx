@@ -5,6 +5,8 @@ import { Plus } from "lucide-react";
 import { OAuthClientActionsProvider } from "./widgets";
 import { OAuthClientsContent } from "./widgets/OAuthClientsContent";
 import { useOAuthClients } from "./hooks/useOAuthClients";
+import { useTranslation } from "react-i18next";
+import { OAuthClientStatusVariant } from "@/shared/api/dto/response";
 
 
 export function AdminOAuthClientsPage() {
@@ -17,8 +19,14 @@ export function AdminOAuthClientsPage() {
     remove,
   } = useOAuthClients()
 
+  const {t} = useTranslation("admin", {keyPrefix: "oauth_clients"});
+  const activeClientCount = clients.filter((cl) => cl.status == OAuthClientStatusVariant.ACTIVE).length;
+
   return (
-    <AdminContentBlock title="AdminOAuthClients">
+    <AdminContentBlock 
+      title={t("title")} 
+      subtitle={t("subtitle", {activeCount: activeClientCount, allCount: clients.length})}
+    >
       <Card>
         <CardContent>
           <OAuthClientActionsProvider 

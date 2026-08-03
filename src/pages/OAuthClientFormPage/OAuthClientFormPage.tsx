@@ -5,9 +5,11 @@ import { OAuthClientForm, type OAuthClientFormSuccess } from './widgets/OAuthCli
 import OAuthClientSuccessDialog from './widgets/OAuthClientSuccessDialog'
 import type { OAuthClientSecretInfoResponse } from '@/shared/api/dto/response';
 import { useNavigate, useParams } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 export function OAuthClientFormPage() {
   const navigate = useNavigate();
+  const {t} = useTranslation("admin", {keyPrefix: "oauth_clients.form"})
 
   const { id } = useParams();
   const oAuthClientId = id !== "new" ? id : undefined;
@@ -29,7 +31,10 @@ export function OAuthClientFormPage() {
   }
 
   return (
-    <AdminContentBlock title="AdminOAuthClients">
+    <AdminContentBlock 
+      title={id ? t("title_edit_client") : t("title_create_client")}
+      subtitle={t("subtitle")}
+    >
 
       <OAuthClientForm 
         id={oAuthClientId} 

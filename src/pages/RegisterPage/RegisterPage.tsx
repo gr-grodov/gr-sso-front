@@ -49,6 +49,7 @@ export function RegisterPage() {
     <AppContentBlock
       title={t("register.title")}
       subtitle={t("register.subtitle")}
+      className="w-lg"
     >
       <CardContent>
         <form id="register-form" onSubmit={form.handleSubmit(onSubmit)}>

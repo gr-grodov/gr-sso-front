@@ -48,7 +48,11 @@ export function LoginPage() {
   }
 
   return (
-    <AppContentBlock title={t("login.title")} subtitle={t("login.subtitle")}>
+    <AppContentBlock 
+      title={t("login.title")}
+      subtitle={t("login.subtitle")}
+      className="w-lg"
+    >
       <CardContent>
         <OAuthButtonsBlock className="pb-4"/>
         <Separator className="mb-4"/>

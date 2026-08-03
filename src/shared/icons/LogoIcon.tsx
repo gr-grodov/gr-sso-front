@@ -1,0 +1,43 @@
+type IconProps = React.SVGProps<SVGSVGElement>;
+
+export function LogoIcon(props: IconProps) {
+  return (
+    <svg width="60" height="60" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <defs>
+        <linearGradient id="logo-gradient" x1="0" y1="0" x2="96" y2="96" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="oklch(0.5417 0.1790 288.0332)" />
+          <stop offset="100%" stop-color="oklch(0.7042 0.1602 288.9880)" />
+        </linearGradient>
+      </defs>
+
+      <g transform="translate(0 0)">
+        <rect
+          x="0"
+          y="0"
+          width="80"
+          height="80"
+          rx="22"
+          fill="url(#logo-gradient)"
+        />
+
+        <path
+          d="M54 25 A22 22 0 1 0 54 55 L42 55"
+          stroke="white"
+          stroke-width="6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"
+        />
+
+        <path
+          d="M42 49 L56 40 L42 31"
+          stroke="white"
+          stroke-width="6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"
+        />
+      </g>
+    </svg>
+  );
+}
