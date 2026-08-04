@@ -1,9 +1,9 @@
-import { AppContentBlock } from "@/shared/widgets/AppContentBlock";
+import { AppCardBlock } from "@/shared/widgets/AppCardBlock";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CardContent, CardFooter } from "@/components/ui/card.tsx";
+import { CardContent, CardFooter, CardHeader } from "@/components/ui/card.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { InputField } from "@/shared/components/InputField/InputField";
 import {
@@ -22,7 +22,7 @@ import { Spinner } from "@/components/ui/spinner";
 
 export function RegisterPage() {
   const navigate = useNavigate();
-  const { t } = useTranslation("auth");
+  const { t } = useTranslation("auth", {keyPrefix: "register"});
   const rules = passwordRules(t);
   const [errorMessage, setErrorMessage] = useState("");
   const form = useForm<RegisterForm>({
@@ -46,26 +46,28 @@ export function RegisterPage() {
   }
 
   return (
-    <AppContentBlock
-      title={t("register.title")}
-      subtitle={t("register.subtitle")}
-      className="w-lg"
-    >
+    <AppCardBlock>
+
+      <CardHeader className="mt-10">
+        <h3 className="font-semibold">{t("title")}</h3>
+        <p>{t("subtitle")}</p>
+      </CardHeader>
+
       <CardContent>
         <form id="register-form" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroupForm errorMessage={errorMessage}>
             <InputField
               control={form.control}
               name="email"
-              label={t("register.fields.email.label")}
-              placeholder={t("register.fields.email.hint")}
+              label={t("fields.email.label")}
+              placeholder={t("fields.email.hint")}
               showWithoutErrors={true}
             />
             <PasswordField
               control={form.control}
               name="password"
-              label={t("register.fields.password.label")}
-              placeholder={t("register.fields.password.hint")}
+              label={t("fields.password.label")}
+              placeholder={t("fields.password.hint")}
               showWithoutErrors={true}
               rules={rules}
             />
@@ -75,13 +77,13 @@ export function RegisterPage() {
 
       <CardFooter className="flex flex-col">
         <Button className="w-full" form="register-form" type="submit" disabled={isSubmitting}>
-          {t("register.actions.submit")}
+          {t("actions.submit")}
           {isSubmitting && <Spinner data-icon="inline-start" />}
         </Button>
         <Button className="w-full" variant="link">
-          <Link to="/login">{t("register.actions.login")}</Link>
+          <Link to="/login">{t("actions.login")}</Link>
         </Button>
       </CardFooter>
-    </AppContentBlock>
+    </AppCardBlock>
   );
 }

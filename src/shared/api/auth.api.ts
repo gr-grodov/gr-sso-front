@@ -28,7 +28,7 @@ export class AuthApi {
   }
 
   static async logout() {
-    return api.post("/api/v1/auth/logout");
+    return api.post("/api/auth/logout");
   }
 
   static async userInfo() {

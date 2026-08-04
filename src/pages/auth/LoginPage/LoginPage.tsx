@@ -1,10 +1,10 @@
-import {AppContentBlock} from "@/shared/widgets/AppContentBlock";
+import {AppCardBlock} from "@/shared/widgets/AppCardBlock";
 import {useTranslation} from "react-i18next";
 import {loginSchema, type LoginForm} from "@/features/schemas/login.schema.ts";
 import { useForm } from "react-hook-form"
 import {zodResolver} from "@hookform/resolvers/zod";
 import { AuthService as authService } from "@/shared/service/auth.service";
-import {CardContent, CardFooter} from "@/components/ui/card.tsx";
+import {CardContent, CardFooter, CardHeader} from "@/components/ui/card.tsx";
 import {OAuthButtonsBlock} from "@/shared/widgets/OAuthButtonsBlock/indexe";
 import {Separator} from "@/components/ui/separator.tsx";
 import {Button} from "@/components/ui/button.tsx";
@@ -22,7 +22,7 @@ import { Spinner } from "@/components/ui/spinner";
 export function LoginPage() {
   const navigate = useNavigate();
   const {login} = useAuth();
-  const { t } = useTranslation("auth");
+  const { t } = useTranslation("auth", {keyPrefix: "login"});
   const [errorMessage, setErrorMessage] = useState("");
   const form = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
@@ -48,11 +48,12 @@ export function LoginPage() {
   }
 
   return (
-    <AppContentBlock 
-      title={t("login.title")}
-      subtitle={t("login.subtitle")}
-      className="w-lg"
-    >
+    <AppCardBlock>
+      <CardHeader className="mt-10">
+        <h3 className="font-semibold">{t("title")}</h3>
+        <p>{t("subtitle")}</p>
+      </CardHeader>
+
       <CardContent>
         <OAuthButtonsBlock className="pb-4"/>
         <Separator className="mb-4"/>
@@ -62,16 +63,16 @@ export function LoginPage() {
             <InputField
               control={form.control}
               name="email"
-              label={t("login.fields.email.label")}
-              placeholder={t("login.fields.email.hint")}
+              label={t("fields.email.label")}
+              placeholder={t("fields.email.hint")}
               showWithoutErrors={true}
             />
             <InputField
               control={form.control}
               name="password"
               type="password"
-              label={t("login.fields.password.label")}
-              placeholder={t("login.fields.password.hint")}
+              label={t("fields.password.label")}
+              placeholder={t("fields.password.hint")}
               showWithoutErrors={true}
             />
           </FieldGroupForm>
@@ -80,18 +81,18 @@ export function LoginPage() {
 
       <CardFooter className="flex flex-col">
         <div className="flex flex-row-reverse w-full">
-          <Button variant="link">{t("login.actions.recover")}</Button>
+          <Button variant="link">{t("actions.recover")}</Button>
         </div>
 
         <Button className="w-full" form="login-form" type="submit" disabled={isSubmitting}>
-          {t("login.actions.submit")}
+          {t("actions.submit")}
           {isSubmitting && <Spinner data-icon="inline-start" />}
         </Button>
 
         <Button variant="link">
-          <Link to="/register">{t("login.actions.register")}</Link>
+          <Link to="/register">{t("actions.register")}</Link>
         </Button>
       </CardFooter>
-    </AppContentBlock>
+    </AppCardBlock>
   );
 }

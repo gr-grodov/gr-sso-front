@@ -2,6 +2,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '@/compone
 import { Logo } from '@/shared/icons/Logo'
 import { Settings, ShieldCog, ShieldUser } from 'lucide-react'
 import { NavSidebar, type NavItem } from './NavSidebar'
+import { UserInformationBlock } from '@/shared/widgets/UserInformationBlock'
 
 const navigationData: NavItem[] = [
   {
@@ -31,7 +32,7 @@ export function AdminSidebar() {
         <NavSidebar items={navigationData}/>
       </SidebarContent>
       <SidebarFooter>
-        
+        <UserInformationBlock/>
       </SidebarFooter>
     </Sidebar>
   )

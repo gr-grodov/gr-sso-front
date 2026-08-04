@@ -1,16 +1,17 @@
 import './App.css'
 import { Route, Routes } from "react-router-dom";
-import {LoginPage} from "@/pages/LoginPage/LoginPage.tsx";
-import {RegisterPage} from "@/pages/RegisterPage";
-import { ProviderErrorPage } from '@/pages/ProviderErrorPage';
+import {LoginPage} from "@/pages/auth/LoginPage/LoginPage";
+import {RegisterPage} from "@/pages/auth/RegisterPage";
+import { ProviderErrorPage } from '@/pages/auth/ProviderErrorPage';
 import { useEffect } from 'react';
 import { ConfigApi } from '@/shared/api/config.api';
 import { AuthGuard, GuestGuard, RoleGuard } from '@/features/auth';
 import { HomePage } from '@/pages/HomePage';
-import { AdminOAuthUsers } from '@/pages/AdminOAuthUsers';
-import { AdminOAuthClientsPage } from '@/pages/AdminOAuthClientsPage';
-import { AdminPanel } from '@/pages/AdminPanel';
-import { OAuthClientFormPage } from '@/pages/OAuthClientFormPage';
+import { AdminOAuthUsersPage } from '@/pages/admin/AdminOAuthUsersPage';
+import { AdminOAuthClientsPage } from '@/pages/admin/AdminOAuthClientsPage';
+import { AdminPanelPage } from '@/pages/admin/AdminPanelPage';
+import { OAuthClientFormPage } from '@/pages/admin/OAuthClientFormPage';
+import { NotFoundPage } from '@/pages/status-code/NotFoundPage';
 
 function App() {
   useEffect(() => {
@@ -30,16 +31,17 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
 
           <Route element={<RoleGuard roles={['ADMIN']}/>}>
-            <Route path='/admin' element={<AdminPanel/>}>
+            <Route path='/admin' element={<AdminPanelPage/>}>
               <Route path='oauth-clients' element={<AdminOAuthClientsPage/>}/>
               <Route path='oauth-clients/new' element={<OAuthClientFormPage/>}/>
               <Route path='oauth-clients/:id' element={<OAuthClientFormPage/>}/>
 
-              <Route path='oauth-users' element={<AdminOAuthUsers/>}/>
+              <Route path='oauth-users' element={<AdminOAuthUsersPage/>}/>
             </Route>
           </Route>
         </Route>
         
+        <Route path='*' element={<NotFoundPage/>}/>
       </Routes>
     </>
   )

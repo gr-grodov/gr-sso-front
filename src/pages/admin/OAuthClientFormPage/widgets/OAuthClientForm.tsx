@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card'
 import { FieldGroupForm } from '@/shared/components/FieldGroupForm'
 import { InputField } from '@/shared/components/InputField'
 import { ToggleGroupField } from '@/shared/components/ToggleGroupField'
-import RedirectUrisField from '@/pages/OAuthClientFormPage/components/RedirectUrisField'
+import RedirectUrisField from '@/pages/admin/OAuthClientFormPage/components/RedirectUrisField'
 import { useTranslation } from 'react-i18next'
 import { scopeTypes, authorizationGrantTypes } from "./OAuthClientForm.constant";
 import { CheckboxGroupField } from '@/shared/components/CheckboxGroupField'
@@ -25,10 +25,7 @@ type OAuthClientFormProps = {
   onSuccess: (formSuccess: OAuthClientFormSuccess) => void;
 };
 
-export function OAuthClientForm({
-  id,
-  onSuccess
-}: OAuthClientFormProps) {
+export function OAuthClientForm({id,onSuccess}: OAuthClientFormProps) {
   const {t} = useTranslation("admin", { keyPrefix: 'oauth_clients.form' });
 
   const {form, errorMessage, submit} = useOAuthClientForm(id, onSuccess);
