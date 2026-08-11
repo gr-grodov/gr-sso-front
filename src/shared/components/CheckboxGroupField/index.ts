@@ -1,1 +1,1 @@
-export { CheckboxGroupField } from "./CheckboxGroupField"
+export { CheckboxGroupField, type CheckboxOption } from "./CheckboxGroupField"

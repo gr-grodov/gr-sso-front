@@ -2,7 +2,7 @@ import { api } from "./config/api";
 import {type OAuthClientChangeStatusRequest, type OAuthClientRequest} from "./dto/requests"
 import { type SuccessResponse, type OAuthClientSecretInfoResponse, type OAuthClientShort, type OAuthClient } from "./dto/response";
 
-export class AdminApi {
+export class OAuthClientApi {
   static async createOAuthClient(body: OAuthClientRequest) {
     return await api.post<OAuthClientSecretInfoResponse>(
       "/api/admin/oauth-client",
@@ -23,6 +23,13 @@ export class AdminApi {
 
   static async getOAuthClient(id: string) {
     return await api.get<OAuthClient>(`/api/admin/oauth-client/${id}`)
+  }
+
+  static async searchOAuthClient(clientId?: string) {
+    return await api.get<OAuthClient>(
+      '/api/admin/oauth-client/search', 
+      { params: {clientId: clientId} }
+    )
   }
 
   static async changeStatusOAuthClient(body: OAuthClientChangeStatusRequest) {

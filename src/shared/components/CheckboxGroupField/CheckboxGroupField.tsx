@@ -11,7 +11,7 @@ export type CheckboxOption = {
 type CheckboxGroupFieldProps<T extends FieldValues> = {
   control: Control<T>;
   name: FieldPath<T>;
-  label: string;
+  label?: string;
   options: CheckboxOption[];
   showWithoutErrors?: boolean;
 };
@@ -29,7 +29,7 @@ export function CheckboxGroupField<T extends FieldValues>({
       name={name}
       render={({ field, fieldState }) => (
         <FieldSet>
-          <FieldLegend>{label}</FieldLegend>
+          {!!label && <FieldLegend>{label}</FieldLegend>}
 
           <FieldGroup className='mt-2'>
             {options.map(option => {
@@ -39,6 +39,7 @@ export function CheckboxGroupField<T extends FieldValues>({
                 <Field key={option.value} orientation="horizontal">
                   <Checkbox
                     id={`checkbox-${option.value}`}
+                    name={name}
                     checked={values.includes(option.value)}
                     onCheckedChange={(value) => {
                       if (value) {

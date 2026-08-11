@@ -11,7 +11,7 @@ import { Spinner } from '@/components/ui/spinner'
 import type { OAuthClientSecretInfoResponse } from '@/shared/api/dto/response'
 import { LinkButton } from '@/components/ui/link-button'
 import { OAuthClientFormLoading } from './OAuthClientFormLoading'
-import { useOAuthClientForm } from '../hooks/useOAuthClientForm'
+import { useOAuthClientForm } from '../hooks/use-oauth-client-form'
 
 export type OAuthClientFormSuccess = | {
   type: "created";
@@ -25,7 +25,7 @@ type OAuthClientFormProps = {
   onSuccess: (formSuccess: OAuthClientFormSuccess) => void;
 };
 
-export function OAuthClientForm({id,onSuccess}: OAuthClientFormProps) {
+export function OAuthClientForm({id, onSuccess}: OAuthClientFormProps) {
   const {t} = useTranslation("admin", { keyPrefix: 'oauth_clients.form' });
 
   const {form, errorMessage, submit} = useOAuthClientForm(id, onSuccess);

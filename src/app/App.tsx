@@ -6,12 +6,13 @@ import { ProviderErrorPage } from '@/pages/auth/ProviderErrorPage';
 import { useEffect } from 'react';
 import { ConfigApi } from '@/shared/api/config.api';
 import { AuthGuard, GuestGuard, RoleGuard } from '@/features/auth';
-import { HomePage } from '@/pages/HomePage';
+import { HomePage } from '@/pages/common/HomePage';
 import { AdminOAuthUsersPage } from '@/pages/admin/AdminOAuthUsersPage';
 import { AdminOAuthClientsPage } from '@/pages/admin/AdminOAuthClientsPage';
 import { AdminPanelPage } from '@/pages/admin/AdminPanelPage';
 import { OAuthClientFormPage } from '@/pages/admin/OAuthClientFormPage';
-import { NotFoundPage } from '@/pages/status-code/NotFoundPage';
+import { NotFoundPage } from '@/pages/common/NotFoundPage';
+import { OAuthConsentPage } from '@/pages/auth/OAuthConsentPage';
 
 function App() {
   useEffect(() => {
@@ -29,6 +30,7 @@ function App() {
 
         <Route element={<AuthGuard />}>
           <Route path="/" element={<HomePage/>}/>
+          <Route path='/oauth2/consent' element={<OAuthConsentPage/>}/>
 
           <Route element={<RoleGuard roles={['ADMIN']}/>}>
             <Route path='/admin' element={<AdminPanelPage/>}>

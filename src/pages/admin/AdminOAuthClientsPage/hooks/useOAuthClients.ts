@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-import { AdminApi } from "@/shared/api/admin.api";
-import { AdminService } from "@/shared/service";
+import { OAuthClientService } from "@/shared/service";
 import { OAuthClientStatusVariant as ClientStatus, type OAuthClientShort } from "@/shared/api/dto/response";
 
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
@@ -31,13 +30,11 @@ export function useOAuthClients() {
   const changeStatus = useCallback(async (client: OAuthClientShort) => {
     try {
       const status = client.status === ClientStatus.ACTIVE ? ClientStatus.DISABLED : ClientStatus.ACTIVE;
-      const response = await AdminService.changeStatusOAuthClient(client.id, status);
+      const response = await OAuthClientService.changeStatusOAuthClient(client.id, status);
 
       updateClient(response.data);
     } catch (err) {
       const error = await ErrorUtils.getErrorResponse(err);
-      console.log(error);
-      
       applyApiErrorToToast(error)
     }
   }, [updateClient]);
@@ -52,7 +49,7 @@ export function useOAuthClients() {
 
   const remove = useCallback(async (client: OAuthClientShort) => {
     try {
-      await AdminApi.deleteOAuthClient(client.id);
+      await OAuthClientService.deleteOAuthClient(client.id);
 
       removeClient(client.id);
     } catch (err) {
@@ -67,7 +64,7 @@ export function useOAuthClients() {
     setLoading(true);
 
     try {
-      const response = await AdminApi.listOAuthClient();
+      const response = await OAuthClientService.listOAuthClients();
       setClients(response.data);
     } catch (err) {
       const error = await ErrorUtils.getErrorResponse(err);

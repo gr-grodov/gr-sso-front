@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { ErrorResponse } from '../dto/response/error-response';
+import type { ErrorResponse } from '../dto/response/error.response';
 
 export class ErrorUtils {
 

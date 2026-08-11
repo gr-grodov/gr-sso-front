@@ -1,4 +1,4 @@
-import type { OauthClientSchema } from "@/features/schemas/oauth2-client.schema";
+import type { OauthClientSchema } from "@/features/schemas/oauth-client.schema";
 import type { OAuthClient } from "@/shared/api/dto/response";
 
 export function toOAuthClientForm(data: OAuthClient): OauthClientSchema {

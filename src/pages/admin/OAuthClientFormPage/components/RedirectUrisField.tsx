@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { FieldDescription, FieldGroup, FieldLegend, FieldSet } from '@/components/ui/field';
-import type { OauthClientSchema } from '@/features/schemas/oauth2-client.schema';
+import type { OauthClientSchema } from '@/features/schemas/oauth-client.schema';
 import { InputField } from '@/shared/components/InputField';
 import { XIcon } from 'lucide-react';
 import { useFieldArray, type Control } from 'react-hook-form';

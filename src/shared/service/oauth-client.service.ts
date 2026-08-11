@@ -1,8 +1,8 @@
-import { AdminApi } from "@/shared/api/admin.api";
-import type { OauthClientSchema } from "@/features/schemas/oauth2-client.schema";
+import { OAuthClientApi } from "@/shared/api/oauth-client.api";
+import type { OauthClientSchema } from "@/features/schemas/oauth-client.schema";
 import type { OAuthClientStatus } from "../api/dto/response";
 
-export class AdminService {
+export class OAuthClientService {
 
   static async createOAuthClient(data: OauthClientSchema) {
     const body = {
@@ -10,7 +10,7 @@ export class AdminService {
       redirectUris: data.redirectUris.map(v => v.uri)
     };
 
-    return AdminApi.createOAuthClient(body);
+    return OAuthClientApi.createOAuthClient(body);
   }
 
   static async editOAuthClient(id: string, data: OauthClientSchema) {
@@ -20,25 +20,29 @@ export class AdminService {
       redirectUris: data.redirectUris.map(v => v.uri)
     };
 
-    return AdminApi.editOAuthClient(body);
+    return OAuthClientApi.editOAuthClient(body);
   }
 
   static async listOAuthClients() {
-    return AdminApi.listOAuthClient();
+    return OAuthClientApi.listOAuthClient();
   }
 
   static async getOAuthClient(id: string) {
-    return await AdminApi.getOAuthClient(id);
+    return await OAuthClientApi.getOAuthClient(id);
+  }
+
+  static async searchOAuthClient(clientId?: string) {
+    return await OAuthClientApi.searchOAuthClient(clientId);
   }
 
   static async changeStatusOAuthClient(id: string, status: OAuthClientStatus) {
-    return await AdminApi.changeStatusOAuthClient({
+    return await OAuthClientApi.changeStatusOAuthClient({
       id: id,
       status: status
     })
   }
 
   static async deleteOAuthClient(id: string) {
-    return await AdminApi.deleteOAuthClient(id);
+    return await OAuthClientApi.deleteOAuthClient(id);
   }
 }

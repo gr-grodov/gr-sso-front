@@ -16,6 +16,7 @@ import { ErrorUtils } from "@/shared/api/utils/error-utils";
 import { applyApiErrorsToForm } from "@/shared/api/utils/apply-errors-form";
 import { useAuth } from "@/features/auth";
 import { Spinner } from "@/components/ui/spinner";
+import { oauth2FlowContinue } from "@/features/oauth2/oauth2-flow-continue";
 
 
 
@@ -40,7 +41,7 @@ export function LoginPage() {
       await authService.login(data);
       login();
 
-      navigate("/", {replace: true});
+      oauth2FlowContinue(() => navigate("/", {replace: true}));
     } catch(err) {
       const error = await ErrorUtils.getErrorResponse(err);
       applyApiErrorsToForm(error, form.setError, setErrorMessage)
