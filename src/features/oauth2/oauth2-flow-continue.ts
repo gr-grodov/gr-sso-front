@@ -1,14 +1,14 @@
 import { applyApiErrorToToast } from "@/shared/api/utils/apply-errors-toast";
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
 import { OAuth2FlowService } from "@/shared/service";
-import { AxiosError } from "axios";
 
 export async function oauth2FlowContinue(defaultNavigate: () => void) {
   try {
     const response = await OAuth2FlowService.continue();
 
     if (!response.data.redirectURI) {
-      throw new AxiosError();
+      defaultNavigate();
+      return;
     }
 
     window.location.href = response.data.redirectURI;

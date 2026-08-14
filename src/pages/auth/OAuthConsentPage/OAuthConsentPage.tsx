@@ -24,8 +24,18 @@ export function OAuthConsentPage() {
   async function submit(data: OAuthConsentSchema) {
     try {
       await OAuth2FlowService.consent(data);
-      oauth2FlowContinue(() => navigate("/", {replace: true}));
+      await oauth2FlowContinue(() => navigate("/", {replace: true}));
     } catch(err) {
+      const error = await ErrorUtils.getErrorResponse(err);
+      applyApiErrorToToast(error);
+    }
+  }
+
+  async function deny() {
+    try {
+      await OAuth2FlowService.consent({ ...form.getValues(), scopes: [] });
+      await oauth2FlowContinue(() => navigate("/", { replace: true }));
+    } catch (err) {
       const error = await ErrorUtils.getErrorResponse(err);
       applyApiErrorToToast(error);
     }
@@ -59,8 +69,8 @@ export function OAuthConsentPage() {
           <p className='col-span-2'>
             {t("actions.account_hint")} <Link className='text-primary' to='/'>{t("actions.account")}</Link>
           </p>
-          <Button variant='outline'>
-            {t("actions.cancel")}
+          <Button variant='outline' onClick={() => deny()}>
+            {t("actions.deny")}
           </Button>
           <Button type='submit' disabled={isSubmitting} form='oauth2-consent-form'>
             {t("actions.submit")}

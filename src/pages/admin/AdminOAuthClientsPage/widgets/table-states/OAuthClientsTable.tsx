@@ -1,9 +1,5 @@
-import { Badge } from '@/components/ui/badge'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { OAuthClientStatusVariant, type OAuthClientShort } from '@/shared/api/dto/response'
-import { CopyableText } from '@/shared/components/CopyableText'
-import { OAuthClientActionMenu } from './OAuthClientActions'
-import { DateUtils } from '@/shared/utils'
+import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { type OAuthClientShort } from '@/shared/api/dto/response'
 import { useTranslation } from 'react-i18next'
 import { OAuthClientItem } from './OAuthClientItem'
 

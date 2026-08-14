@@ -24,7 +24,62 @@
           "hint": "My Application"
         },
         "authorizationGrantTypes": {
-          "label": "Authorization Grant Types"
+          "label": "Выберите способы получения токена доступа (Authorization Grant Types)",
+          "AUTHORIZATION_CODE": {
+            "label": "Authorization Code",
+            "description": "Двухшаговая аутентификация через браузер. Сначала пользователь аутентифицируется, затём даёт согласие на запрашиваемые разрешения (Scopes)"
+          },
+          "REFRESH_TOKEN": {
+            "label": "Refresh Token",
+            "description": "Используется, когда access_token истёк, но пользователь не должен заново аутентифицироваться в системе"
+          },
+          "CLIENT_CREDENTIALS": {
+            "label": "Client Credentials",
+            "description": "Клиент получает токен от своего собственного имени, а не от имени пользователя. Используется для service-to-service взаимодействия, без привязки к конкретному залогиненному пользователю"
+          },
+          "JWT_BEARER": {
+            "label": "JWT Bearer",
+            "description": "Используется, когда клиент предъявляет готовый JWT, выпущенный внешней доверенной стороной"
+          },
+          "DEVICE_CODE": {
+            "label": "Authorization Code",
+            "description": "Используется, когда устройство не имеет браузера и/или клавиатуры (Smart TV, консолей, IoT — устройств). Пользователь подтверждает вход с другого устройства"
+          },
+          "TOKEN_EXCHANGE": {
+            "label": "Token Exchange",
+            "description": "Используется для сценариев вроде 'microservice A' получил токен пользователя, хочет обменять его на токен с урезанными правами для вызова 'microservice B'"
+          }
+        },
+        "clientAuthenticationMethods": {
+          "label": "Выберите возможные способы подтверждения клиента (Client Authentication Method)",
+          "CLIENT_SECRET_BASIC": {
+            "label": "Client Secret Basic",
+            "description": "Самый распространённый метод — HTTP Basic Auth. Передача данных (client_id, client_secret) в заголовке Authorization (Authorization: Basic base64(client_id:client_secret))"
+          },
+          "CLIENT_SECRET_POST": {
+            "label": "Cleint Secret POST",
+            "description": "Передача данных (client_id, client_secret) в теле формы"
+          },
+          "CLIENT_SECRET_JWT": {
+            "label": "Client Secret JWT",
+            "description": "Клиент не передаёт секрет напрямую, а подписывает JWT-assertion этим секретом (симметричный HMAC). "
+          },
+          "PRIVATE_KEY_JWT": {
+            "label": "Private Key JWT",
+            "description": "То же самое, что 'Client Secret JWT', но с асимметричной криптографией — клиент подписывает JWT своим приватным ключом, а SSO-сервер верифицирует публичным"
+          },
+          "NONE": {
+            "label": "None",
+            "description": "Для клиентов, которые физически не могут хранить секрет в тайне: SPA без бэкенда, мобильные приложения. В таком способе безопасность обеспечивается через PKCE"
+          },
+          "TLS_CLIENT_AUTH": {
+            "label": "PKI-based mTLS",
+            "description": "Клиент предъявляет TLS-сертификат, выпущенный доверенным центром сертификации (CA). Сервер проверяет цепочку доверия сертификата и сверяет один из его атрибутов с заранее сохранённым значением для этого клиента"
+          },
+          "SELF_SIGNED_TLS_CLIENT_AUTH": {
+            "label": "Самоподписанные сертификаты",
+            "description": "Отличие от PKI-based mTLS в одном: сертификат клиента не обязан быть выпущен доверенным CA — допускается self-signed. Вместо проверки цепочки доверия сервер сверяет сам сертификат (точнее его thumbprint) с тем, что заранее зарегистрирован для клиента — по модели 'pinning' (аналог certificate/public-key pinning)"
+          }
         },
         "redirectUris": {
           "label": "Redirect URIs",
@@ -33,7 +88,9 @@
           "action_add": "Добавить адрес"
         },
         "scopes": {
-          "label": "Разрешения (Scopes)"
+          "label": "Разрешения (Scopes)",
+          "EMAIL": "Электронная почта",
+          "PROFILE": "Данные профиля"
         }
       },
 

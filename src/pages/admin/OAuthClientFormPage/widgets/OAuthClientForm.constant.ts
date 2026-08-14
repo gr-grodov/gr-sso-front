@@ -1,17 +1,33 @@
+import type { OAuthAuthorizationGrantType, OAuthClientAuthenticationMethod, OAuthScope } from "@/shared/api/dto/response";
 import type { CheckboxOption } from "@/shared/components/CheckboxGroupField/CheckboxGroupField";
 import type { ToggleOption } from "@/shared/components/ToggleGroupField/ToggleGroupField";
+import type { TFunction } from "i18next";
 
-export const authorizationGrantTypes: CheckboxOption[] = [
-  { value: "AUTHORIZATION_CODE",  label: "Authorization Code" },
-  { value: "REFRESH_TOKEN",       label: "Refresh Token" },
-  { value: "CLIENT_CREDENTIALS",  label: "Client Credentials" },
-  { value: "JWT_BEARER",          label: "JWT Bearer" },
-  { value: "DEVICE_CODE",         label: "Device Code" },
-  { value: "TOKEN_EXCHANGE",      label: "Token Exchange" }
-];
+export function authorizationGrantTypes(types: OAuthAuthorizationGrantType[], t: TFunction): CheckboxOption[] {
+  return types.map(type => {
+    return {
+      value: type,
+      label: t(`fields.authorizationGrantTypes.${type}.label`),
+      description: t(`fields.authorizationGrantTypes.${type}.description`)
+    }
+  })
+}
 
-export const scopeTypes: ToggleOption[] = [
-  { value: "openid",  label: "OpenID" },
-  { value: "email",   label: "Email" },
-  { value: "profile", label: "Profile" },
-]
+export function clientAuthenticationMethods(methods: OAuthClientAuthenticationMethod[], t: TFunction): CheckboxOption[] {
+  return methods.map(method => {
+    return {
+      value: method,
+      label: t(`fields.clientAuthenticationMethods.${method}.label`),
+      description: t(`fields.clientAuthenticationMethods.${method}.description`)
+    }
+  })
+}
+
+export function scopeTypes(scopes: OAuthScope[], t: TFunction): ToggleOption[] {
+  return scopes.filter(scope => scope != 'OPEN_ID').map(scope => {
+    return {
+      value: scope,
+      label: t(`fields.scopes.${scope}`, {defaultValue: scope})
+    }
+  });
+}

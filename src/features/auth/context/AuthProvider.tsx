@@ -16,8 +16,6 @@ export function AuthProvider({ children }: PropsWithChildren) {
   const refresh = useCallback(async () => {
     try {
       const response = await AuthService.userInfo();
-      console.log("refresh");
-      
       setUser(response.data);
     } catch {
       setUser(null);

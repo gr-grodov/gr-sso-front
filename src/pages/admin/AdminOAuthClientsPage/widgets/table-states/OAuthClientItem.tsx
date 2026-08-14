@@ -1,9 +1,9 @@
 import { TableCell, TableRow } from '@/components/ui/table'
 import { CopyableText } from '@/shared/components/CopyableText'
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { OAuthClientActionMenu } from './OAuthClientActions'
 import { Badge } from '@/components/ui/badge'
-import { OAuthClientStatusVariant, type OAuthClientShort } from '@/shared/api/dto/response'
+import { type OAuthClientShort } from '@/shared/api/dto/response'
 import { DateUtils } from '@/shared/utils'
 
 export interface OAuthClientItemProps {
@@ -30,7 +30,7 @@ export const OAuthClientItem = memo(function OAuthClientItem({
         ))}
       </TableCell>
       <TableCell>
-        {client.status === OAuthClientStatusVariant.ACTIVE
+        {client.status === "ACTIVE"
           ? <Badge variant='secondary'>Активен</Badge> 
           : <Badge variant='outline'>Отключён</Badge>
         }

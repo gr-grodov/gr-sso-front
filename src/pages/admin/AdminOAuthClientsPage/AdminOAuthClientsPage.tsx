@@ -6,7 +6,6 @@ import { OAuthClientActionsProvider } from "./widgets";
 import { OAuthClientsContent } from "./widgets/OAuthClientsContent";
 import { useOAuthClients } from "./hooks/useOAuthClients";
 import { useTranslation } from "react-i18next";
-import { OAuthClientStatusVariant } from "@/shared/api/dto/response";
 
 
 export function AdminOAuthClientsPage() {
@@ -20,7 +19,7 @@ export function AdminOAuthClientsPage() {
   } = useOAuthClients()
 
   const {t} = useTranslation("admin", {keyPrefix: "oauth_clients"});
-  const activeClientCount = clients.filter((cl) => cl.status == OAuthClientStatusVariant.ACTIVE).length;
+  const activeClientCount = clients.filter((cl) => cl.status == "ACTIVE").length;
 
   return (
     <AdminContentBlock 

@@ -38,7 +38,7 @@ export function InputField<T extends FieldValues>({
       control={control}
       render={({ field, fieldState }) => (
         <>
-          {label && <FieldLegend>{label}</FieldLegend>}
+          {!!label && <FieldLegend>{label}</FieldLegend>}
           <Field data-invalid={fieldState.invalid}>
           <Input
             {...field}

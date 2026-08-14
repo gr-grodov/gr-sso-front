@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import { OAuthClientService } from "@/shared/service";
-import { OAuthClientStatusVariant as ClientStatus, type OAuthClientShort } from "@/shared/api/dto/response";
+import {  type OAuthClientShort, type OAuthClientStatus } from "@/shared/api/dto/response";
 
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
 import { applyApiErrorToToast } from "@/shared/api/utils/apply-errors-toast";
@@ -29,7 +29,7 @@ export function useOAuthClients() {
 
   const changeStatus = useCallback(async (client: OAuthClientShort) => {
     try {
-      const status = client.status === ClientStatus.ACTIVE ? ClientStatus.DISABLED : ClientStatus.ACTIVE;
+      const status: OAuthClientStatus = client.status === "ACTIVE" ? "DISABLED" : "ACTIVE";
       const response = await OAuthClientService.changeStatusOAuthClient(client.id, status);
 
       updateClient(response.data);

@@ -39,9 +39,9 @@ export function LoginPage() {
       setErrorMessage("");
 
       await authService.login(data);
-      login();
+      await login();
 
-      oauth2FlowContinue(() => navigate("/", {replace: true}));
+      await oauth2FlowContinue(() => navigate("", {replace: true}));
     } catch(err) {
       const error = await ErrorUtils.getErrorResponse(err);
       applyApiErrorsToForm(error, form.setError, setErrorMessage)

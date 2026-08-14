@@ -13,6 +13,7 @@ export class OAuthClientService {
     return OAuthClientApi.createOAuthClient(body);
   }
 
+
   static async editOAuthClient(id: string, data: OauthClientSchema) {
     const body = {
       id: id,
@@ -23,17 +24,35 @@ export class OAuthClientService {
     return OAuthClientApi.editOAuthClient(body);
   }
 
+
   static async listOAuthClients() {
     return OAuthClientApi.listOAuthClient();
   }
+
+
+  static async listScopes() {
+    return OAuthClientApi.listScopes();
+  }
+
+
+  static async listGrantTypes() {
+    return OAuthClientApi.listGrantTypes();
+  }
+
+  static async listAuthMethods() {
+    return OAuthClientApi.listAuthMethods();
+  }
+
 
   static async getOAuthClient(id: string) {
     return await OAuthClientApi.getOAuthClient(id);
   }
 
+
   static async searchOAuthClient(clientId?: string) {
     return await OAuthClientApi.searchOAuthClient(clientId);
   }
+
 
   static async changeStatusOAuthClient(id: string, status: OAuthClientStatus) {
     return await OAuthClientApi.changeStatusOAuthClient({
@@ -41,6 +60,7 @@ export class OAuthClientService {
       status: status
     })
   }
+
 
   static async deleteOAuthClient(id: string) {
     return await OAuthClientApi.deleteOAuthClient(id);

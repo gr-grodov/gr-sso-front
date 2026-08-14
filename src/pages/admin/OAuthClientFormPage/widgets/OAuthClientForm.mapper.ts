@@ -5,6 +5,7 @@ export function toOAuthClientForm(data: OAuthClient): OauthClientSchema {
   return {
     clientName: data.clientName,
     authorizationGrantTypes: data.authorizationGrantTypes,
+    clientAuthenticationMethods: data.clientAuthenticationMethods,
     redirectUris: data.redirectUris.map(uri => ({
       uri,
     })),
@@ -16,7 +17,8 @@ export function createEmptyOAuthClient(): OauthClientSchema {
   return {
     clientName: "",
     authorizationGrantTypes: [],
+    clientAuthenticationMethods: [],
     redirectUris: [{ uri: "" }],
-    scopes: ["openid"],
+    scopes: ["OPEN_ID"],
   };
 }

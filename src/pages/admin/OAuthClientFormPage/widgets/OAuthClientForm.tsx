@@ -5,7 +5,7 @@ import { InputField } from '@/shared/components/InputField'
 import { ToggleGroupField } from '@/shared/components/ToggleGroupField'
 import RedirectUrisField from '@/pages/admin/OAuthClientFormPage/components/RedirectUrisField'
 import { useTranslation } from 'react-i18next'
-import { scopeTypes, authorizationGrantTypes } from "./OAuthClientForm.constant";
+import { scopeTypes, authorizationGrantTypes, clientAuthenticationMethods } from "./OAuthClientForm.constant";
 import { CheckboxGroupField } from '@/shared/components/CheckboxGroupField'
 import { Spinner } from '@/components/ui/spinner'
 import type { OAuthClientSecretInfoResponse } from '@/shared/api/dto/response'
@@ -28,7 +28,7 @@ type OAuthClientFormProps = {
 export function OAuthClientForm({id, onSuccess}: OAuthClientFormProps) {
   const {t} = useTranslation("admin", { keyPrefix: 'oauth_clients.form' });
 
-  const {form, errorMessage, submit} = useOAuthClientForm(id, onSuccess);
+  const {form, scopes, grantTypes, authMethods, errorMessage, submit} = useOAuthClientForm(id, onSuccess);
   const {formState: { isSubmitting, isLoading } } = form;
 
   return (
@@ -44,24 +44,36 @@ export function OAuthClientForm({id, onSuccess}: OAuthClientFormProps) {
                 label={t("fields.clientName.label")}
                 placeholder={t("fields.clientName.hint")}/>
             </Card>
+          
             <Card className='p-4'>
               <CheckboxGroupField
                 control={form.control}
                 name='authorizationGrantTypes'
-                options={authorizationGrantTypes}
+                options={authorizationGrantTypes(grantTypes, t)}
                 label={t("fields.authorizationGrantTypes.label")}/>
             </Card>
+
+            <Card className='p-4'>
+              <CheckboxGroupField
+                control={form.control}
+                name='clientAuthenticationMethods'
+                options={clientAuthenticationMethods(authMethods, t)}
+                label={t("fields.clientAuthenticationMethods.label")}/>
+            </Card>
+
             <Card className='p-4'>
               <RedirectUrisField control={form.control}/>
             </Card>
+
             <Card className='p-4'>
               <ToggleGroupField
-              control={form.control}
-              name="scopes"
-              label={t("fields.scopes.label")}
-              options={scopeTypes}
-              showWithoutErrors/>
+                control={form.control}
+                name="scopes"
+                label={t("fields.scopes.label")}
+                options={scopeTypes(scopes, t)}
+                showWithoutErrors/>
             </Card>
+
             
             <Button type='submit' disabled={isSubmitting}>
               {t("actions.submit")}

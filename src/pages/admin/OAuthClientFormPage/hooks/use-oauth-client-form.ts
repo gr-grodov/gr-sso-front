@@ -1,13 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { type OauthClientSchema, oauthClientSchema } from "@/features/schemas/oauth-client.schema";
 import { OAuthClientService } from "@/shared/service";
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
 import { applyApiErrorsToForm } from "@/shared/api/utils/apply-errors-form";
-import { applyApiErrorToToast } from "@/shared/api/utils/apply-errors-toast";
 import { createEmptyOAuthClient, toOAuthClientForm } from "../widgets/OAuthClientForm.mapper";
-import type { OAuthClientSecretInfoResponse } from "@/shared/api/dto/response";
+import { type OAuthClientAuthenticationMethod, type OAuthAuthorizationGrantType, type OAuthClientSecretInfoResponse, type OAuthScope } from "@/shared/api/dto/response";
 
 
 
@@ -24,6 +23,32 @@ export function useOAuthClientForm(
   onSuccess: (result: OAuthClientFormSuccess) => void,
 ) {
   const [errorMessage, setErrorMessage] = useState("");
+  const [scopes, setScopes] = useState<OAuthScope[]>([]);
+  const [grantTypes, setGrantTypes] = useState<OAuthAuthorizationGrantType[]>([]);
+  const [authMethods, setAuthMethods] = useState<OAuthClientAuthenticationMethod[]>([]);
+
+
+  useEffect(() => {
+    async function init() {
+      try {
+        const [scopes, grantTypes, authMethods] = await Promise.all([
+          OAuthClientService.listScopes(),
+          OAuthClientService.listGrantTypes(),
+          OAuthClientService.listAuthMethods()
+        ]);
+
+        setScopes(scopes.data);
+        setGrantTypes(grantTypes.data);
+        setAuthMethods(authMethods.data);
+      } catch (err) {
+        const error = await ErrorUtils.getErrorResponse(err);
+        applyApiErrorsToForm(error, form.setError, setErrorMessage);
+      }
+    }
+
+    init();
+  }, [])
+
 
   const form = useForm<OauthClientSchema>({
     resolver: zodResolver(oauthClientSchema),
@@ -39,7 +64,7 @@ export function useOAuthClientForm(
         return toOAuthClientForm(response.data);
       } catch (err) {
         const error = await ErrorUtils.getErrorResponse(err);
-        applyApiErrorToToast(error);
+        applyApiErrorsToForm(error, form.setError, setErrorMessage);
 
         return createEmptyOAuthClient();
       }
@@ -62,18 +87,16 @@ export function useOAuthClientForm(
       onSuccess({ type: "created", credentials: response.data });
     } catch (err) {
       const error = await ErrorUtils.getErrorResponse(err);
-
-      applyApiErrorsToForm(
-        error,
-        form.setError,
-        setErrorMessage,
-      );
+      applyApiErrorsToForm(error, form.setError, setErrorMessage);
     }
   }
 
 
   return {
     form,
+    scopes,
+    grantTypes,
+    authMethods,
     errorMessage,
     submit,
   };

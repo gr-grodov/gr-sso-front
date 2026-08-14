@@ -1,7 +1,7 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { EllipsisVertical, RefreshCcwDot, SquarePen, Trash } from 'lucide-react';
 import { useOAuthClientActions } from '../OAuthClientsContext';
-import { type OAuthClientShort, OAuthClientStatusVariant as ClientStatus } from '@/shared/api/dto/response';
+import { type OAuthClientShort } from '@/shared/api/dto/response';
 
 export interface OAuthClientActionMenuProps {
   client: OAuthClientShort
@@ -26,7 +26,7 @@ export function OAuthClientActionMenu({
             <SquarePen/>Редактировать
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => changeStatus(client)}>
-            <RefreshCcwDot/>{client.status === ClientStatus.ACTIVE ? "Отключить" : "Активировать"}
+            <RefreshCcwDot/>{client.status === "ACTIVE" ? "Отключить" : "Активировать"}
           </DropdownMenuItem>
         </DropdownMenuGroup>
 

@@ -1,18 +1,11 @@
-export const OAuthClientStatusVariant = {
-  ACTIVE: "ACTIVE",
-  DISABLED: "DISABLED",
-  ARCHIVED: "ARCHIVED",
-} as const;
-
-export type OAuthClientStatus = typeof OAuthClientStatusVariant[keyof typeof OAuthClientStatusVariant];
-
+import type { OAuthClientStatus, OAuthScope } from ".";
 
 export interface OAuthClientShort {
   id: string;
   clientId: string;
   clientName: string;
   redirectUris: string[];
-  scopes: string[];
+  scopes: OAuthScope[];
   status: OAuthClientStatus;
   createdAt: string;
   updatedAt: string;

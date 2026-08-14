@@ -1,11 +1,12 @@
 import { Checkbox } from '@/components/ui/checkbox';
-import { Field, FieldError, FieldGroup, FieldLegend, FieldSet } from '@/components/ui/field';
+import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet } from '@/components/ui/field';
 import { Label } from '@/components/ui/label';
 import { Controller, type Control, type FieldPath, type FieldValues } from 'react-hook-form';
 
 export type CheckboxOption = {
   value: string;
   label: string;
+  description?: string;
 };
 
 type CheckboxGroupFieldProps<T extends FieldValues> = {
@@ -50,12 +51,14 @@ export function CheckboxGroupField<T extends FieldValues>({
                     }}
                   />
 
-                  <Label 
-                    htmlFor={`checkbox-${option.value}`}
-                    className='ps-1'
-                  >
-                    {option.label}
-                  </Label>
+                  <FieldContent className='ps-1'>
+                    <FieldLabel htmlFor={`checkbox-${option.value}`}>
+                      {option.label}
+                    </FieldLabel>
+                    {!!option.description && <FieldDescription>
+                      {option.description}
+                    </FieldDescription>}
+                  </FieldContent>
               </Field>
               )
             })}

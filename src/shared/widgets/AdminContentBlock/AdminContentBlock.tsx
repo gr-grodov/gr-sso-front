@@ -15,7 +15,7 @@ export function AdminContentBlock({
 }: AdminContentBlockProps) {
   return (
     <>
-      <header className="sticky bg-background top-0 flex shrink-0 items-center gap-2 border-b px-2">
+      <header className="sticky bg-background top-0 flex shrink-0 items-center gap-2 border-b px-2 z-50">
         <div className="flex items-center gap-2 p-2">
           <SidebarTrigger className="-ml-1" />
           <Separator

@@ -38,7 +38,7 @@ export function useConsentForm() {
     }
     
     init();
-  }, [oauthClient]);
+  }, [oauthClientId]);
 
   return {form, oauthClient, scopes};
 }
