@@ -3,8 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import {LoginPage} from "@/pages/auth/LoginPage/LoginPage";
 import {RegisterPage} from "@/pages/auth/RegisterPage";
 import { ProviderErrorPage } from '@/pages/auth/ProviderErrorPage';
-import { useEffect } from 'react';
-import { ConfigApi } from '@/shared/api/config.api';
 import { AuthGuard, GuestGuard, RoleGuard } from '@/features/auth';
 import { HomePage } from '@/pages/common/HomePage';
 import { AdminOAuthUsersPage } from '@/pages/admin/AdminOAuthUsersPage';
@@ -15,10 +13,6 @@ import { NotFoundPage } from '@/pages/common/NotFoundPage';
 import { OAuthConsentPage } from '@/pages/auth/OAuthConsentPage';
 
 function App() {
-  useEffect(() => {
-    ConfigApi.csrf()
-  }, []);
-
   return (
     <>
       <Routes>

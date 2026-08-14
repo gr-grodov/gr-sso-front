@@ -8,10 +8,18 @@ import {
 import { AuthService } from "@/shared/service/auth.service";
 import type { UserInfo } from "@/shared/api/dto/user-info";
 import { AuthContext } from "@/features/auth";
+import { ConfigApi } from "@/shared/api/config.api";
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<UserInfo | null>(null);
+
+  const refreshCSRF = useCallback(async () => {
+    try {
+      await ConfigApi.csrf();
+    } catch {}
+  }, [])
+
 
   const refresh = useCallback(async () => {
     try {
@@ -24,22 +32,28 @@ export function AuthProvider({ children }: PropsWithChildren) {
     }
   }, []);
 
-  useEffect(() => {
-    console.log("useEffect refresh");
-    refresh();
-  }, [refresh]);
 
   const login = useCallback(async () => {
     await refresh();
-  }, [refresh]);
+    refreshCSRF();
+  }, [refresh, refreshCSRF]);
+
 
   const logout = useCallback(async () => {
     try {
       await AuthService.logout();
     } finally {
       setUser(null);
+      refreshCSRF();
     }
-  }, []);
+  }, [refreshCSRF]);
+
+
+  useEffect(() => {
+    refresh();
+    refreshCSRF();
+  }, [refresh, refreshCSRF]);
+
 
   const value = useMemo(() => ({
     loading,
