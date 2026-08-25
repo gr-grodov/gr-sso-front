@@ -17,7 +17,6 @@ import { useVerifyEmailForm, type VerifyEmailInitState } from './hooks/use-verif
 import { VerifyEmailLoading } from './widgets/VerifyEmailLoading';
 import { AppError } from '@/shared/api/utils/app-error';
 import { VerifyEmailFormActions } from './widgets/VerifyEmailFormActions';
-import { blurActiveElement } from '@/shared/utilite/utilite-functions';
 
 function existVerifyEmailInfo(verifyEmailInfo: VerifyEmailInitState | null): VerifyEmailInitState{
   if (!verifyEmailInfo) {
@@ -52,6 +51,7 @@ export function VerifyEmailPage() {
     }
   }
   
+
   async function onSubmit(data: VerifyEmailForm) {
     setErrorMessage("");
     try {
@@ -66,6 +66,7 @@ export function VerifyEmailPage() {
       applyApiErrorsToForm(error, form.setError, setErrorMessage);
     }
   }
+
 
   return (
     <AppCardBlock>

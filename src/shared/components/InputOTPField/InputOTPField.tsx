@@ -2,7 +2,7 @@ import { Controller, type Control, type FieldPath, type FieldValues } from 'reac
 import { getElementsByPattern, type ElementOTP, type OtpPattern } from './InputOTPField.pattern';
 import { FieldError, FieldLegend } from '@/components/ui/field';
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot, inputOtpSlotVariants } from '@/components/ui/input-otp';
-import { useEffect, useMemo, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { REGEXP_ONLY_DIGITS } from 'input-otp';
 
