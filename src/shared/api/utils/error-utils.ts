@@ -6,27 +6,27 @@ export class ErrorUtils {
   static async getErrorResponse(error: any): Promise<ErrorResponse> {
 
     if (axios.isAxiosError(error)) {
-      console.log("1");
       
       if (error.response) {
-        console.log("2");
         const response = error.response.data;
         
-        if (this.isErrorResponse(response)) {
-          console.log("3");
+        if (this.isCustomError(response)) {
           return response;
         }
       } else {
-        console.log("4");
         return this.getUnavailableErrorResponse();
       }
       
     }
-    console.log("5");
+
+    if (this.isCustomError(error)) {
+      return error;
+    }
+
     return this.getDefaultErrorResponse();
   }
   
-  private static isErrorResponse(data: any): boolean {
+  private static isCustomError(data: any): boolean {
     if (typeof data !== 'object' || data === null) {
       return false;
     }

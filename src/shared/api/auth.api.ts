@@ -1,9 +1,7 @@
-import { AxiosError } from "axios";
 import { api } from "./config/api";
 
-import type { RegisterRequest, LoginRequest } from "./dto/requests";
-import type { SuccessResponse } from "./dto/response";
-import type { UserInfo } from "./dto/user-info";
+import type { RegisterRequest, LoginRequest, VerifyEmailRequest, RefreshVerifyCodeRequest } from "./dto/requests";
+import { type VerifyEmailResponse, type RegisterResponse, type SuccessResponse } from "./dto/response";
 
 export class AuthApi {
 
@@ -15,23 +13,27 @@ export class AuthApi {
   }
 
   static async register(body: RegisterRequest) {
-    const response = await api.post<SuccessResponse<any>>(
+    return await api.post<RegisterResponse>(
       "/api/auth/register",
       body
     );
+  }
 
-    if (!response.data.success) {
-      throw new AxiosError();
-    }
+  static async verifyEmail(body: VerifyEmailRequest) {
+    return await api.post<SuccessResponse<any>>(
+      "/api/auth/verify-email",
+      body
+    )
+  }
 
-    return response.data;
+  static async refreshVerifyCodeEmail(body: RefreshVerifyCodeRequest) {
+    return await api.post<SuccessResponse<any>>(
+      "api/auth/refresh-verify-code",
+      body
+    )
   }
 
   static async logout() {
     return api.post("/api/auth/logout");
-  }
-
-  static async userInfo() {
-    return api.get<UserInfo>("/api/auth/user-info");
   }
 }

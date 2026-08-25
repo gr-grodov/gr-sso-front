@@ -11,6 +11,7 @@ import { AdminPanelPage } from '@/pages/admin/AdminPanelPage';
 import { OAuthClientFormPage } from '@/pages/admin/OAuthClientFormPage';
 import { NotFoundPage } from '@/pages/common/NotFoundPage';
 import { OAuthConsentPage } from '@/pages/auth/OAuthConsentPage';
+import { VerifyEmailPage } from '@/pages/auth/VerifyEmailPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/register" element={<RegisterPage/>}/>
           <Route path="/provider-error" element={<ProviderErrorPage/>}/>
+          <Route path='/verify-email' element={<VerifyEmailPage/>}/>
         </Route>
 
         <Route element={<AuthGuard />}>

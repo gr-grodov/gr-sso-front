@@ -37,8 +37,15 @@ export function RegisterPage() {
   async function onSubmit(data: RegisterForm) {
     setErrorMessage("");
     try {
-      await authService.register(data);
-      navigate("/login", {replace: true,});
+      const response = await authService.register(data);
+      console.log(response.data);
+      console.log(response.data.verifyId);
+      
+      
+      navigate("/verify-email", {
+        replace: true, 
+        state: {userEmail: response.data.userEmail, verifyId: response.data.verifyId}
+      });
     } catch(err) {
       const error = await ErrorUtils.getErrorResponse(err);
       applyApiErrorsToForm(error, form.setError, setErrorMessage)

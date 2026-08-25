@@ -18,7 +18,7 @@ export function applyApiErrorsToForm<T extends FieldValues>(
         type: "server",
         message: tError(`${err.field}.${err.code}`),
       });
-  });
+    });
   } else {
     setGlobalError(tError(`global.${response.code}`))
   }

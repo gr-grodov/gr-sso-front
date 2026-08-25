@@ -1,5 +1,6 @@
 import { oauthConsentSchema, type OAuthConsentSchema } from "@/features/schemas/oauth2-consent.schema";
-import type { OAuthClient } from "@/shared/api/dto/response";
+import type { ErrorResponse, OAuthClient } from "@/shared/api/dto/response";
+import { AppError } from "@/shared/api/utils/app-error";
 import { applyApiErrorToToast } from "@/shared/api/utils/apply-errors-toast";
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
 import { OAuthClientService } from "@/shared/service";
@@ -8,7 +9,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSearchParams } from "react-router";
 
-export function useConsentForm() {
+export function useConsentForm(failInitForm: (error: ErrorResponse) => void) {
   const [searchParams] = useSearchParams();
   const scopes = searchParams.get("scope")?.split(" ") ?? [];
   const oauthClientId = searchParams.get("client_id") ?? '';
@@ -27,13 +28,13 @@ export function useConsentForm() {
   useEffect(() => {
     async function init() {
       try {
-        if (oauthClientId) {
-          const response = await OAuthClientService.searchOAuthClient(oauthClientId);
-          setOAuthClient(response.data);
+        if (!oauthClientId) {
+          throw new AppError("oauth_client_not_found");
         }
+        const response = await OAuthClientService.searchOAuthClient(oauthClientId);
+        setOAuthClient(response.data);
       } catch(err) {
-        const error = await ErrorUtils.getErrorResponse(err);
-        applyApiErrorToToast(error)
+        failInitForm(await ErrorUtils.getErrorResponse(err));
       }
     }
     

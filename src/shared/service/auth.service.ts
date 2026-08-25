@@ -1,6 +1,5 @@
-import type { RegisterRequest, LoginRequest } from "@/shared/api/dto/requests";
+import type { RegisterRequest, LoginRequest, VerifyEmailRequest, RefreshVerifyCodeRequest } from "@/shared/api/dto/requests";
 import { AuthApi } from "@/shared/api/auth.api";
-import { AxiosError } from "axios";
 
 export class AuthService {
 
@@ -9,20 +8,18 @@ export class AuthService {
   }
 
   static async register(body: RegisterRequest) {
-    const response = await AuthApi.register(body);
+    return await AuthApi.register(body);
+  }
 
-    if (!response.success) {
-      throw new AxiosError();
-    }
+  static async verifyEmail(body: VerifyEmailRequest) {
+    return await AuthApi.verifyEmail(body);
+  }
 
-    return response.data;
+  static async refreshVerifyCodeEmail(body: RefreshVerifyCodeRequest) {
+    return await AuthApi.refreshVerifyCodeEmail(body);
   }
 
   static async logout() {
     return AuthApi.logout();
-  }
-
-  static async userInfo() {
-    return AuthApi.userInfo();
   }
 }

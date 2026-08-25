@@ -16,26 +16,24 @@ export function ProviderErrorPage() {
   );
 
   return (
-    <>
-      <AppCardBlock>
-        <CardHeader className="mt-10">
-          <h3 className="font-semibold">{t("title")}</h3>
-          <p>{t("subtitle")}</p>
-        </CardHeader>
+    <AppCardBlock>
+      <CardHeader className="mt-10">
+        <h3 className="font-semibold">{t("title")}</h3>
+        <p>{t("subtitle")}</p>
+      </CardHeader>
 
-        <CardContent>
-          <Card className="bg-red-100 text-destructive p-4">
-            {errorMessage}
-          </Card>
-        </CardContent>
+      <CardContent>
+        <Card className="bg-red-100 text-destructive p-4">
+          {errorMessage}
+        </Card>
+      </CardContent>
 
-        <CardFooter className="flex flex-col mt-20">
-          <OAuthButtonsBlock className="w-full"/>
-          <Button size="lg" className="w-full" variant="link">
-            <Link to="/login" replace>{t("actions.login")}</Link>
-          </Button>
-        </CardFooter>
-      </AppCardBlock>
-    </>
+      <CardFooter className="flex flex-col mt-20">
+        <OAuthButtonsBlock className="w-full"/>
+        <Button className="w-full" variant="link">
+          <Link to="/login" replace>{t("actions.login")}</Link>
+        </Button>
+      </CardFooter>
+    </AppCardBlock>
   )
 }

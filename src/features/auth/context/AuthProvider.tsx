@@ -9,6 +9,7 @@ import { AuthService } from "@/shared/service/auth.service";
 import type { UserInfo } from "@/shared/api/dto/user-info";
 import { AuthContext } from "@/features/auth";
 import { ConfigApi } from "@/shared/api/config.api";
+import { UserInfoService } from "@/shared/service/user-info.service";
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
   const refresh = useCallback(async () => {
     try {
-      const response = await AuthService.userInfo();
+      const response = await UserInfoService.userInfo();
       setUser(response.data);
     } catch {
       setUser(null);

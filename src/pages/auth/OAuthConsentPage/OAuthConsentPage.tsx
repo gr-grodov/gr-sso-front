@@ -18,7 +18,10 @@ export function OAuthConsentPage() {
   const { t } = useTranslation("auth", {keyPrefix: "consent"});
   const navigate = useNavigate();
 
-  const {form, oauthClient, scopes} = useConsentForm();
+  const {form, oauthClient, scopes} = useConsentForm((error) => {
+    applyApiErrorToToast(error);
+    navigate("/register", {replace: true})
+  });
   const {formState: { isSubmitting } } = form;
 
   async function submit(data: OAuthConsentSchema) {
@@ -46,11 +49,11 @@ export function OAuthConsentPage() {
       {!oauthClient ? <OAuthConsentLoading/> : 
       <>
         <CardHeader className="mt-10">
-          <h3 className="font-semibold">{t("title")} <span className='text-accent'>{oauthClient?.clientName}</span></h3>
+          <h3 className="font-semibold">{t("title")} <span className='text-accent'>{oauthClient.clientName}</span></h3>
         </CardHeader>
           
         <CardContent>
-          <p>{t("description", {clientName: oauthClient?.clientName})}</p>
+          <p>{t("description", {clientName: oauthClient.clientName})}</p>
           <form id="oauth2-consent-form" onSubmit={form.handleSubmit(submit)} className='flex'>
             <FieldGroupForm className='w-xl justify-between flex'>
               <CheckboxGroupField

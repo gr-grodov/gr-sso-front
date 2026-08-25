@@ -11,3 +11,5 @@ export type {
   OAuthClientAuthenticationMethod,
 } from "./oauth-client.response";
 export type { RedirectResponse } from "./redirect-response";
+export type {RegisterResponse} from "./register.response";
+export type {VerifyEmailResponse} from "./verify-email.response";
