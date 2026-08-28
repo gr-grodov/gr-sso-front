@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card.tsx";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface CardWithIconProps {
   children: ReactNode;
@@ -7,7 +7,7 @@ interface CardWithIconProps {
 
 export function AppCardBlock({children}: CardWithIconProps) {
   return (
-    <div className="flex h-full w-full items-center justify-center">
+    <div className="flex h-full w-full items-center justify-center p-2">
       <Card className="w-md">
         {children}
       </Card>

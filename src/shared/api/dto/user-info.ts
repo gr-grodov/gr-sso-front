@@ -3,5 +3,5 @@ export interface UserInfo {
   email: string;
   externalId: string;
   provider: string;
-  role: string;
+  role: 'ADMIN' | 'USER';
 }

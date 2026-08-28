@@ -12,6 +12,14 @@
     }
   },
 
+  "user_inforamtion_block": {
+    "menu": {
+      "session": "Активные сессии",
+      "admin": "Админ панель"
+    },
+    "hint_logout": "Выйти из аккаунта"
+  },
+
   "not_found_page": {
     "title": "404",
     "subtitle": "Страница не найдена",

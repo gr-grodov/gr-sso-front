@@ -32,57 +32,65 @@ export function OAuthClientForm({id, onSuccess}: OAuthClientFormProps) {
   const {formState: { isSubmitting, isLoading } } = form;
 
   return (
-    <div className='flex-col'>
+    <div className='flex-col h-full'>
       {isLoading ? <OAuthClientFormLoading/> : 
-        <form id="oauth-client-form" onSubmit={form.handleSubmit(submit)} className='flex'>
-          <FieldGroupForm errorMessage={errorMessage} className='w-xl justify-between flex'>
+        <form 
+          id="oauth-client-form" 
+          onSubmit={form.handleSubmit(submit)}
+          className='flex flex-col justify-between h-full'
+        >
+          <FieldGroupForm errorMessage={errorMessage} className='grid grid-cols-1 lg:grid-cols-3'>
 
-            <Card className='p-4'>
-              <InputField
-                control={form.control}
-                name="clientName"
-                label={t("fields.clientName.label")}
-                placeholder={t("fields.clientName.hint")}/>
-            </Card>
-          
-            <Card className='p-4'>
-              <CheckboxGroupField
-                control={form.control}
-                name='authorizationGrantTypes'
-                options={authorizationGrantTypes(grantTypes, t)}
-                label={t("fields.authorizationGrantTypes.label")}/>
-            </Card>
-
-            <Card className='p-4'>
-              <CheckboxGroupField
-                control={form.control}
-                name='clientAuthenticationMethods'
-                options={clientAuthenticationMethods(authMethods, t)}
-                label={t("fields.clientAuthenticationMethods.label")}/>
-            </Card>
-
-            <Card className='p-4'>
-              <RedirectUrisField control={form.control}/>
-            </Card>
-
-            <Card className='p-4'>
-              <ToggleGroupField
-                control={form.control}
-                name="scopes"
-                label={t("fields.scopes.label")}
-                options={scopeTypes(scopes, t)}
-                showWithoutErrors/>
-            </Card>
-
+            <div className="flex flex-col gap-2">
+              <Card className='p-4'>
+                <InputField
+                  control={form.control}
+                  name="clientName"
+                  label={t("fields.clientName.label")}
+                  placeholder={t("fields.clientName.hint")}/>
+              </Card>
             
+              <Card className='break-inside-avoid p-4'>
+                <CheckboxGroupField
+                  control={form.control}
+                  name='authorizationGrantTypes'
+                  options={authorizationGrantTypes(grantTypes, t)}
+                  label={t("fields.authorizationGrantTypes.label")}/>
+              </Card>
+
+              <Card className='break-inside-avoid p-4'>
+                <CheckboxGroupField
+                  control={form.control}
+                  name='clientAuthenticationMethods'
+                  options={clientAuthenticationMethods(authMethods, t)}
+                  label={t("fields.clientAuthenticationMethods.label")}/>
+              </Card>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Card className='break-inside-avoid p-4'>
+                <RedirectUrisField control={form.control}/>
+              </Card>
+
+              <Card className='break-inside-avoid p-4'>
+                <ToggleGroupField
+                  control={form.control}
+                  name="scopes"
+                  label={t("fields.scopes.label")}
+                  options={scopeTypes(scopes, t)}
+                  showWithoutErrors/>
+              </Card>
+            </div>
+          </FieldGroupForm>
+          <div className='mt-4 grid grid-cols-1 lg:grid-cols-3 gap-2'>
+            <LinkButton variant='outline' to='/admin/oauth-clients'>
+              {t("actions.cancel")}
+            </LinkButton>
             <Button type='submit' disabled={isSubmitting}>
               {t("actions.submit")}
               {isSubmitting && <Spinner data-icon="inline-start" />}
             </Button>
-            <LinkButton variant='outline' to='/admin/oauth-clients'>
-              {t("actions.cancel")}
-            </LinkButton>
-          </FieldGroupForm>
+          </div>
         </form>
       }
     </div>
