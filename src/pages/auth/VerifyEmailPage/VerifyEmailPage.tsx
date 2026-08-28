@@ -50,6 +50,13 @@ export function VerifyEmailPage() {
       navigate("/register", {replace: true})
     }
   }
+
+  async function cancelVerifyCode() {
+    if (!!verifyEmailInfo?.verifyId) {
+      await AuthService.cancelVerifyCodeEmail(verifyEmailInfo.verifyId);  
+    }
+    navigate("/login", {replace: true})
+  }
   
 
   async function onSubmit(data: VerifyEmailForm) {
@@ -101,7 +108,7 @@ export function VerifyEmailPage() {
         </CardContent>
 
         <CardFooter className='grid grid-cols-2 gap-2 mt-8'>
-          <VerifyEmailFormActions refreshVerifyCode={refreshVerifyCode}/>
+          <VerifyEmailFormActions refreshVerifyCode={refreshVerifyCode} cancelVerifyCode={cancelVerifyCode}/>
         </CardFooter>
       </>
       }

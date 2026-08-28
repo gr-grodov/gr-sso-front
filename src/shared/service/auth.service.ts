@@ -19,6 +19,10 @@ export class AuthService {
     return await AuthApi.refreshVerifyCodeEmail(body);
   }
 
+  static async cancelVerifyCodeEmail(verifyId: string) {
+    return await AuthApi.cancelVerifyCodeEmail(verifyId)
+  }
+
   static async logout() {
     return AuthApi.logout();
   }

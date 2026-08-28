@@ -33,6 +33,12 @@ export class AuthApi {
     )
   }
 
+  static async cancelVerifyCodeEmail(verifyId: String) {
+    return await api.delete<SuccessResponse<any>>(
+      `api/auth/cancel-verify-code/${verifyId}`
+    );
+  }
+
   static async logout() {
     return api.post("/api/auth/logout");
   }

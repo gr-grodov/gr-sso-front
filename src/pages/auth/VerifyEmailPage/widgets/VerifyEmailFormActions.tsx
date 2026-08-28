@@ -1,22 +1,23 @@
 import { Button } from "@/components/ui/button";
-import { LinkButton } from "@/components/ui/link-button";
 import { TimerContainer } from "@/shared/components/TimerContainer";
 import { useTranslation } from "react-i18next";
 
 interface VerifyEmailFormActionsProps {
   refreshVerifyCode: () => void;
+  cancelVerifyCode: () => void;
 }
 
 export function VerifyEmailFormActions({
-  refreshVerifyCode
+  refreshVerifyCode,
+  cancelVerifyCode
 }: VerifyEmailFormActionsProps) {
   const { t } = useTranslation("auth", {keyPrefix: "verify_email"});
 
   return (
     <>
-      <LinkButton variant='outline' to="/login" replace={true}>
+      <Button variant='outline' onClick={cancelVerifyCode}>
         {t("actions.cancel")}
-      </LinkButton>
+      </Button>
       <TimerContainer seconds={60}>
         {({remaining, isRunning, restart}) =>
           <Button
