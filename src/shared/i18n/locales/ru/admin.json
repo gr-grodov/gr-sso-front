@@ -3,6 +3,12 @@
     "title": "OAuth-клиенты",
     "subtitle": "{{activeCount}} активных · {{allCount}} всего",
     "item": {
+      "empty_title": "OAuth клиенты не найдены",
+      "empty_description": "Обновить список клиентов?",
+
+      "loading_title": "Загружаем список OAuth клиентов",
+      "loading_description": "Пожалуйста, подождите ответа. Не обновляйте страницу",
+
       "actived": "Активен",
       "stoped": "Отключён",
 
@@ -23,6 +29,11 @@
         "authorization_code_ttl": "Время жизни Authorization Code:",
         "access_code_ttl": "Время жизни Authorization Code:",
         "refresh_token_ttl": "Время жизни Refresh Token:"
+      },
+      "actions": {
+        "active": "Активировать",
+        "disable": "Отключить",
+        "refresh": "Обновить"
       }
     },
 

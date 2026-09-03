@@ -3,16 +3,15 @@ import { EllipsisVertical, RefreshCcwDot, SquarePen, Trash } from 'lucide-react'
 import { useOAuthClientActions } from '../OAuthClientsContext';
 import { type OAuthClient } from '@/shared/api/dto/response';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 export interface OAuthClientActionMenuProps {
   client: OAuthClient
 }
 
-export function OAuthClientActionMenu({
-  client
-}: OAuthClientActionMenuProps) {
+export function OAuthClientActionMenu({client}: OAuthClientActionMenuProps) {
+  const {t} = useTranslation("admin", {keyPrefix: "oauth_clients.item.actions"})
   const { edit, changeStatus, remove } = useOAuthClientActions();
-
 
   return (
     <DropdownMenu>
@@ -29,7 +28,7 @@ export function OAuthClientActionMenu({
             <SquarePen/>Редактировать
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => changeStatus(client)}>
-            <RefreshCcwDot/>{client.status === "ACTIVE" ? "Отключить" : "Активировать"}
+            <RefreshCcwDot/>{client.status === "ACTIVE" ? t("disable") : t("active")}
           </DropdownMenuItem>
         </DropdownMenuGroup>
 
