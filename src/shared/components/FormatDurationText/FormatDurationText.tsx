@@ -1,5 +1,4 @@
 import type { TFunction } from "i18next";
-import type { ComponentPropsWithoutRef } from "react";
 import { useTranslation } from "react-i18next";
 
 type DurationUnit = {
