@@ -1,5 +1,6 @@
 import type { OAuthAuthorizationGrantType, OAuthClientAuthenticationMethod, OAuthScope } from "@/shared/api/dto/response";
 import type { CheckboxOption } from "@/shared/components/CheckboxGroupField/CheckboxGroupField";
+import type { RadioGroupOption } from "@/shared/components/RadioGroupField";
 import type { ToggleOption } from "@/shared/components/ToggleGroupField/ToggleGroupField";
 import type { TFunction } from "i18next";
 
@@ -29,5 +30,41 @@ export function scopeTypes(scopes: OAuthScope[], t: TFunction): ToggleOption[] {
       value: scope,
       label: t(`fields.scopes.${scope}`, {defaultValue: scope})
     }
+  });
+}
+
+export function authorizationCodeTimeToLives(t: TFunction): RadioGroupOption[] {
+  const valueSeconds = [300, 900, 1800];
+  return valueSeconds.map((seconds) => {
+    return {
+      value: seconds,
+      label: t(`fields.tokenSettings.authorizationCodeTimeToLive.${seconds}_seconds`, {
+        defaultValue: t("fields.tokenSettings.authorizationCodeTimeToLive.value_seconds", {seconds: seconds})
+      })
+    };
+  });
+} 
+
+export function accessTokenTimeToLives(t: TFunction): RadioGroupOption[] {
+  const valueSeconds = [300, 900, 1800, 3600, 21600];
+  return valueSeconds.map((seconds) => {
+    return {
+      value: seconds,
+      label: t(`fields.tokenSettings.accessTokenTimeToLive.${seconds}_seconds`, {
+        defaultValue: t("fields.tokenSettings.accessTokenTimeToLive.value_seconds", {seconds: seconds})
+      })
+    };
+  });
+} 
+
+export function refreshTokenTimeToLives(t: TFunction): RadioGroupOption[] {
+  const valueSeconds = [3600, 86400, 604800, 1209600, 2592000, 7776000];
+  return valueSeconds.map((seconds) => {
+    return {
+      value: seconds,
+      label: t(`fields.tokenSettings.refreshTokenTimeToLive.${seconds}_seconds`, {
+        defaultValue: t("fields.tokenSettings.refreshTokenTimeToLive.value_seconds", {seconds: seconds})
+      })
+    };
   });
 }

@@ -4,7 +4,7 @@ import {
   type FieldPath,
   type FieldValues,
 } from "react-hook-form";
-import { Field, FieldError, FieldLegend } from "@/components/ui/field";
+import { Field, FieldDescription, FieldError, FieldLegend } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import * as React from "react";
 
@@ -13,6 +13,7 @@ type InputFieldProps<T extends FieldValues> = {
   name: FieldPath<T>;
 
   label?: string;
+  description?: string,
   placeholder?: string;
   showWithoutErrors?: boolean;
 
@@ -26,6 +27,7 @@ export function InputField<T extends FieldValues>({
   control,
   name,
   label,
+  description,
   placeholder,
   showWithoutErrors,
   afterInput,
@@ -39,24 +41,25 @@ export function InputField<T extends FieldValues>({
       render={({ field, fieldState }) => (
         <>
           {!!label && <FieldLegend>{label}</FieldLegend>}
+          {!!description && <FieldDescription>{description}</FieldDescription>}
           <Field data-invalid={fieldState.invalid}>
-          <Input
-            {...field}
-            value={field.value ?? ""}
-            id={name}
-            type={type}
-            placeholder={placeholder}
-            autoComplete={autoComplete}
-            aria-invalid={fieldState.invalid}
-          />
+            <Input
+              {...field}
+              value={field.value ?? ""}
+              id={name}
+              type={type}
+              placeholder={placeholder}
+              autoComplete={autoComplete}
+              aria-invalid={fieldState.invalid}
+            />
 
-          <FieldError
-            showWithoutErrors={showWithoutErrors}
-            errors={[fieldState.error]}
-          />
+            <FieldError
+              showWithoutErrors={showWithoutErrors}
+              errors={[fieldState.error]}
+            />
 
-          {afterInput?.(field.value ?? "")}
-        </Field>
+            {afterInput?.(field.value ?? "")}
+          </Field>
         </>
       )}
     />

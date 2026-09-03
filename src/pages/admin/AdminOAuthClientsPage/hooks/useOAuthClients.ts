@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import { OAuthClientService } from "@/shared/service";
-import {  type OAuthClientShort, type OAuthClientStatus } from "@/shared/api/dto/response";
+import {  type OAuthClient, type OAuthClientStatus } from "@/shared/api/dto/response";
 
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
 import { applyApiErrorToToast } from "@/shared/api/utils/apply-errors-toast";
@@ -12,22 +12,22 @@ import { applyApiErrorToToast } from "@/shared/api/utils/apply-errors-toast";
 export function useOAuthClients() {
   const navigate = useNavigate();
 
-  const [clients, setClients] = useState<OAuthClientShort[]>([]);
+  const [clients, setClients] = useState<OAuthClient[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const edit = useCallback((client: OAuthClientShort) => {
+  const edit = useCallback((client: OAuthClient) => {
     navigate(client.id);
   }, [navigate]);
 
 
 
-  const updateClient = useCallback((updatedClient: OAuthClientShort) => {
+  const updateClient = useCallback((updatedClient: OAuthClient) => {
     setClients((clients) =>
       clients.map((client) => client.id === updatedClient.id ? updatedClient : client)
     );
   }, []);
 
-  const changeStatus = useCallback(async (client: OAuthClientShort) => {
+  const changeStatus = useCallback(async (client: OAuthClient) => {
     try {
       const status: OAuthClientStatus = client.status === "ACTIVE" ? "DISABLED" : "ACTIVE";
       const response = await OAuthClientService.changeStatusOAuthClient(client.id, status);
@@ -47,7 +47,7 @@ export function useOAuthClients() {
     );
   }, []);
 
-  const remove = useCallback(async (client: OAuthClientShort) => {
+  const remove = useCallback(async (client: OAuthClient) => {
     try {
       await OAuthClientService.deleteOAuthClient(client.id);
 

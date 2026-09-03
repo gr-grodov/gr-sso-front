@@ -25,7 +25,78 @@ export const oauthClientSchema = z.object({
 
   scopes: z
     .array(z.string())
-    .min(1, {error: tError("scopes.min")})
+    .min(1, {error: tError("scopes.min")}),
+
+  clientSettings: z.object({
+    requireAuthorizationConsent: z.boolean(),
+    requireProofKey: z.boolean(),
+    jwkSetUrl: z
+      .string()
+      .nonempty({error: tError("jwkSetUrl.empty")})
+      .url({error: tError("jwkSetUrl.invalid")}),
+    oidcLogoutRedirectUri: z
+      .string()
+      .nonempty({error: tError("jwkSetUrl.empty")})
+      .url({error: tError("oidcLogoutRedirectUri.empty")}),
+    tokenEndpointAuthenticationSigningAlgorithm: z
+      .string()
+  }),
+
+  tokenSettings: z.object({
+    authorizationCodeTimeToLive: z
+      .number({error: tError("authorizationCodeTimeToLive.empty")})
+      .optional(),
+    accessTokenTimeToLive: z
+      .number({error: tError("accessTokenTimeToLive.empty")})
+      .min(5, {error: tError("accessTokenTimeToLive.min")}),
+    refreshTokenTimeToLive: z
+      .number()
+      .optional(),
+    reuseRefreshTokens: z.boolean(),
+  })
+}).superRefine((data, ctx) => {
+  if (data.authorizationGrantTypes.includes("REFRESH_TOKEN")) {
+    if (!data.tokenSettings.refreshTokenTimeToLive) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: tError("refreshTokenTimeToLive.empty"),
+        path: ["tokenSettings", "refreshTokenTimeToLive"]
+      });
+    } else if (data.tokenSettings.refreshTokenTimeToLive && data.tokenSettings.refreshTokenTimeToLive < 5) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: tError("refreshTokenTimeToLive.min"),
+        path: ["tokenSettings", "refreshTokenTimeToLive"]
+      });
+    }
+  }
+
+  if (data.authorizationGrantTypes.includes("AUTHORIZATION_CODE")) {
+    if (!data.tokenSettings.authorizationCodeTimeToLive) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: tError("authorizationCodeTimeToLive.empty"),
+        path: ["tokenSettings", "authorizationCodeTimeToLive"]
+      });
+    } else if (data.tokenSettings.authorizationCodeTimeToLive && data.tokenSettings.authorizationCodeTimeToLive < 5) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: tError("authorizationCodeTimeToLive.min"),
+        path: ["tokenSettings", "authorizationCodeTimeToLive"]
+      });
+    }
+  }
+
+  if (data.clientAuthenticationMethods.includes("NONE")) {
+    if (!data.clientSettings.requireProofKey) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: tError("requireProofKey.requred"),
+        path: ["clientSettings", "requireProofKey"]
+      });
+    }
+  }
+
 });
 
 export type OauthClientSchema = z.infer<typeof oauthClientSchema>;

@@ -10,17 +10,19 @@ interface FieldGroupFormProps extends ComponentPropsWithoutRef<typeof FieldGroup
 
 export function FieldGroupForm({errorMessage, children, ...props}: FieldGroupFormProps) {
   return (
-    <FieldGroup {...props}>
+    <>
       {getAlert(errorMessage)}
-      {children}
-    </FieldGroup>
+      <FieldGroup {...props}>
+        {children}
+      </FieldGroup>
+    </>
   )
 }
 
 function getAlert(errorMessage?: string) {
   if (errorMessage) {
     return (
-      <Alert variant="destructive" className="w-full">
+      <Alert variant="destructive" className="w-full mb-2">
         <AlertCircleIcon/>
         <AlertTitle>{errorMessage}</AlertTitle>
       </Alert>

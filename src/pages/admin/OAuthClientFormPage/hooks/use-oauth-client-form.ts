@@ -41,6 +41,8 @@ export function useOAuthClientForm(
         setGrantTypes(grantTypes.data);
         setAuthMethods(authMethods.data);
       } catch (err) {
+        console.log(err);
+        
         const error = await ErrorUtils.getErrorResponse(err);
         applyApiErrorsToForm(error, form.setError, setErrorMessage);
       }
@@ -54,15 +56,13 @@ export function useOAuthClientForm(
     resolver: zodResolver(oauthClientSchema),
 
     defaultValues: async () => {
-      if (!id) {
-        return createEmptyOAuthClient();
-      }
-
       try {
         const response = await OAuthClientService.getOAuthClient(id);
 
         return toOAuthClientForm(response.data);
       } catch (err) {
+        console.log(err);
+        
         const error = await ErrorUtils.getErrorResponse(err);
         applyApiErrorsToForm(error, form.setError, setErrorMessage);
 

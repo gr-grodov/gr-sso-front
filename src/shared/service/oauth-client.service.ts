@@ -44,7 +44,7 @@ export class OAuthClientService {
   }
 
 
-  static async getOAuthClient(id: string) {
+  static async getOAuthClient(id: string | undefined) {
     return await OAuthClientApi.getOAuthClient(id);
   }
 

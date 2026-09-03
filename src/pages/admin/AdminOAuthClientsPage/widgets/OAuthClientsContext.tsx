@@ -5,12 +5,12 @@ import {
   type PropsWithChildren,
 } from "react";
 
-import type { OAuthClientShort } from "@/shared/api/dto/response";
+import type { OAuthClient } from "@/shared/api/dto/response";
 
 interface OAuthClientActionsContextValue {
-  edit: (client: OAuthClientShort) => void;
-  changeStatus: (client: OAuthClientShort) => void;
-  remove: (client: OAuthClientShort) => void;
+  edit: (client: OAuthClient) => void;
+  changeStatus: (client: OAuthClient) => void;
+  remove: (client: OAuthClient) => void;
   refresh: () => void;
 }
 

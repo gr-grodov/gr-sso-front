@@ -20,7 +20,7 @@ export class OAuthClientApi {
 
 
   static async listOAuthClient() {
-    return await api.get<OAuthClientShort[]>("/api/admin/oauth-client/list")
+    return await api.get<OAuthClient[]>("/api/admin/oauth-client/list")
   }
 
 
@@ -39,8 +39,11 @@ export class OAuthClientApi {
   }
 
 
-  static async getOAuthClient(id: string) {
-    return await api.get<OAuthClient>(`/api/admin/oauth-client/${id}`)
+  static async getOAuthClient(id: string | undefined) {
+    return await api.get<OAuthClient>(
+      "/api/admin/oauth-client/get",
+      { params: {id: id} }
+    )
   }
 
 
@@ -53,7 +56,7 @@ export class OAuthClientApi {
 
 
   static async changeStatusOAuthClient(body: OAuthClientChangeStatusRequest) {
-    return await api.patch<OAuthClientShort>(
+    return await api.patch<OAuthClient>(
       "/api/admin/oauth-client/status",
       body
     )

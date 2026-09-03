@@ -18,6 +18,7 @@ export type OAuthClientStatus = "ACTIVE" | "DISABLED";
 
 export type OAuthScope = string;
 
+
 export interface OAuthClient {
   id: string;
   clientId: string;
@@ -28,6 +29,19 @@ export interface OAuthClient {
   redirectUris: string[];
   postLogoutRedirectUris: string[];
   scopes: OAuthScope[];
+  clientSettings: {
+    requireAuthorizationConsent: boolean;
+    requireProofKey: boolean;
+    jwkSetUrl: string;
+    oidcLogoutRedirectUri: string;
+    tokenEndpointAuthenticationSigningAlgorithm: string;
+  };
+  tokenSettings: {
+    authorizationCodeTimeToLive: number;
+    accessTokenTimeToLive: number;
+    refreshTokenTimeToLive: number;
+    reuseRefreshTokens: boolean;
+  };
   status: OAuthClientStatus;
   createdAt: string;
   updatedAt: string;

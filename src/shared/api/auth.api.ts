@@ -1,7 +1,7 @@
 import { api } from "./config/api";
 
 import type { RegisterRequest, LoginRequest, VerifyEmailRequest, RefreshVerifyCodeRequest } from "./dto/requests";
-import { type VerifyEmailResponse, type RegisterResponse, type SuccessResponse } from "./dto/response";
+import { type RegisterResponse, type SuccessResponse } from "./dto/response";
 
 export class AuthApi {
 

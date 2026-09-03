@@ -13,6 +13,7 @@ export function OAuthClientFormPage() {
 
   const { id } = useParams();
   const oAuthClientId = id !== "new" ? id : undefined;
+  
 
   const [credentials, setCredentials] = useState<OAuthClientSecretInfoResponse | null>(null);
 
@@ -32,7 +33,7 @@ export function OAuthClientFormPage() {
 
   return (
     <AdminContentBlock 
-      title={id ? t("title_edit_client") : t("title_create_client")}
+      title={!!oAuthClientId ? t("title_edit_client") : t("title_create_client")}
       subtitle={t("subtitle")}
     >
 

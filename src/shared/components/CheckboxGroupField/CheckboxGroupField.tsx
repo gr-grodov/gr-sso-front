@@ -1,6 +1,5 @@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet } from '@/components/ui/field';
-import { Label } from '@/components/ui/label';
 import { Controller, type Control, type FieldPath, type FieldValues } from 'react-hook-form';
 
 export type CheckboxOption = {

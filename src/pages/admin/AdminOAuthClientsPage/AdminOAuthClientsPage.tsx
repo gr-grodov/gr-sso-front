@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { LinkButton } from "@/components/ui/link-button";
 import { AdminContentBlock } from "@/shared/widgets/AdminContentBlock";
 import { Plus } from "lucide-react";
@@ -26,17 +25,13 @@ export function AdminOAuthClientsPage() {
       title={t("title")} 
       subtitle={t("subtitle", {activeCount: activeClientCount, allCount: clients.length})}
     >
-      <Card>
-        <CardContent>
-          <OAuthClientActionsProvider 
-            edit={edit}
-            changeStatus={changeStatus} 
-            remove={remove}
-            refresh={refresh} >
-            <OAuthClientsContent loading={loading} clients={clients}/>
-          </OAuthClientActionsProvider>
-        </CardContent>
-      </Card>
+      <OAuthClientActionsProvider 
+        edit={edit}
+        changeStatus={changeStatus} 
+        remove={remove}
+        refresh={refresh} >
+        <OAuthClientsContent loading={loading} clients={clients}/>
+      </OAuthClientActionsProvider>
 
       <LinkButton size="lg" to='new' className="fixed right-4 bottom-4 z-50">
         <Plus/>Добавить

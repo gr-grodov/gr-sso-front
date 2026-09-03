@@ -1,10 +1,11 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { EllipsisVertical, RefreshCcwDot, SquarePen, Trash } from 'lucide-react';
 import { useOAuthClientActions } from '../OAuthClientsContext';
-import { type OAuthClientShort } from '@/shared/api/dto/response';
+import { type OAuthClient } from '@/shared/api/dto/response';
+import { Button } from '@/components/ui/button';
 
 export interface OAuthClientActionMenuProps {
-  client: OAuthClientShort
+  client: OAuthClient
 }
 
 export function OAuthClientActionMenu({
@@ -16,7 +17,9 @@ export function OAuthClientActionMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <EllipsisVertical size={12}/>
+        <Button size='icon-sm' variant='ghost'>
+          <EllipsisVertical size={12}/>
+        </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>

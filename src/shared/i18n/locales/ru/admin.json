@@ -2,13 +2,28 @@
   "oauth_clients": {
     "title": "OAuth-клиенты",
     "subtitle": "{{activeCount}} активных · {{allCount}} всего",
-    "headers": {
-      "app_name": "Приложение",
-      "client_id": "Client ID",
-      "redirect_uri": "Redirect URIs",
-      "scopes": "Scopes",
-      "status": "Статус",
-      "created": "Создан"
+    "item": {
+      "actived": "Активен",
+      "stoped": "Отключён",
+
+      "titles": {
+        "info_app": "Основная информация о приложении:",
+        "redirect_uri": "Redirect URIs:",
+        "scopes": "Scopes:",
+        "created": "Создан:",
+
+        "client_settings": "Настройки клиента:",
+        "require_consent": "Требование подтверждения разрешений:",
+        "require_pkce": "Требование реализации механизма PKCE:",
+        "uri_jwk": "URI клиента, где находятся его публичные JWK-ключи:",
+        "uri_oidc_logout": "OIDC Logout Redisrect URI:",
+
+        "token_settings": "Настройка токенов:",
+        "reuse_refresh_tokens": "Генерирация нового Refresh Token обновлении:",
+        "authorization_code_ttl": "Время жизни Authorization Code:",
+        "access_code_ttl": "Время жизни Authorization Code:",
+        "refresh_token_ttl": "Время жизни Refresh Token:"
+      }
     },
 
 
@@ -42,7 +57,7 @@
             "description": "Используется, когда клиент предъявляет готовый JWT, выпущенный внешней доверенной стороной"
           },
           "DEVICE_CODE": {
-            "label": "Authorization Code",
+            "label": "Device Code",
             "description": "Используется, когда устройство не имеет браузера и/или клавиатуры (Smart TV, консолей, IoT — устройств). Пользователь подтверждает вход с другого устройства"
           },
           "TOKEN_EXCHANGE": {
@@ -91,6 +106,58 @@
           "label": "Разрешения (Scopes)",
           "EMAIL": "Электронная почта",
           "PROFILE": "Данные профиля"
+        },
+        "clientSettings": {
+          "label": "Настройка клиента",
+          "requireAuthorizationConsent": {
+            "label": "Отображать страницу запрашиваемых разрешений"
+          },
+          "requireProofKey": {
+            "label": "Требование реализации механизма PKCE"
+          },
+          "jwkSetUrl": {
+            "label": "URI клиента, где находятся его публичные JWK-ключи",
+            "placeholder": "https://example.com/.well-known/jwks.json"
+          },
+          "oidcLogoutRedirectUri": {
+            "label": "URI для выхода из системы пользователя (OIDC Logout Redisrect URI)",
+            "placeholder": "https://example.com/logout/connect/back-channel/grsso"
+          }
+        },
+        "tokenSettings": {
+          "label": "Настройка токенов",
+          "reuseRefreshTokens": {
+            "label": "Генерировать новый Refresh Token при каждом обновлении"
+          },
+          "authorizationCodeTimeToLive": {
+            "label": "Время жизни Authorization Code",
+            "300_seconds": "5 минут",
+            "900_seconds": "15 минут",
+            "1800_seconds": "30 минут",
+            "value_seconds": "{{seconds}} секунд",
+            "custom_value_label": "Указать время жизни Authorization Code (в секундах)"
+          },
+          "accessTokenTimeToLive": {
+            "label": "Время жизни Access Token",
+            "300_seconds": "5 минут",
+            "900_seconds": "15 минут",
+            "1800_seconds": "30 минут",
+            "3600_seconds": "1 час",
+            "21600_seconds": "6 часов",
+            "value_seconds": "{{seconds}} секунд",
+            "custom_value_label": "Указать время жизни Access Token (в секундах)"
+          },
+          "refreshTokenTimeToLive": {
+            "label": "Время жизни Refresh Token",
+            "3600_seconds": "1 час",
+            "86400_seconds": "1 день",
+            "604800_seconds": "1 неделя",
+            "1209600_seconds": "2 недели",
+            "2592000_seconds": "1 месяц",
+            "7776000_seconds": "3 месяца",
+            "value_seconds": "{{seconds}} секунд",
+            "custom_value_label": "Указать время жизни Refresh Token (в секундах)"
+          }
         }
       },
 

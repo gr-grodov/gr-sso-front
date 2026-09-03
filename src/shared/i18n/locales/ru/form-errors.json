@@ -38,6 +38,30 @@
   "scopes": {
     "min": "Выберите минимум один Scope"
   },
+  "requireProofKey": {
+    "requred": "Обязательный параметр"
+  },
+  "jwkSetUrl": {
+    "empty": "Укажите URL с публичными JWK-ключами",
+    "invalid": "Некорректный адрес"
+  },
+  "oidcLogoutRedirectUri": {
+    "empty": "Укажите OIDC Logout Redisrect URI",
+    "invalid": "Некорректный адрес"
+  },
+  "authorizationCodeTimeToLive": {
+    "empty": "Укажите время жизни Authorization Code",
+    "min": "Время жизни Authorization Code должно быть больше минуты"
+  },
+  "accessTokenTimeToLive": {
+    "empty": "Укажите время жизни Access Token",
+    "min": "Время жизни Access Token должно быть больше пяти минут"
+  },
+  "refreshTokenTimeToLive": {
+    "empty": "Укажите время жизни Refresh Token",
+    "min": "Время жизни Refresh Token должно быть больше пяти минут"
+  },
+
 
   "verifyId": {
     "empty": "ID не может пустый"

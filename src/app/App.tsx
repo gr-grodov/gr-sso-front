@@ -31,7 +31,6 @@ function App() {
           <Route element={<RoleGuard roles={['ADMIN']}/>}>
             <Route path='/admin' element={<AdminPanelPage/>}>
               <Route path='oauth-clients' element={<AdminOAuthClientsPage/>}/>
-              <Route path='oauth-clients/new' element={<OAuthClientFormPage/>}/>
               <Route path='oauth-clients/:id' element={<OAuthClientFormPage/>}/>
 
               <Route path='oauth-users' element={<AdminOAuthUsersPage/>}/>

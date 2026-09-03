@@ -7,5 +7,4 @@ export const tError = (key: string, options?: Record<string, unknown>): string =
     return tError("errors:global.default");
   }
   return message;
-}
-  ;
+};

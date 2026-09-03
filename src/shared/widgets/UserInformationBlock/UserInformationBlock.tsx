@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useAuth } from '@/features/auth';
-import { UserAvatar } from '@/shared/components/UserAvatar';
+import { AppAvatar } from '@/shared/components/AppAvatar';
 import { LogOut } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
@@ -21,7 +21,7 @@ export function UserInformationBlock() {
       <DropdownMenu>
         <DropdownMenuTrigger render={
           <div className='flex flex-row items-center gap-2'>
-            <UserAvatar email={user.email}/>
+            <AppAvatar value={user.email}/>
             <span className='text-xs'>{user.email}</span>
           </div>
         }/>

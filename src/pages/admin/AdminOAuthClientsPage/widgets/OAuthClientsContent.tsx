@@ -1,11 +1,11 @@
-import { type OAuthClientShort } from '@/shared/api/dto/response/oauth-client-short.response';
-import OAuthClientsLoading from './table-states/OAuthClientsLoading';
-import OAuthClientsEmpty from './table-states/OAuthClientsEmpty';
-import OAuthClientsData from './table-states/OAuthClientsTable';
+import OAuthClientsLoading from './data-states/OAuthClientsLoading';
+import OAuthClientsEmpty from './data-states/OAuthClientsEmpty';
+import { OAuthClientsData } from './data-states/OAuthClientData';
+import type { OAuthClient } from '@/shared/api/dto/response';
 
 interface OAuthClientsContentProps  {
   loading: boolean,
-  clients: OAuthClientShort[];
+  clients: OAuthClient[];
 }
 
 export function OAuthClientsContent({

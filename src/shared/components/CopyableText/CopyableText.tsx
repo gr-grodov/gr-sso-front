@@ -65,15 +65,15 @@ export function CopyableText({
 
   return (
     <div className={cn(copyableTextVariants({ variant, size, className }))}>
-      <span>{value}</span>
+      <span className="truncate">{value}</span>
 
       <Button
         variant="ghost"
-        size="icon"
+        size="icon-sm"
         onClick={handleCopy}
       >
         {copied ? (
-          <Check className="text-green-500" />
+          <Check className="text-allowed" />
         ) : (
           <Copy className="text-foreground"/>
         )}
