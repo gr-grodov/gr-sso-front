@@ -41,7 +41,7 @@ export function OAuthSessionItem({
                   ? <span>{t("diff_now_last_enter.now_enter")}</span>
                   : <FormatDurationText 
                       seconds={session.diffNowAndLastEnter} 
-                      withoutUnit={["seconds", "minutes"]} 
+                      withoutUnit={session.diffNowAndLastEnter > 3600 ? ["seconds", "minutes"] : ["seconds"]} 
                       message={((duration) => t("diff_now_last_enter.duration", {duration: duration}))}
                     />
                 }
