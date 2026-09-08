@@ -62,7 +62,7 @@ export const oauthClientSchema = z.object({
         message: tError("refreshTokenTimeToLive.empty"),
         path: ["tokenSettings", "refreshTokenTimeToLive"]
       });
-    } else if (data.tokenSettings.refreshTokenTimeToLive && data.tokenSettings.refreshTokenTimeToLive < 5) {
+    } else if (data.tokenSettings.refreshTokenTimeToLive && data.tokenSettings.refreshTokenTimeToLive < 300) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: tError("refreshTokenTimeToLive.min"),
@@ -78,7 +78,7 @@ export const oauthClientSchema = z.object({
         message: tError("authorizationCodeTimeToLive.empty"),
         path: ["tokenSettings", "authorizationCodeTimeToLive"]
       });
-    } else if (data.tokenSettings.authorizationCodeTimeToLive && data.tokenSettings.authorizationCodeTimeToLive < 5) {
+    } else if (data.tokenSettings.authorizationCodeTimeToLive && data.tokenSettings.authorizationCodeTimeToLive < 300) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: tError("authorizationCodeTimeToLive.min"),

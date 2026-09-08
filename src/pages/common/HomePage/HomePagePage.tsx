@@ -1,8 +1,20 @@
+import { CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { oauth2FlowContinue } from '@/features/oauth2/oauth2-flow-continue';
+import { AppCardBlock } from '@/shared/widgets/AppCardBlock';
 import { UserInformationBlock } from '@/shared/widgets/UserInformationBlock'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
+import { OAuth2SessionList } from './widgets/OAuth2SessionList';
+import { useTranslation } from 'react-i18next';
+import { useAuth } from '@/features/auth';
+import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
+import { useOAuth2Session } from './hooks/useOAuth2Session';
+import { OAuth2SessionLoading } from './widgets/OAuth2SessionLoading';
 
 export function HomePage() {
+  const {t} = useTranslation("common", {keyPrefix: "session"});
+  const [sessions, currDeviceSessions, loading, refresh, deleteSession] = useOAuth2Session();
+  const {user} = useAuth();
 
   useEffect(() => {
     async function continueOAuth2() {
@@ -14,7 +26,32 @@ export function HomePage() {
 
   return (
     <>
-      <UserInformationBlock/>
+      <AppCardBlock>
+        <CardHeader className='flex flex-row justify-between items-center'>
+          <div>
+            <h3 className="font-semibold">{t("title")}</h3>
+            <p>{t("subtitle.active_session", {count: (currDeviceSessions.length + sessions.length), email: user?.email})}</p>
+          </div>
+          <Button size='icon' variant='ghost' onClick={refresh}>
+            <Spinner type='REFRESH' enabled={loading}/>
+          </Button>
+        </CardHeader>
+
+        <CardContent>
+          {loading && (sessions.length === 0 && currDeviceSessions.length === 0)
+            ? <OAuth2SessionLoading/>
+            : <OAuth2SessionList 
+                sessions={sessions} 
+                currDeviceSessions={currDeviceSessions}
+                deleteSession={deleteSession}
+              />
+          }
+        </CardContent>
+
+        <CardFooter className='w-full flex flex-row justify-between mt-4'>
+          <UserInformationBlock/>
+        </CardFooter>
+      </AppCardBlock>
     </>
   )
 }

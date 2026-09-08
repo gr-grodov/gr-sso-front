@@ -12,3 +12,4 @@ export type {
 } from "./oauth-client.response";
 export type { RedirectResponse } from "./redirect-response";
 export type {RegisterResponse} from "./register.response";
+export type {OAuth2SessionResponse, OAuth2Session, DeviceType} from "./oauth-session.response";

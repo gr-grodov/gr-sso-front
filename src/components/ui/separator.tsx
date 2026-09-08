@@ -6,16 +6,21 @@ import { cn } from "@/lib/utils"
 import {cva, type VariantProps} from "class-variance-authority";
 
 const separatorVariants = cva(
-  "shrink-0 bg-border",
+  "shrink-0",
   {
     variants: {
       orientation: {
-        horizontal: "h-px w-full",
-        vertical: "w-px h-full"
+        horizontal: "h-[0.5px] w-full",
+        vertical: "w-[0.5px] h-full"
+      },
+      variant: {
+        default: "bg-border",
+        muted: "bg-muted"
       }
     },
     defaultVariants: {
       orientation: "horizontal",
+      variant: "default"
     },
   },
 
@@ -24,13 +29,14 @@ const separatorVariants = cva(
 function Separator({
   className,
   orientation = "horizontal",
+  variant = 'default',
   ...props
 }: SeparatorPrimitive.Props & VariantProps<typeof separatorVariants>) {
   return (
     <SeparatorPrimitive
       data-slot="separator"
       orientation={orientation}
-      className={cn(separatorVariants({orientation, className}))}
+      className={cn(separatorVariants({orientation, variant, className}))}
       {...props}
     />
   )

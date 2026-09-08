@@ -15,6 +15,7 @@
   --secondary-foreground: oklch(1.0000 0 0);
   --muted: oklch(0.9551 0 0);
   --muted-foreground: oklch(49.97% 0.00006 271.152);
+  --hint: oklch(49.97% 0.00006 271.152);
   --accent: oklch(0.7686 0.1647 70.0804);
   --accent-foreground: oklch(0 0 0);
   --destructive: oklch(0.6368 0.2078 25.3313);
@@ -73,6 +74,7 @@
   --secondary-foreground: oklch(0 0 0);
   --muted: oklch(0.3211 0 0);
   --muted-foreground: oklch(0.8452 0 0);
+  --hint: oklch(0.8452 0 0);
   --accent: oklch(0.8790 0.1534 91.6054);
   --accent-foreground: oklch(0 0 0);
   --destructive: oklch(0.7106 0.1661 22.2162);
@@ -128,6 +130,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-hint: var(--hint);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
@@ -156,10 +159,10 @@
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) * 1.25);
 
   --shadow-2xs: var(--shadow-2xs);
   --shadow-xs: var(--shadow-xs);
@@ -178,6 +181,35 @@
   --tracking-widest: calc(var(--tracking-normal) + 0.1em);
 }
 
+@theme {
+  --animate-collapsible-down: collapsible-down 200ms ease-out;
+  --animate-collapsible-up: collapsible-up 200ms ease-out;
+
+  @keyframes collapsible-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+
+    to {
+      height: var(--radix-collapsible-content-height);
+      opacity: 1;
+    }
+  }
+
+  @keyframes collapsible-up {
+    from {
+      height: var(--radix-collapsible-content-height);
+      opacity: 1;
+    }
+
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -194,7 +226,7 @@
   }
 
   html, body, #root {
-    height: 100%;
+    height: 100vh;
   }
 
   body {

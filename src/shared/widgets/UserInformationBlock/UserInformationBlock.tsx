@@ -17,10 +17,10 @@ export function UserInformationBlock() {
   }
 
   return (
-    <div className='flex flex-row justify-between'>
+    <div className='flex flex-row items-center justify-between w-full'>
       <DropdownMenu>
         <DropdownMenuTrigger render={
-          <div className='flex flex-row items-center gap-2'>
+          <div className='flex flex-row items-center gap-2 hover:cursor-pointer hover:bg-muted rounded-lg p-0.5'>
             <AppAvatar value={user.email}/>
             <span className='text-xs'>{user.email}</span>
           </div>

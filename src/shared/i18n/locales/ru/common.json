@@ -1,7 +1,75 @@
 {
-  "home": {
-    "title": "Управление сервисами",
-    "subtitle": "Подключенные сервисы",
+  "session": {
+    "title": "Активные сессии",
+    "subtitle_one": "{{count}} Подключенные сервисы",
+    "subtitle": {
+      "active_session_one": "{{count}} активная сессия · {{email}}",
+      "active_session_few": "{{count}} активные сессии · {{email}}",
+      "active_session_many": "{{count}} активных сессий · {{email}}",
+      "active_session_other": "{{count}} активные сессии · {{email}}"
+    },
+
+    "sessions_title": {
+      "current_device": "Сессии текущего устройства:",
+      "other_devices": "Все сессии:"
+    },
+
+    "item": {
+      "title": "{{operationSystem}} · {{agentNameVersion}}",
+      "description": "{{clientName}} · {{city}}, {{country}}",
+      "diff_now_last_enter": {
+        "now_enter": "Только что",
+        "duration": "{{duration}} назад"
+      },
+      "session_info": {
+        "ip_address": "IP-адрес",
+        "application": "Приложение",
+        "os": "ОС",
+        "browser": "Браузер",
+        "device": "Устройство",
+        "location": "Местонахождение",
+        "user_agent": "User-Agent"
+      },
+      "device_class": {
+        "DESKTOP": "Настольный компьютер",
+        "ANONYMIZED": "Анонимизированное устройство",
+        "MOBILE": "Мобильное устройство",
+        "TABLET": "Планшет",
+        "PHONE": "Телефон",
+        "WATCH": "Умные часы",
+        "AUGMENTED_REALITY": "Дополненная реальность",
+        "VIRTUAL_REALITY": "Виртуальная реальность",
+        "E_READER": "Электронная книга",
+        "SET_TOP_BOX": "ТВ-приставка",
+        "TV": "Телевизор",
+        "GAME_CONSOLE": "Игровая консоль",
+        "HANDHELD_GAME_CONSOLE": "Портативная игровая консоль",
+        "HOME_APPLIANCE": "Бытовая техника",
+        "VOICE": "Голосовое устройство",
+        "SMART_DISPLAY": "Умный дисплей",
+        "CAR": "Автомобиль",
+        "CLOUD": "Облако",
+        "ROBOT": "Робот",
+        "ROBOT_MOBILE": "Мобильный робот",
+        "ROBOT_IMITATOR": "Робот-имитатор",
+        "HACKER": "Хакер",
+        "UNKNOWN": "Неизвестно",
+        "UNCLASSIFIED": "Неклассифицированное устройство"
+      },
+      "actions": {
+        "delete_hint": "Завершить эту сессию?",
+        "delete": "Завершить"
+      },
+      "dialog_delete": {
+        "title": "Завершение сессии",
+        "description": "Вы уверены, что хотите завершить сессии приложения",
+        "description_device": "на устройстве {{os}} ({{browser}})?",
+        "actions": {
+          "cancel": "Отмена",
+          "submit": "Завершить"
+        }
+      }
+    },
 
     "actions": {
       "delete": "Удалить",
@@ -17,10 +85,15 @@
       "session": "Активные сессии",
       "admin": "Админ панель"
     },
-    "hint_logout": "Выйти из аккаунта"
+    "logout_hint": "Выйти из аккаунта"
   },
 
   "duration": {
+    "years_one": "{{count}} год",
+    "years_few": "{{count}} года",
+    "years_many": "{{count}} годов",
+    "years_other": "{{count}} года",
+
     "months_one": "{{count}} месяц",
     "months_few": "{{count}} месяца",
     "months_many": "{{count}} месяцев",

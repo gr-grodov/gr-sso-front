@@ -1,11 +1,29 @@
 import { cn } from "@/lib/utils"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { Loading03Icon } from "@hugeicons/core-free-icons"
+import { LoaderCircle, RefreshCcw, RefreshCw } from "lucide-react"
 
-function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
+type SpinnerType = "LOAD" | "REFRESH";
+
+type SpinnerProps = React.ComponentProps<"svg"> & {
+  type?: SpinnerType;
+  enabled?: boolean;
+};
+
+function Spinner({
+  type = "LOAD",
+  enabled = true,
+  className,
+  ...props
+}: SpinnerProps) {
+  const Icon = type === "REFRESH" ? RefreshCw : LoaderCircle;
+
   return (
-    <HugeiconsIcon icon={Loading03Icon} strokeWidth={2} data-slot="spinner" role="status" aria-label="Loading" className={cn("size-4 animate-spin", className)} {...props} />
-  )
+    <Icon
+      role="status"
+      aria-label="Loading"
+      className={cn(`size-4 ${enabled && 'animate-spin'}`, className)}
+      {...props}
+    />
+  );
 }
 
-export { Spinner }
+export { Spinner };

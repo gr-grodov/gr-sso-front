@@ -14,8 +14,8 @@ export function setupCsrfInterceptor(api: AxiosInstance): void {
 }
 
 function getCookie(name: string): string | null {
-    return document.cookie
-        .split("; ")
-        .find(c => c.startsWith(name + "="))
-        ?.split("=")[1] ?? null;
+  return document.cookie
+    .split("; ")
+    .find(c => c.startsWith(name + "="))
+    ?.split("=")[1] ?? null;
 }
