@@ -8,10 +8,10 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/features/auth';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
-import { useOAuth2Session } from './hooks/useOAuth2Session';
+import { useOAuth2Session } from './hooks/use-oauth2-session';
 import { OAuth2SessionLoading } from './widgets/OAuth2SessionLoading';
 
-export function HomePage() {
+export function Oauth2Session() {
   const {t} = useTranslation("common", {keyPrefix: "session"});
   const [sessions, currDeviceSessions, loading, refresh, deleteSession] = useOAuth2Session();
   const {user} = useAuth();
@@ -32,7 +32,7 @@ export function HomePage() {
             <h3 className="font-semibold">{t("title")}</h3>
             <p>{t("subtitle.active_session", {count: (currDeviceSessions.length + sessions.length), email: user?.email})}</p>
           </div>
-          <Button size='icon' variant='ghost' onClick={refresh}>
+          <Button size='icon' variant='ghost' onClick={refresh} disabled={loading}>
             <Spinner type='REFRESH' enabled={loading}/>
           </Button>
         </CardHeader>

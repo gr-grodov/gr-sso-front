@@ -61,8 +61,6 @@ export function useOAuthClientForm(
 
         return toOAuthClientForm(response.data);
       } catch (err) {
-        console.log(err);
-        
         const error = await ErrorUtils.getErrorResponse(err);
         applyApiErrorsToForm(error, form.setError, setErrorMessage);
 

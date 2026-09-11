@@ -80,9 +80,35 @@
     }
   },
 
+  "profile": {
+    "title": "Профиль",
+    "subtitle": "Изменить информацию пользователя {{email}}",
+
+    "fields": {
+      "firstName": {
+        "label": "Имя пользователя",
+        "hint": "Иван"
+      },
+      "lastName": {
+        "label": "Фамилия пользователя",
+        "hint": "Иванов"
+      },
+      "patronymic": {
+        "label": "Отчество пользователя",
+        "hint": "Иванович"
+      }
+    },
+
+    "actions": {
+      "submit": "Сохранить",
+      "submit_success": "Данные профиля успешно сохранены"
+    }
+  },
+
   "user_inforamtion_block": {
     "menu": {
       "session": "Активные сессии",
+      "profile": "Профиль пользователя",
       "admin": "Админ панель"
     },
     "logout_hint": "Выйти из аккаунта"

@@ -1,8 +1,4 @@
 import type { OAuth2Session } from '@/shared/api/dto/response'
-import { applyApiErrorToToast } from '@/shared/api/utils/apply-errors-toast';
-import { ErrorUtils } from '@/shared/api/utils/error-utils';
-import { OAuth2SessionService } from '@/shared/service/oauth2-session.service';
-import { useEffect, useState } from 'react'
 import { OAuthSessionItem } from './OAuthSessionItem';
 import { Separator } from '@/components/ui/separator';
 

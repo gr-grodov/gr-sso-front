@@ -1,7 +1,12 @@
 {
   "oauth_clients": {
     "title": "OAuth-клиенты",
-    "subtitle": "{{activeCount}} активных · {{allCount}} всего",
+    "subtitle": {
+      "active_session_one": "{{count}} активная сессия · {{allCount}} всего",
+      "active_session_few": "{{count}} активные сессии · {{allCount}} всего",
+      "active_session_many": "{{count}} активных сессий · {{allCount}} всего",
+      "active_session_other": "{{count}} активные сессии · {{allCount}} всего"
+    },
     "item": {
       "empty_title": "OAuth клиенты не найдены",
       "empty_description": "Обновить список клиентов?",
@@ -176,7 +181,7 @@
         "title": "OAuth Client создан",
         "subtitle": "Client Secret будет показан только один раз",
 
-        "client_name": "Название OAuth клиента",
+        "client_name": "Идентификатор OAuth клиента",
         "client_secret": "Secret OAuth клиента",
 
         "actions": {

@@ -12,6 +12,7 @@ import { OAuthClientFormPage } from '@/pages/admin/OAuthClientFormPage';
 import { NotFoundPage } from '@/pages/common/NotFoundPage';
 import { OAuthConsentPage } from '@/pages/auth/OAuthConsentPage';
 import { VerifyEmailPage } from '@/pages/auth/VerifyEmailPage';
+import { ProfilePage } from '@/pages/common/ProfilePage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
 
         <Route element={<AuthGuard />}>
           <Route path="/" element={<Oauth2Session/>}/>
+          <Route path='/profile' element={<ProfilePage/>}/>
           <Route path='/oauth2/consent' element={<OAuthConsentPage/>}/>
 
           <Route element={<RoleGuard roles={['ADMIN']}/>}>

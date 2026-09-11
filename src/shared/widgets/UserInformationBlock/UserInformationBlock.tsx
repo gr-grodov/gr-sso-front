@@ -19,7 +19,7 @@ export function UserInformationBlock() {
   return (
     <div className='flex flex-row items-center justify-between w-full'>
       <DropdownMenu>
-        <DropdownMenuTrigger render={
+        <DropdownMenuTrigger nativeButton={false} render={
           <div className='flex flex-row items-center gap-2 hover:cursor-pointer hover:bg-muted rounded-lg p-0.5 pe-1'>
             <AppAvatar value={user.email}/>
             <span className='text-xs'>{user.email}</span>
@@ -29,6 +29,9 @@ export function UserInformationBlock() {
           <DropdownMenuGroup>
             <DropdownMenuItem onClick={() => navigate("/")}>
               {t("menu.session")}
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => navigate("/profile")}>
+              {t("menu.profile")}
             </DropdownMenuItem>
           </DropdownMenuGroup>
           {user.role == 'ADMIN' &&

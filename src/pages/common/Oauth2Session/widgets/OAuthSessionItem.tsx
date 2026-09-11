@@ -36,7 +36,7 @@ export function OAuthSessionItem({
                 {t("description", {clientName: session.clientName, city: session.deviceLocationCity, country: session.deviceLocationCountry})}
               </span>
               <div className="flex flex-row items-center gap-1">
-                <LogIn size={12}/>
+                <LogIn size={12}/>  
                 {session.diffNowAndLastEnter < 60 
                   ? <span>{t("diff_now_last_enter.now_enter")}</span>
                   : <FormatDurationText 

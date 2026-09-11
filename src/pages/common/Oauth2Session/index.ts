@@ -1,0 +1,1 @@
+export { Oauth2Session } from "@/pages/common/Oauth2Session/Oauth2Session"

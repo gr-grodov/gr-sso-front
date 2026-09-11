@@ -136,7 +136,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
 
   if (type === "success") {
     icon = (
-      <HugeiconsIcon icon={CheckmarkCircle02Icon} strokeWidth={2} aria-hidden="true" />
+      <HugeiconsIcon className="text-allowed" icon={CheckmarkCircle02Icon} strokeWidth={2} aria-hidden="true" />
     )
   }
 

@@ -1,4 +1,3 @@
-import { tError } from "@/shared/i18n";
 import { z } from "zod";
 
 export const oauthConsentSchema = z.object({

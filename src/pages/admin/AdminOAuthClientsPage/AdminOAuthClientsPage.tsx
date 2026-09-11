@@ -3,7 +3,7 @@ import { AdminContentBlock } from "@/shared/widgets/AdminContentBlock";
 import { Plus } from "lucide-react";
 import { OAuthClientActionsProvider } from "./widgets";
 import { OAuthClientsContent } from "./widgets/OAuthClientsContent";
-import { useOAuthClients } from "./hooks/useOAuthClients";
+import { useOAuthClients } from "./hooks/use-oauth-clients";
 import { useTranslation } from "react-i18next";
 
 
@@ -23,11 +23,11 @@ export function AdminOAuthClientsPage() {
   return (
     <AdminContentBlock 
       title={t("title")} 
-      subtitle={t("subtitle", {activeCount: activeClientCount, allCount: clients.length})}
+      subtitle={t("subtitle.active_session", {count: activeClientCount, allCount: clients.length})}
     >
       <OAuthClientActionsProvider 
         edit={edit}
-        changeStatus={changeStatus} 
+        changeStatus={changeStatus}
         remove={remove}
         refresh={refresh} >
         <OAuthClientsContent loading={loading} clients={clients}/>

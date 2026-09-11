@@ -3,11 +3,15 @@ import { OAuth2FlowApi } from "@/shared/api/oauth2-flow.api"
 
 
 export class OAuth2FlowService {
-  static continue() {
+  static async continue() {
     return OAuth2FlowApi.continue();
   }
 
-  static consent(body: Oauth2ConsentRequest) {
+  static async consent(body: Oauth2ConsentRequest) {
     return OAuth2FlowApi.consent(body);
+  }
+
+  static async clientInfo(id: string) {
+    return OAuth2FlowApi.clientInfo(id);
   }
 }
