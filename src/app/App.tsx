@@ -4,7 +4,7 @@ import {LoginPage} from "@/pages/auth/LoginPage/LoginPage";
 import {RegisterPage} from "@/pages/auth/RegisterPage";
 import { ProviderErrorPage } from '@/pages/auth/ProviderErrorPage';
 import { AuthGuard, GuestGuard, RoleGuard } from '@/features/auth';
-import { HomePage } from '@/pages/common/HomePage';
+import { Oauth2Session } from '@/pages/common/Oauth2Session';
 import { AdminOAuthUsersPage } from '@/pages/admin/AdminOAuthUsersPage';
 import { AdminOAuthClientsPage } from '@/pages/admin/AdminOAuthClientsPage';
 import { AdminPanelPage } from '@/pages/admin/AdminPanelPage';
@@ -25,7 +25,7 @@ function App() {
         </Route>
 
         <Route element={<AuthGuard />}>
-          <Route path="/" element={<HomePage/>}/>
+          <Route path="/" element={<Oauth2Session/>}/>
           <Route path='/oauth2/consent' element={<OAuthConsentPage/>}/>
 
           <Route element={<RoleGuard roles={['ADMIN']}/>}>
