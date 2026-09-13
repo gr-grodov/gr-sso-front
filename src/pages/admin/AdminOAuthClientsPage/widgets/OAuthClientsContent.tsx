@@ -3,7 +3,7 @@ import OAuthClientsEmpty from './data-states/OAuthClientsEmpty';
 import { OAuthClientsData } from './data-states/OAuthClientData';
 import type { OAuthClient } from '@/shared/api/dto/response';
 
-interface OAuthClientsContentProps  {
+interface OAuthClientsContentProps {
   loading: boolean,
   clients: OAuthClient[];
 }

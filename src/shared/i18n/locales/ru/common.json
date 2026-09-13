@@ -146,6 +146,11 @@
     "seconds_other": "{{count}} секунды"
   },
 
+  "pagination": {
+    "prev_title": "Назад",
+    "next_title": "Далее"
+  },
+
   "not_found_page": {
     "title": "404",
     "subtitle": "Страница не найдена",

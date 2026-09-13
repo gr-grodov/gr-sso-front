@@ -196,6 +196,47 @@
     }
   },
 
+
+  "oauth_users": {
+    "title": "OAuth-пользователи",
+    "subtitle": {
+      "active_users_one": "В системе {{count}} атунентифицированый пользователь",
+      "active_users_few": "В системе {{count}} атунентифицированых пользователя",
+      "active_users_many": "В системе {{count}} аутентифицированных пользователей",
+      "active_users_other": "В системе {{count}} атунентифицированый пользователя"
+    },
+
+    "search": {
+      "input_hint": "Поиск по email или названию приложения...",
+      "size_hint": "Отображать по:"
+    },
+
+    "item": {
+      "empty_title": "OAuth пользователи не найдены",
+      "empty_description": "Обновить список пользователей?",
+
+      "loading_title": "Загружаем список OAuth пользователей",
+      "loading_description": "Пожалуйста, подождите ответа. Не обновляйте страницу",
+
+      "description": {
+        "clients_one": "{{count}} клиент · {{clients}}",
+        "clients_few": "{{count}} клиентов · {{clients}}",
+        "clients_many": "{{count}} клиентов · {{clients}}",
+        "clients_other": "{{count}} клиенты · {{clients}}",
+        "client_empty": "Нет клиентов"
+      },
+      "client": {
+        "sessions_one": "{{count}} атунентифицированое устройство",
+        "sessions_few": "{{count}} атунентифицированых устройства",
+        "sessions_many": "{{count}} атунентифицированых устройств",
+        "sessions_other": "{{count}} атунентифицированых устройства"
+      },
+      "actions": {
+        "logout": "Отозвать доступ"
+      }
+    }
+  },
+
   "navigation": {
     "oauth_clients": "OAuth-клиенты",
     "oauth_users": "OAuth-пользователи",

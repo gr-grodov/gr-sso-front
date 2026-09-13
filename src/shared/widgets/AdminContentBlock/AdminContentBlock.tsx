@@ -19,7 +19,7 @@ export function AdminContentBlock({
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <>
+    <div className="flex min-h-dvh flex-col">
       <header className="sticky bg-background top-0 flex shrink-0 items-center justify-between gap-2 border-b px-2 z-50">
         <div className="flex items-center gap-2 p-2">
           <SidebarTrigger className="-ml-1" />
@@ -36,9 +36,9 @@ export function AdminContentBlock({
           {theme === "dark" ? <Sun /> : <Moon />}
         </Button>
       </header>
-      <main className='p-4 h-full'>
+      <main className="flex min-h-0 flex-1 flex-col p-4">
         {children}
       </main>
-    </>
+    </div>
   )
 }

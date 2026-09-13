@@ -6,3 +6,4 @@ export type {Oauth2ConsentRequest} from "./oauth2-consent.request";
 export type {VerifyEmailRequest} from "./verify-email.request";
 export type {RefreshVerifyCodeRequest} from "./refresh-verify-code.request";
 export type {ProfileInfoRequest} from "./profile-info.request";
+export type {DeleteOAuth2SessionRequest} from "./delete-oauth2-session.request";
