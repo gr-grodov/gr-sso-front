@@ -6,6 +6,7 @@ export function OAuthClientFormLoading() {
       <div className="grid grid-cols-1 lg:grid-cols-3">
 
         <div className="flex flex-col gap-2 m-1">
+          <Skeleton className="h-30" />
           <Skeleton className="h-25" />
           <Skeleton className="h-50" />
           <Skeleton className="h-35" />

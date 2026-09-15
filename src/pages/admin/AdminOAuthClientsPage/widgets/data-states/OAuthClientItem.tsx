@@ -28,7 +28,8 @@ export const OAuthClientItem = memo(function OAuthClientItem({client}: OAuthClie
         <CardHeader className='w-full flex flex-row items-center gap-2'>
           {!isMobile && 
             <AppAvatar 
-              value={client.clientName}
+              initials={client.clientName}
+              imageId={client.avatarId}
               disabled={client.status !== "ACTIVE"} 
               className="col-span-1 ml-1"
             /> 

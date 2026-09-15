@@ -33,7 +33,8 @@ export function toOAuthClientForm(data: OAuthClient): OauthClientSchema {
         ?? defaultValue.tokenSettings.refreshTokenTimeToLive,
       reuseRefreshTokens: data.tokenSettings.reuseRefreshTokens
         ?? defaultValue.tokenSettings.reuseRefreshTokens
-    }
+    },
+    avatarId: data.avatarId
   };
 }
 
@@ -56,6 +57,7 @@ export function createEmptyOAuthClient(): OauthClientSchema {
       refreshTokenTimeToLive: 2592000,
       reuseRefreshTokens: true
     },
+    avatarId: null,
     scopes: ["OPEN_ID"],
   };
 }

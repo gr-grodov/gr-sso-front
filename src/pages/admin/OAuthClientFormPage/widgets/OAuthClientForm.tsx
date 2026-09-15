@@ -15,6 +15,7 @@ import { useOAuthClientForm } from '../hooks/use-oauth-client-form'
 import { FieldGroup, FieldLegend } from '@/components/ui/field'
 import { LogicalCheckboxField } from '@/shared/components/LogicalCheckboxField'
 import { RadioGroupField } from '@/shared/components/RadioGroupField'
+import { AppAvatarUploaderField } from '@/shared/components/AppAvatarUploaderField'
 
 export type OAuthClientFormSuccess = | {
   type: "created";
@@ -45,6 +46,15 @@ export function OAuthClientForm({id, onSuccess}: OAuthClientFormProps) {
           <FieldGroupForm errorMessage={errorMessage} className='grid grid-cols-1 lg:grid-cols-3'>
 
             <div className="flex flex-col gap-2">
+              <Card className='p-4'>
+                <AppAvatarUploaderField
+                  control={form.control}
+                  name='avatarId'
+                  label={t("fields.avatar.label")}
+                  fallbackAvatar={form.getValues('clientName')}
+                />
+              </Card>
+
               <Card className='p-4'>
                 <InputField
                   control={form.control}

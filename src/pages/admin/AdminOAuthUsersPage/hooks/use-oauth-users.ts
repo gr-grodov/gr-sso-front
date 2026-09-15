@@ -50,7 +50,7 @@ export function useOAuthUsers() {
 
   const deleteClientSessions = useCallback(async (userId: string, clientId: string) => {
     try {
-      //await UserOAuth2SessionService.deleteSession({userId: userId, clientId: clientId});
+      await UserOAuth2SessionService.deleteSession({userId: userId, clientId: clientId});
       setUsers(users => users.map((user) => {
         if (user.userId !== userId) {
           return user;

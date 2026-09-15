@@ -6,6 +6,7 @@ export interface OAuthClientShort {
   clientName: string;
   scopes: OAuthScope[];
   status: OAuthClientStatus;
+  avatarId: string;
   createdAt: string;
   updatedAt: string;
 }

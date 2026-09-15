@@ -43,6 +43,7 @@ export interface OAuthClient {
     reuseRefreshTokens: boolean;
   };
   status: OAuthClientStatus;
+  avatarId: string;
   createdAt: string;
   updatedAt: string;
 }

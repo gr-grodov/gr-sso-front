@@ -12,7 +12,7 @@ export class UserOAuth2SessionApi {
 
   static async deleteSession(body: DeleteOAuth2SessionRequest) {
     return api.delete<SuccessResponse<any>>(
-      "/asdas",
+      "/api/admin/oauth-session",
       {data: body}
     );
   }

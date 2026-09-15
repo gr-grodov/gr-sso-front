@@ -7,12 +7,12 @@ import { useTranslation } from "react-i18next";
 
 export interface ClientSessionsInfoProps {
   userSessionInfo: UserOAuth2Session, 
-  clientSessions: OAuth2ClientSession
+  clientSession: OAuth2ClientSession
 }
 
 export function ClientSessionsInfo({
   userSessionInfo,
-  clientSessions
+  clientSession
 }: ClientSessionsInfoProps) {
   const {t} = useTranslation("admin", {keyPrefix: "oauth_users.item"});
   const {deleteClientSessions} = useOAuthUsersActions();
@@ -23,13 +23,14 @@ export function ClientSessionsInfo({
       size='sm'>
       <CardContent className='w-full flex flex-col lg:flex-row lg:items-center gap-2'>
         <div className='flex flex-row w-full items-center gap-4'>
-          <AppAvatar 
-            value={clientSessions.clientName} 
+          <AppAvatar
+            imageId={clientSession.clientAvatarId}
+            initials={clientSession.clientName} 
             className="col-span-1 ml-1"
           />
           <div className='w-full'>
-            <p className='font-semibold'>{clientSessions.clientName}</p>
-            <p>{t("client.sessions", {count: clientSessions.countSessions})}</p>
+            <p className='font-semibold'>{clientSession.clientName}</p>
+            <p>{t("client.sessions", {count: clientSession.countSessions})}</p>
           </div>
         </div>
 
@@ -37,7 +38,7 @@ export function ClientSessionsInfo({
           <Button 
             variant='destructive' 
             onClick={() => {
-              deleteClientSessions(userSessionInfo.userId, clientSessions.clientId)
+              deleteClientSessions(userSessionInfo.userId, clientSession.clientId)
             }}
           >
             {t("actions.logout")}

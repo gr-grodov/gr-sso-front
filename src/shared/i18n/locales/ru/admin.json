@@ -54,6 +54,9 @@
           "label": "Название приложения",
           "hint": "My Application"
         },
+        "avatar": {
+          "label": "Иконка приложения"
+        },
         "authorizationGrantTypes": {
           "label": "Выберите способы получения токена доступа (Authorization Grant Types)",
           "AUTHORIZATION_CODE": {

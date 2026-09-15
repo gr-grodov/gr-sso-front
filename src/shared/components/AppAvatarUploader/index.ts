@@ -1,0 +1,1 @@
+export {AppAvatarUploader} from "./AppAvatarUploader";

@@ -2,6 +2,11 @@ import { tError } from "@/shared/i18n";
 import { z } from "zod";
 
 export const profileInfo = z.object({
+  avatarId: z
+    .string()
+    .uuid()
+    .optional()
+    .nullable(),
   firstName: z
     .union([
       z.null(),

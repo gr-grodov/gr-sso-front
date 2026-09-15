@@ -4,6 +4,8 @@ import { FieldGroupForm } from '@/shared/components/FieldGroupForm'
 export function ProfileFormLoading() {
   return (
     <FieldGroupForm>
+      <Skeleton className='h-20 mb-8'/>
+
       <Skeleton className='h-5'/>
       <Skeleton className='h-8 mb-5'/>
 

@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router';
 import { useConsentForm } from './hooks/use-consent-form';
 import { OAuthConsentLoading } from './widgets/OAuthConsentLoading';
+import { AppAvatar } from '@/shared/components/AppAvatar';
 
 export function OAuthConsentPage() {
   const { t } = useTranslation("auth", {keyPrefix: "consent"});
@@ -48,7 +49,14 @@ export function OAuthConsentPage() {
     <AppCardBlock>
       {!oauthClient ? <OAuthConsentLoading/> : 
       <>
-        <CardHeader className="mt-10">
+        <CardHeader className="mt-4">
+          <div className='flex flex-col items-center mb-4'>
+            <AppAvatar
+              size='2xl' 
+              imageId={oauthClient.avatarId} 
+              initials={oauthClient.clientName}
+            />
+          </div>
           <h3 className="font-semibold">{t("title")} <span className='text-accent'>{oauthClient.clientName}</span></h3>
         </CardHeader>
           

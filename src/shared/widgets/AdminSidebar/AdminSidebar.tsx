@@ -14,11 +14,6 @@ const navigationData: NavItem[] = [
     titleKey: 'navigation.oauth_users',
     url: '/admin/oauth-users',
     icon: ShieldUser
-  },
-  {
-    titleKey: 'navigation.settings',
-    url: '/admin/settings',
-    icon: Settings
   }
 ]
 

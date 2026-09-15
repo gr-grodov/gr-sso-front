@@ -23,7 +23,8 @@ export default function OAuthUserItem({userSessionInfo}: OAuthUserItemProps) {
       <Collapsible>
         <CardHeader className='w-full flex flex-row items-center gap-2'>
           <AppAvatar 
-            value={userSessionInfo.userEmail} 
+            initials={userSessionInfo.userEmail}
+            imageId={userSessionInfo.userAvatarId}
             className="col-span-1 ml-1"
           />
           <div className='flex flex-col'>
@@ -65,7 +66,7 @@ export default function OAuthUserItem({userSessionInfo}: OAuthUserItemProps) {
                 <ClientSessionsInfo
                   key={`${userSessionInfo.userId}_${clientSessions.clientId}`} 
                   userSessionInfo={userSessionInfo} 
-                  clientSessions={clientSessions}
+                  clientSession={clientSessions}
                 />
               )}
             </div>

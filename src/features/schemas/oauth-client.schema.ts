@@ -53,7 +53,13 @@ export const oauthClientSchema = z.object({
       .number()
       .optional(),
     reuseRefreshTokens: z.boolean(),
-  })
+  }),
+
+  avatarId: z
+    .string()
+    .uuid()
+    .optional()
+    .nullable(),
 }).superRefine((data, ctx) => {
   if (data.authorizationGrantTypes.includes("REFRESH_TOKEN")) {
     if (!data.tokenSettings.refreshTokenTimeToLive) {

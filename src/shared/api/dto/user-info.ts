@@ -7,4 +7,5 @@ export interface UserInfo {
   firstName?: string;
   lastName?: string;
   patronymic?: string;
+  avatarId?: string;
 }
