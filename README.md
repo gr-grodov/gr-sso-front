@@ -1,32 +1,58 @@
-# React + TypeScript + Vite
+# GR SSO Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Фронтенд приложения для SSO сервера [GR_SSO](https://github.com/gr-grodov/gr-sso).
 
-Currently, two official plugins are available:
+## Фунционал
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Регистрация и аутентифиация пользователя
+- OAuth 2.0 аутентификации через Google
+- OAuth авторизация между приложениями через SSO сервер
+- Управление сессиями между устройствами пользователя
+- Редактирование профиля пользователя
+- Создание OAuth клиента (приложения) в Админ панели
+- Управление сессиями и клиентами в Админ панели
+- Локализация с поддержкой русского и английского языка
+- Светлая и тёмная тема
 
-## React Compiler
+## Использованные технологии
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- TypeScript
+- Vite
+- React Router
+- React Hook Form
+- Zod
+- Axios
+- i18next
+- Tailwind CSS
+- shadcn/ui
+- Lucide / HugeIcons
+- Docker
 
-## Expanding the Oxlint configuration
+## Страницы приложения
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### Аутентификация
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+| Page | Description |
+|---|---|
+| `LoginPage` | Страница логина |
+| `RegisterPage` | Страница регистрации |
+| `VerifyEmailPage` | Страница подтверждение Email |
+| `OAuthConsentPage` | Страница подтверждение разрешений OAuth 2.0 приложения |
+| `ProviderErrorPage` | Страница ошибо OAuth 2.0 аутентификации |
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Пользовательские настройки
+
+| Page | Description |
+|---|---|
+| `ProfilePage` | Страница редактирования данных пользователя |
+| `Oauth2Session` | Страница отзыва сессий приложений у устройств |
+
+### Администрация
+
+| Page | Description |
+|---|---|
+| `AdminOAuthClientsPage` | Страница управления OAuth-клиентами (приложениями) |
+| `OAuthClientFormPage` | Страница создания/редактирования OAuth-клиента |
+| `AdminOAuthUsersPage` | Страница управления OAuth-пользователями |
+

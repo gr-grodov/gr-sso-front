@@ -30,7 +30,7 @@
         "uri_oidc_logout": "OIDC Logout Redisrect URI:",
 
         "token_settings": "Настройка токенов:",
-        "reuse_refresh_tokens": "Генерирация нового Refresh Token обновлении:",
+        "reuse_refresh_tokens": "Генерирация нового Refresh Token при обновлении:",
         "authorization_code_ttl": "Время жизни Authorization Code:",
         "access_code_ttl": "Время жизни Authorization Code:",
         "refresh_token_ttl": "Время жизни Refresh Token:"
