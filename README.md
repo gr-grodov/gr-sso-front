@@ -35,17 +35,17 @@
 
 | Page | Description |
 |---|---|
-| `LoginPage` | Страница логина |
-| `RegisterPage` | Страница регистрации |
-| `VerifyEmailPage` | Страница подтверждение Email |
-| `OAuthConsentPage` | Страница подтверждение разрешений OAuth 2.0 приложения |
+| `LoginPage`         | Страница логина |
+| `RegisterPage`      | Страница регистрации |
+| `VerifyEmailPage`   | Страница подтверждение Email |
+| `OAuthConsentPage`  | Страница подтверждение разрешений OAuth 2.0 приложения |
 | `ProviderErrorPage` | Страница ошибо OAuth 2.0 аутентификации |
 
 ### Пользовательские настройки
 
 | Page | Description |
 |---|---|
-| `ProfilePage` | Страница редактирования данных пользователя |
+| `ProfilePage`   | Страница редактирования данных пользователя |
 | `Oauth2Session` | Страница отзыва сессий приложений у устройств |
 
 ### Администрация
@@ -53,6 +53,6 @@
 | Page | Description |
 |---|---|
 | `AdminOAuthClientsPage` | Страница управления OAuth-клиентами (приложениями) |
-| `OAuthClientFormPage` | Страница создания/редактирования OAuth-клиента |
-| `AdminOAuthUsersPage` | Страница управления OAuth-пользователями |
+| `OAuthClientFormPage`   | Страница создания/редактирования OAuth-клиента |
+| `AdminOAuthUsersPage`   | Страница управления OAuth-пользователями |
 
