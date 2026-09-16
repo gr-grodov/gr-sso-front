@@ -1,0 +1,248 @@
+{
+  "oauth_clients": {
+    "title": "OAuth Clients",
+    "subtitle": {
+      "active_session_one": "{{count}} active session · {{allCount}} total",
+      "active_session_few": "{{count}} active sessions · {{allCount}} total",
+      "active_session_many": "{{count}} active sessions · {{allCount}} total",
+      "active_session_other": "{{count}} active sessions · {{allCount}} total"
+    },
+    "item": {
+      "empty_title": "No OAuth clients found",
+      "empty_description": "Refresh the client list?",
+
+      "loading_title": "Loading OAuth client list",
+      "loading_description": "Please wait for a response. Do not refresh the page",
+
+      "actived": "Active",
+      "stoped": "Disabled",
+
+      "titles": {
+        "info_app": "Basic application information:",
+        "redirect_uri": "Redirect URIs:",
+        "scopes": "Scopes:",
+        "created": "Created:",
+
+        "client_settings": "Client settings:",
+        "require_consent": "Require authorization consent:",
+        "require_pkce": "Require PKCE:",
+        "uri_jwk": "Client URI containing its public JWK keys:",
+        "uri_oidc_logout": "OIDC Logout Redirect URI:",
+
+        "token_settings": "Token settings:",
+        "reuse_refresh_tokens": "Generate new Refresh Token on refresh:",
+        "authorization_code_ttl": "Authorization Code lifetime:",
+        "access_code_ttl": "Access Token lifetime:",
+        "refresh_token_ttl": "Refresh Token lifetime:"
+      },
+      "actions": {
+        "active": "Activate",
+        "disable": "Disable",
+        "refresh": "Refresh"
+      }
+    },
+
+
+
+    "form": {
+      "title_create_client": "Create OAuth Client",
+      "title_edit_client": "Edit OAuth Client",
+      "subtitle": "Fill in the application parameters",
+
+      "fields": {
+        "clientName": {
+          "label": "Application name",
+          "hint": "My Application"
+        },
+        "avatar": {
+          "label": "Application icon"
+        },
+        "authorizationGrantTypes": {
+          "label": "Select authorization grant types",
+          "AUTHORIZATION_CODE": {
+            "label": "Authorization Code",
+            "description": "Two-step browser-based authentication. The user authenticates first, then grants consent to the requested scopes"
+          },
+          "REFRESH_TOKEN": {
+            "label": "Refresh Token",
+            "description": "Used when the access_token has expired but the user should not re-authenticate"
+          },
+          "CLIENT_CREDENTIALS": {
+            "label": "Client Credentials",
+            "description": "The client obtains a token on its own behalf rather than on behalf of a user. Used for service-to-service interaction without binding to a specific logged-in user"
+          },
+          "JWT_BEARER": {
+            "label": "JWT Bearer",
+            "description": "Used when the client presents a ready-made JWT issued by a trusted external party"
+          },
+          "DEVICE_CODE": {
+            "label": "Device Code",
+            "description": "Used when a device has no browser and/or keyboard (Smart TVs, consoles, IoT devices). The user confirms sign-in from another device"
+          },
+          "TOKEN_EXCHANGE": {
+            "label": "Token Exchange",
+            "description": "Used for scenarios like 'microservice A' received a user token and wants to exchange it for a token with reduced privileges to call 'microservice B'"
+          }
+        },
+        "clientAuthenticationMethods": {
+          "label": "Select possible client authentication methods",
+          "CLIENT_SECRET_BASIC": {
+            "label": "Client Secret Basic",
+            "description": "The most common method — HTTP Basic Auth. Data (client_id, client_secret) is sent in the Authorization header (Authorization: Basic base64(client_id:client_secret))"
+          },
+          "CLIENT_SECRET_POST": {
+            "label": "Client Secret POST",
+            "description": "Data (client_id, client_secret) is sent in the form body"
+          },
+          "CLIENT_SECRET_JWT": {
+            "label": "Client Secret JWT",
+            "description": "The client does not send the secret directly but signs a JWT assertion with this secret (symmetric HMAC)."
+          },
+          "PRIVATE_KEY_JWT": {
+            "label": "Private Key JWT",
+            "description": "Same as 'Client Secret JWT' but with asymmetric cryptography — the client signs the JWT with its private key, and the SSO server verifies it with the public key"
+          },
+          "NONE": {
+            "label": "None",
+            "description": "For clients that physically cannot keep a secret: SPAs without a backend, mobile applications. In this case, security is ensured via PKCE"
+          },
+          "TLS_CLIENT_AUTH": {
+            "label": "PKI-based mTLS",
+            "description": "The client presents a TLS certificate issued by a trusted certificate authority (CA). The server verifies the certificate trust chain and compares one of its attributes with a pre-stored value for this client"
+          },
+          "SELF_SIGNED_TLS_CLIENT_AUTH": {
+            "label": "Self-signed certificates",
+            "description": "The difference from PKI-based mTLS is one thing: the client certificate does not have to be issued by a trusted CA — self-signed is allowed. Instead of verifying the trust chain, the server compares the certificate itself (more precisely, its thumbprint) with the one pre-registered for the client — following the 'pinning' model (similar to certificate/public-key pinning)"
+          }
+        },
+        "redirectUris": {
+          "label": "Redirect URIs",
+          "description": "Allowed return addresses after authorization",
+          "hint": "https://example.com/auth/oauth/code",
+          "action_add": "Add address"
+        },
+        "scopes": {
+          "label": "Scopes",
+          "EMAIL": "Email",
+          "PROFILE": "Profile data"
+        },
+        "clientSettings": {
+          "label": "Client settings",
+          "requireAuthorizationConsent": {
+            "label": "Display the requested permissions page"
+          },
+          "requireProofKey": {
+            "label": "Require PKCE"
+          },
+          "jwkSetUrl": {
+            "label": "Client URI containing its public JWK keys",
+            "placeholder": "https://example.com/.well-known/jwks.json"
+          },
+          "oidcLogoutRedirectUri": {
+            "label": "URI for user logout (OIDC Logout Redirect URI)",
+            "placeholder": "https://example.com/logout/connect/back-channel/grsso"
+          }
+        },
+        "tokenSettings": {
+          "label": "Token settings",
+          "reuseRefreshTokens": {
+            "label": "Generate a new Refresh Token on each refresh"
+          },
+          "authorizationCodeTimeToLive": {
+            "label": "Authorization Code lifetime",
+            "300_seconds": "5 minutes",
+            "900_seconds": "15 minutes",
+            "1800_seconds": "30 minutes",
+            "value_seconds": "{{seconds}} seconds",
+            "custom_value_label": "Specify Authorization Code lifetime (in seconds)"
+          },
+          "accessTokenTimeToLive": {
+            "label": "Access Token lifetime",
+            "300_seconds": "5 minutes",
+            "900_seconds": "15 minutes",
+            "1800_seconds": "30 minutes",
+            "3600_seconds": "1 hour",
+            "21600_seconds": "6 hours",
+            "value_seconds": "{{seconds}} seconds",
+            "custom_value_label": "Specify Access Token lifetime (in seconds)"
+          },
+          "refreshTokenTimeToLive": {
+            "label": "Refresh Token lifetime",
+            "3600_seconds": "1 hour",
+            "86400_seconds": "1 day",
+            "604800_seconds": "1 week",
+            "1209600_seconds": "2 weeks",
+            "2592000_seconds": "1 month",
+            "7776000_seconds": "3 months",
+            "value_seconds": "{{seconds}} seconds",
+            "custom_value_label": "Specify Refresh Token lifetime (in seconds)"
+          }
+        }
+      },
+
+      "success_dialog": {
+        "title": "OAuth Client created",
+        "subtitle": "Client Secret will be shown only once",
+
+        "client_name": "OAuth client identifier",
+        "client_secret": "OAuth client secret",
+
+        "actions": {
+          "accept": "Accept"
+        }
+      },
+
+      "actions": {
+        "submit": "Save",
+        "cancel": "Back"
+      }
+    }
+  },
+
+
+  "oauth_users": {
+    "title": "OAuth Users",
+    "subtitle": {
+      "active_users_one": "{{count}} authenticated user in the system",
+      "active_users_few": "{{count}} authenticated users in the system",
+      "active_users_many": "{{count}} authenticated users in the system",
+      "active_users_other": "{{count}} authenticated users in the system"
+    },
+
+    "search": {
+      "input_hint": "Search by email or application name...",
+      "size_hint": "Display per page:"
+    },
+
+    "item": {
+      "empty_title": "No OAuth users found",
+      "empty_description": "Refresh the user list?",
+
+      "loading_title": "Loading OAuth user list",
+      "loading_description": "Please wait for a response. Do not refresh the page",
+
+      "description": {
+        "clients_one": "{{count}} client · {{clients}}",
+        "clients_few": "{{count}} clients · {{clients}}",
+        "clients_many": "{{count}} clients · {{clients}}",
+        "clients_other": "{{count}} clients · {{clients}}",
+        "client_empty": "No clients"
+      },
+      "client": {
+        "sessions_one": "{{count}} authenticated device",
+        "sessions_few": "{{count}} authenticated devices",
+        "sessions_many": "{{count}} authenticated devices",
+        "sessions_other": "{{count}} authenticated devices"
+      },
+      "actions": {
+        "logout": "Revoke access"
+      }
+    }
+  },
+
+  "navigation": {
+    "oauth_clients": "OAuth Clients",
+    "oauth_users": "OAuth Users",
+    "settings": "Settings"
+  }
+}

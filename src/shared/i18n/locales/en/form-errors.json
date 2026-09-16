@@ -1,3 +1,103 @@
 {
-  
+  "email": {
+    "empty": "Enter your email",
+    "invalid": "Invalid email",
+    "already_exist": "This email is already registered"
+  },
+  "password": {
+    "empty": "Enter your password",
+    "min": "Password must be longer than eight characters",
+    "invalid": "Password does not meet the requirements"
+  },
+
+  "clientName": {
+    "empty": "Enter the application name",
+    "min": "Application name must be longer than six characters",
+    "max": "Application name must be less than one hundred characters",
+    "regex": "Application name must not contain special characters",
+    "exists": "An application with this name already exists"
+  },
+  "authorizationGrantTypes": {
+    "min": "Select at least one authorization grant type",
+    "invalid": "Invalid authorization grant type"
+  },
+  "clientAuthenticationMethods": {
+    "min": "Select at least one client authentication method",
+    "invalid": "Invalid client authentication method"
+  },
+  "clientID": {
+    "empty": "Enter Client ID",
+    "min": "Client ID must be longer than six characters",
+    "max": "Client ID must be less than one hundred characters",
+    "regex": "Client ID must not contain special characters"
+  },
+  "redirectUris": {
+    "min": "Add at least one Redirect URI",
+    "invalid": "Invalid address"
+  },
+  "scopes": {
+    "min": "Select at least one Scope"
+  },
+  "requireProofKey": {
+    "requred": "Required parameter"
+  },
+  "jwkSetUrl": {
+    "empty": "Specify the URL with public JWK keys",
+    "invalid": "Invalid address"
+  },
+  "oidcLogoutRedirectUri": {
+    "empty": "Specify the OIDC Logout Redirect URI",
+    "invalid": "Invalid address"
+  },
+  "authorizationCodeTimeToLive": {
+    "empty": "Specify the Authorization Code lifetime",
+    "min": "Authorization Code lifetime must be greater than one minute"
+  },
+  "accessTokenTimeToLive": {
+    "empty": "Specify the Access Token lifetime",
+    "min": "Access Token lifetime must be greater than five minutes"
+  },
+  "refreshTokenTimeToLive": {
+    "empty": "Specify the Refresh Token lifetime",
+    "min": "Refresh Token lifetime must be greater than five minutes"
+  },
+
+
+  "verifyId": {
+    "empty": "ID cannot be empty"
+  },
+  "verifyCode": {
+    "empty": "Enter the verification code",
+    "invalid": "Invalid verification code"
+  },
+
+  "firstName": {
+    "invalid": "First name must not contain special characters"
+  },
+  "lastName": {
+    "invalid": "Last name must not contain special characters"
+  },
+  "patronymic": {
+    "invalid": "Patronymic must not contain special characters"
+  },
+
+  "avatar": {
+    "invalid_type": "JPG, PNG, and WEBP are supported",
+    "max_size": "Maximum file size — 5 MB"
+  },
+
+  "global": {
+    "default": "Unexpected error",
+    "unknown": "Unknown error",
+    "unavailable": "Server is currently unavailable",
+    "validation_error": "Invalid data",
+    "auth_bad_credentials": "Invalid user credentials",
+    "oauth_client_not_found": "Could not find service data",
+    "verify_email_code_not_found": "Email verification time has expired. Please register again",
+    "verify_email_init_not_found": "Could not find email verification data. Please register again",
+    "verify_email_code_end_attempt": "No more attempts left to enter the verification code. Please refresh the code or register again",
+    "user_not_found": "User not found",
+    "forbidden": "Access denied",
+    "unauthorized": "Access denied"
+  }
 }

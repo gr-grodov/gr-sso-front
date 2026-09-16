@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import type { OAuth2ClientSession, UserOAuth2Session } from "@/shared/api/dto/response";
 import { useTranslation } from "react-i18next";
 
-export interface ClientSessionsInfoProps {
+interface ClientSessionsInfoProps {
   userSessionInfo: UserOAuth2Session, 
   clientSession: OAuth2ClientSession
 }

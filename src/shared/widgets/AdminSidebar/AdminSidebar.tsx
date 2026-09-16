@@ -1,6 +1,6 @@
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '@/components/ui/sidebar'
 import { Logo } from '@/shared/icons/Logo'
-import { Settings, ShieldCog, ShieldUser } from 'lucide-react'
+import { ShieldCog, ShieldUser } from 'lucide-react'
 import { NavSidebar, type NavItem } from './NavSidebar'
 import { UserInformationBlock } from '@/shared/widgets/UserInformationBlock'
 

@@ -1,3 +1,171 @@
 {
+  "session": {
+    "title": "Active Sessions",
+    "subtitle_one": "{{count}} Connected Services",
+    "subtitle": {
+      "active_session_one": "{{count}} active session · {{email}}",
+      "active_session_few": "{{count}} active sessions · {{email}}",
+      "active_session_many": "{{count}} active sessions · {{email}}",
+      "active_session_other": "{{count}} active sessions · {{email}}"
+    },
 
+    "sessions_title": {
+      "current_device": "Current device sessions:",
+      "other_devices": "All sessions:"
+    },
+
+    "item": {
+      "title": "{{operationSystem}} · {{agentNameVersion}}",
+      "description": "{{clientName}} · {{city}}, {{country}}",
+      "diff_now_last_enter": {
+        "now_enter": "Just now",
+        "duration": "{{duration}} ago"
+      },
+      "session_info": {
+        "ip_address": "IP address",
+        "application": "Application",
+        "os": "OS",
+        "browser": "Browser",
+        "device": "Device",
+        "location": "Location",
+        "user_agent": "User-Agent"
+      },
+      "device_class": {
+        "DESKTOP": "Desktop computer",
+        "ANONYMIZED": "Anonymized device",
+        "MOBILE": "Mobile device",
+        "TABLET": "Tablet",
+        "PHONE": "Phone",
+        "WATCH": "Smart watch",
+        "AUGMENTED_REALITY": "Augmented reality",
+        "VIRTUAL_REALITY": "Virtual reality",
+        "E_READER": "E-reader",
+        "SET_TOP_BOX": "Set-top box",
+        "TV": "TV",
+        "GAME_CONSOLE": "Game console",
+        "HANDHELD_GAME_CONSOLE": "Handheld game console",
+        "HOME_APPLIANCE": "Home appliance",
+        "VOICE": "Voice device",
+        "SMART_DISPLAY": "Smart display",
+        "CAR": "Car",
+        "CLOUD": "Cloud",
+        "ROBOT": "Robot",
+        "ROBOT_MOBILE": "Mobile robot",
+        "ROBOT_IMITATOR": "Robot imitator",
+        "HACKER": "Hacker",
+        "UNKNOWN": "Unknown",
+        "UNCLASSIFIED": "Unclassified device"
+      },
+      "actions": {
+        "delete_hint": "End this session?",
+        "delete": "End"
+      },
+      "dialog_delete": {
+        "title": "End Session",
+        "description": "Are you sure you want to end the application sessions",
+        "description_device": "on device {{os}} ({{browser}})?",
+        "actions": {
+          "cancel": "Cancel",
+          "submit": "End"
+        }
+      }
+    },
+
+    "actions": {
+      "delete": "Delete",
+      "stop": "Stop",
+      "resume": "Resume",
+      "edit": "Edit",
+      "create": "Add"
+    }
+  },
+
+  "profile": {
+    "title": "Profile",
+    "subtitle": "Edit user information for {{email}}",
+
+    "fields": {
+      "firstName": {
+        "label": "First name",
+        "hint": "John"
+      },
+      "lastName": {
+        "label": "Last name",
+        "hint": "Doe"
+      },
+      "patronymic": {
+        "label": "Patronymic",
+        "hint": "Ivanovich"
+      }
+    },
+
+    "actions": {
+      "submit": "Save",
+      "submit_success": "Profile data saved successfully"
+    }
+  },
+
+  "user_inforamtion_block": {
+    "menu": {
+      "session": "Active Sessions",
+      "profile": "User Profile",
+      "admin": "Admin Panel"
+    },
+    "logout_hint": "Sign out of account"
+  },
+
+  "duration": {
+    "years_one": "{{count}} year",
+    "years_few": "{{count}} years",
+    "years_many": "{{count}} years",
+    "years_other": "{{count}} years",
+
+    "months_one": "{{count}} month",
+    "months_few": "{{count}} months",
+    "months_many": "{{count}} months",
+    "months_other": "{{count}} months",
+
+    "days_one": "{{count}} day",
+    "days_few": "{{count}} days",
+    "days_many": "{{count}} days",
+    "days_other": "{{count}} days",
+
+    "hours_one": "{{count}} hour",
+    "hours_few": "{{count}} hours",
+    "hours_many": "{{count}} hours",
+    "hours_other": "{{count}} hours",
+
+    "minutes_one": "{{count}} minute",
+    "minutes_few": "{{count}} minutes",
+    "minutes_many": "{{count}} minutes",
+    "minutes_other": "{{count}} minutes",
+
+    "seconds_one": "{{count}} second",
+    "seconds_few": "{{count}} seconds",
+    "seconds_many": "{{count}} seconds",
+    "seconds_other": "{{count}} seconds"
+  },
+
+  "pagination": {
+    "prev_title": "Previous",
+    "next_title": "Next"
+  },
+
+  "avatar_uploader": {
+    "description": "Upload an image smaller than 800x800 px\nJPG, PNG supported",
+    "actions": {
+      "upload": "Upload image",
+      "delete": "Delete"
+    }
+  },
+
+  "not_found_page": {
+    "title": "404",
+    "subtitle": "Page not found",
+    "description": "The requested page does not exist or has been moved",
+
+    "actions": {
+      "home": "Go to home"
+    }
+  }
 }

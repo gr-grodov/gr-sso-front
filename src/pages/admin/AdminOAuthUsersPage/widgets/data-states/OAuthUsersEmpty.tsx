@@ -5,7 +5,6 @@ import { RefreshCcwIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useOAuthUsersActions } from '../OAuthUsersContext';
 
-
 export default function OAuthUsersEmpty() {
   const {t} = useTranslation("admin", {keyPrefix: "oauth_users.item"})
   const {refresh} = useOAuthUsersActions();

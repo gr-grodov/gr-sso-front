@@ -6,7 +6,7 @@ import { InputField } from '@/shared/components/InputField'
 import type { UseFormReturn } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-export interface ProfileFormProps {
+interface ProfileFormProps {
   form: UseFormReturn<ProfileInfoSchema>,
   errorMessage: string,
   submit: (data: ProfileInfoSchema) => void

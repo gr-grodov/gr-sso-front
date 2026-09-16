@@ -5,7 +5,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Search } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-export interface AdminOAuthUsersSearchProps {
+interface AdminOAuthUsersSearchProps {
   onChangeSearch: (search: string) => void;
   onChangeSize: (size: number) => void;
 }

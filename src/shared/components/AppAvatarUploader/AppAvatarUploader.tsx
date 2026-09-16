@@ -7,6 +7,7 @@ import { useAppAvatarUploader } from "./use-app-avatar-uploader";
 import { ACCEPTED_TYPES } from "./AppAvatarUploader.constant";
 import { AppAvatar } from "../AppAvatar";
 import { Spinner } from "@/components/ui/spinner";
+import { useTranslation } from "react-i18next";
 
 export interface AppAvatarUploaderProps {
   value: string | null;
@@ -21,6 +22,7 @@ export function AppAvatarUploader({
   disabled = false,
   fallback
 }: AppAvatarUploaderProps) {
+  const {t} = useTranslation("common", {keyPrefix: "avatar_uploader"});
   const inputRef = useRef<HTMLInputElement>(null);
   const {imageUrl, loading, error, upload, clearFile} = useAppAvatarUploader(value, onChange)
 
@@ -88,18 +90,17 @@ export function AppAvatarUploader({
 
         <div className="flex flex-col gap-2">
           <span className="text-xs text-muted-foreground text-right">
-            {"Загружайте изображение меньше 800x800 px\n"}<br/>
-            Поддерживается JPG, PNG
+            {t("description")}
           </span>
           
           <div className="flex flex-row-reverse gap-2">
             <Button variant='outline' onClick={handleClick} disabled={disabled || loading}>
               {loading && <Spinner/>}
-              Загрузить изображение
+              {t("actions.upload")}
             </Button>
             {value && !loading && (
               <Button variant="destructive" onClick={deleteFile} disabled={disabled}>
-                Удалить
+                {t("actions.delete")}
               </Button>
             )}
           </div>

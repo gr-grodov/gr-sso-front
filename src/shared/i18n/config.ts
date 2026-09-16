@@ -4,6 +4,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import enCommon from "./locales/en/common.json";
 import enAuth from "./locales/en/auth.json";
+import enAdmin from "./locales/en/admin.json";
 import enFormErrors from "./locales/en/form-errors.json"
 
 import ruCommon from "./locales/ru/common.json";
@@ -21,6 +22,7 @@ i18n
       en: {
         common: enCommon,
         auth: enAuth,
+        admin: enAdmin,
         errors: enFormErrors
       },
       ru: {

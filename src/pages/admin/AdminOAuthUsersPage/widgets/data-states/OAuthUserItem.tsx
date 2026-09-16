@@ -9,7 +9,7 @@ import { ChevronsUpDown, LogInIcon } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { ClientSessionsInfo } from './OAuthClientSessionsInfo'
 
-export interface OAuthUserItemProps {
+interface OAuthUserItemProps {
   userSessionInfo: UserOAuth2Session
 }
 

@@ -3,7 +3,7 @@ import OAuthUsersLoading from "./data-states/OAuthUsersLoading"
 import OAuthUsersEmpty from "./data-states/OAuthUsersEmpty"
 import OAuthUsersData from "./data-states/OAuthUsersData"
 
-export interface OAuthUsersContentProps {
+interface OAuthUsersContentProps {
   loading: boolean,
   users: UserOAuth2Session[]
 }

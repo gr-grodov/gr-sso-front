@@ -1,0 +1,9 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gr-sso-front
+    ports:
+      - "4173:4173"
+    restart: unless-stopped

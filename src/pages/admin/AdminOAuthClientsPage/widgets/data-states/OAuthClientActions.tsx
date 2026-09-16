@@ -5,7 +5,7 @@ import { type OAuthClient } from '@/shared/api/dto/response';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 
-export interface OAuthClientActionMenuProps {
+interface OAuthClientActionMenuProps {
   client: OAuthClient
 }
 

@@ -14,7 +14,7 @@ import { Separator } from '@/components/ui/separator'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { FormatDurationText } from '@/shared/components/FormatDurationText'
 
-export interface OAuthClientItemProps {
+interface OAuthClientItemProps {
   client: OAuthClient
 }
 

@@ -29,7 +29,7 @@ export function AdminContentBlock({
           />
           <div>
             <p className='font-semibold text-base'>{title}</p>
-            <p className="text-gray-500 text-xs">{subtitle}</p>
+            <p className="text-muted-foreground text-xs">{subtitle}</p>
           </div>
         </div>
         <Button variant="ghost" size="icon-lg" onClick={toggleTheme}>

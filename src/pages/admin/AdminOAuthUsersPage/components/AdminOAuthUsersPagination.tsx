@@ -2,7 +2,7 @@ import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, Pagi
 import { useTranslation } from "react-i18next";
 import { Fragment } from "react/jsx-runtime";
 
-export interface AdminOAuthUsersPaginationProps {
+interface AdminOAuthUsersPaginationProps {
   page: number,
   totalPages: number,
   onChangePage: (page: number) => void

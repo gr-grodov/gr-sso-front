@@ -1,5 +1,5 @@
 import { Controller, type Control, type FieldPath, type FieldValues } from "react-hook-form";
-import { Field, FieldError, FieldLabel, FieldLegend } from "@/components/ui/field";
+import { Field, FieldError, FieldLegend } from "@/components/ui/field";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 export type ToggleOption = {

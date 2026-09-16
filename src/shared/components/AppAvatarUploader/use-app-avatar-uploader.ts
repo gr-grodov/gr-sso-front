@@ -1,6 +1,7 @@
 import { AttachmentService } from "@/shared/service/attachment.service";
 import { useCallback, useEffect, useState } from "react";
 import { ACCEPTED_TYPES, MAX_SIZE } from "./AppAvatarUploader.constant";
+import { tError } from "@/shared/i18n";
 
 export function useAppAvatarUploader(
   value: string | null,
@@ -58,11 +59,11 @@ export function useAppAvatarUploader(
 
 function getErrorFromFile(file: File): string | null {
   if (!ACCEPTED_TYPES.includes(file.type)) {
-    return "Поддерживаются JPG, PNG и WEBP";
+    return tError("avatar.invalid_type");
   }
 
   if (file.size > MAX_SIZE) {
-    return "Максимальный размер файла — 5 МБ";
+    return tError("avatar.max_size");
   }
 
   return null;

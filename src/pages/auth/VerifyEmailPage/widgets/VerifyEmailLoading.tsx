@@ -1,6 +1,5 @@
 import { CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import React from 'react'
 
 export function VerifyEmailLoading() {
   return (

@@ -3,7 +3,7 @@ import type { OAuth2Session } from '@/shared/api/dto/response';
 import type { ReactElement } from 'react'
 import { useTranslation } from 'react-i18next';
 
-export interface OAuthSessionDeleteAlertDialogProps {
+interface OAuthSessionDeleteAlertDialogProps {
   session: OAuth2Session;
   submit: () => void;
   triggerDialog: ReactElement;

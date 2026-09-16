@@ -151,6 +151,14 @@
     "next_title": "Далее"
   },
 
+  "avatar_uploader": {
+    "description": "Загружайте изображение меньше 800x800 px\nПоддерживается JPG, PNG",
+    "actions": {
+      "upload": "Загрузить изображение",
+      "delete": "Удалить"
+    }
+  },
+
   "not_found_page": {
     "title": "404",
     "subtitle": "Страница не найдена",

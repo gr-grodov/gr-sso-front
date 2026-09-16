@@ -18,8 +18,6 @@ import { useAuth } from "@/features/auth";
 import { Spinner } from "@/components/ui/spinner";
 import { oauth2FlowContinue } from "@/features/oauth2/oauth2-flow-continue";
 
-
-
 export function LoginPage() {
   const navigate = useNavigate();
   const {login} = useAuth();

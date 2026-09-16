@@ -2,7 +2,7 @@ import type { OAuth2Session } from '@/shared/api/dto/response'
 import { OAuthSessionItem } from './OAuthSessionItem';
 import { Separator } from '@/components/ui/separator';
 
-export interface OAuth2SessionListPops {
+interface OAuth2SessionListPops {
   sessions: OAuth2Session[],
   currDeviceSessions: OAuth2Session[],
   deleteSession: (sid: string) => void
