@@ -2,8 +2,6 @@ import * as React from "react"
 import { OTPInput, OTPInputContext } from "input-otp"
 
 import { cn } from "@/lib/utils"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { DotFreeIcons, MinusSignIcon } from "@hugeicons/core-free-icons"
 import { cva, type VariantProps } from "class-variance-authority"
 
 function InputOTP({

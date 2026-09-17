@@ -1,6 +1,5 @@
 import { verifyEmailShema, type VerifyEmailForm } from "@/features/schemas/verify-email.schema";
 import type { ErrorResponse } from "@/shared/api/dto/response";
-import { applyApiErrorToToast } from "@/shared/api/utils/apply-errors-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";

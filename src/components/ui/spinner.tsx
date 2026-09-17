@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils"
-import { LoaderCircle, RefreshCcw, RefreshCw } from "lucide-react"
+import { LoaderCircle, RefreshCw } from "lucide-react"
 
 type SpinnerType = "LOAD" | "REFRESH";
 
