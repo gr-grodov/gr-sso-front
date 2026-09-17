@@ -1,4 +1,5 @@
 import type { RegisterRequest, LoginRequest, VerifyEmailRequest, RefreshVerifyCodeRequest } from "@/shared/api/dto/requests";
+import { env } from "@/shared/config/env";
 import { AuthApi } from "@/shared/api/auth.api";
 
 export class AuthService {
@@ -25,5 +26,9 @@ export class AuthService {
 
   static async logout() {
     return AuthApi.logout();
+  }
+
+  static uriAuthByGoogle() {
+    return `${env.apiUrl}/oauth2/authorization/google`
   }
 }
