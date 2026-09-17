@@ -28,7 +28,7 @@ function App() {
         <Route element={<AuthGuard />}>
           <Route path="/" element={<Oauth2Session/>}/>
           <Route path='/profile' element={<ProfilePage/>}/>
-          <Route path='/oauth2/consent' element={<OAuthConsentPage/>}/>
+          <Route path='/consent-scopes' element={<OAuthConsentPage/>}/>
 
           <Route element={<RoleGuard roles={['ADMIN']}/>}>
             <Route path='/admin' element={<AdminPanelPage/>}>
