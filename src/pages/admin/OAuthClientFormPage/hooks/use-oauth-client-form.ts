@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { type OauthClientSchema, oauthClientSchema } from "@/features/schemas/oauth-client.schema";
-import { OAuthClientService } from "@/shared/service";
+import { OAuthClientService } from "@/shared/service/oauth-client.service";
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
 import { applyApiErrorsToForm } from "@/shared/api/utils/apply-errors-form";
 import { createEmptyOAuthClient, toOAuthClientForm } from "../widgets/OAuthClientForm.mapper";

@@ -2,7 +2,7 @@ import { oauthConsentSchema, type OAuthConsentSchema } from "@/features/schemas/
 import type { ErrorResponse, OAuthClientShort } from "@/shared/api/dto/response";
 import { AppError } from "@/shared/api/utils/app-error";
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
-import { OAuth2FlowService } from "@/shared/service";
+import { OAuth2FlowService } from "@/shared/service/oauth2-flow.service";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";

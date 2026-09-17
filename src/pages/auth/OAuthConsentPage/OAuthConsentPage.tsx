@@ -7,7 +7,7 @@ import { applyApiErrorToToast } from '@/shared/api/utils/apply-errors-toast';
 import { ErrorUtils } from '@/shared/api/utils/error-utils';
 import { CheckboxGroupField, } from '@/shared/components/CheckboxGroupField';
 import { FieldGroupForm } from '@/shared/components/FieldGroupForm';
-import { OAuth2FlowService } from '@/shared/service';
+import { OAuth2FlowService } from '@/shared/service/oauth2-flow.service';
 import { AppCardBlock } from '@/shared/widgets/AppCardBlock'
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router';

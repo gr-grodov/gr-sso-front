@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-import { OAuthClientService } from "@/shared/service";
+import { OAuthClientService } from "@/shared/service/oauth-client.service";
 import {  type OAuthClient, type OAuthClientStatus } from "@/shared/api/dto/response";
 
 import { ErrorUtils } from "@/shared/api/utils/error-utils";

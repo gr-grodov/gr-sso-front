@@ -1,6 +1,6 @@
 import { applyApiErrorToToast } from "@/shared/api/utils/apply-errors-toast";
 import { ErrorUtils } from "@/shared/api/utils/error-utils";
-import { OAuth2FlowService } from "@/shared/service";
+import { OAuth2FlowService } from "@/shared/service/oauth2-flow.service";
 
 export async function oauth2FlowContinue(defaultNavigate: () => void) {
   try {

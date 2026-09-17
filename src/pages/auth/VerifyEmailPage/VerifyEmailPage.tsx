@@ -7,7 +7,7 @@ import { applyApiErrorToToast } from '@/shared/api/utils/apply-errors-toast';
 import { ErrorUtils } from '@/shared/api/utils/error-utils';
 import { FieldGroupForm } from '@/shared/components/FieldGroupForm';
 import { InputOTPField } from '@/shared/components/InputOTPField';
-import { AuthService } from '@/shared/service';
+import { AuthService } from '@/shared/service/auth.service';
 import { AppCardBlock } from '@/shared/widgets/AppCardBlock'
 import { CircleCheck } from 'lucide-react';
 import { useState } from 'react';
